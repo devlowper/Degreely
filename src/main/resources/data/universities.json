@@ -1,0 +1,382 @@
+[
+  {
+    "id": "uni-1",
+    "name": "Massachusetts Institute of Technology (MIT)",
+    "country": "United States",
+    "city": "Cambridge, MA",
+    "ranking": 1,
+    "tuitionPerYear": 66720,
+    "acceptanceRate": 4.0,
+    "minGpa": 3.9,
+    "minIelts": 7.0,
+    "programs": [
+      { "name": "B.S. in Aerospace Engineering", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "B.S. in Computer Science, Economics, and Data Science", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "M.S. in Electrical Engineering and Computer Science", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Mechanical Engineering", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Civil and Environmental Engineering", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Aeronautics & Astronautics", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Chemical Engineering", "level": "Master", "durationMonths": 12 },
+      { "name": "Master of Supply Chain Management", "level": "Master", "durationMonths": 10 },
+      { "name": "Master of Architecture", "level": "Master", "durationMonths": 42 },
+      { "name": "Ph.D. in Electrical Engineering & Computer Science", "level": "PhD", "durationMonths": 60 }
+    ]
+  },
+  {
+    "id": "uni-2",
+    "name": "University of Cambridge",
+    "country": "United Kingdom",
+    "city": "Cambridge",
+    "ranking": 2,
+    "tuitionPerYear": 42000,
+    "acceptanceRate": 18.0,
+    "minGpa": 3.8,
+    "minIelts": 7.5,
+    "programs": [
+      { "name": "B.A. in Computer Science", "level": "Bachelor", "durationMonths": 36 },
+      { "name": "M.Phil. in Machine Learning and Speech", "level": "Master", "durationMonths": 12 },
+      { "name": "Ph.D. in Information Engineering", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-3",
+    "name": "University of Oxford",
+    "country": "United Kingdom",
+    "city": "Oxford",
+    "ranking": 3,
+    "tuitionPerYear": 46350,
+    "acceptanceRate": 14.5,
+    "minGpa": 3.85,
+    "minIelts": 7.5,
+    "programs": [
+      { "name": "B.A. in Computer Science", "level": "Bachelor", "durationMonths": 36 },
+      { "name": "M.Sc. in Advanced Computer Science", "level": "Master", "durationMonths": 12 },
+      { "name": "Master of Business Administration (MBA)", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Social Data Science", "level": "Master", "durationMonths": 10 },
+      { "name": "M.Sc. in Law and Finance", "level": "Master", "durationMonths": 10 },
+      { "name": "M.Sc. in Mathematical and Computational Finance", "level": "Master", "durationMonths": 10 },
+      { "name": "M.Sc. in Economics for Development", "level": "Master", "durationMonths": 9 },
+      { "name": "Master of Public Policy (MPP)", "level": "Master", "durationMonths": 12 },
+      { "name": "D.Phil. in Computer Science", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-4",
+    "name": "Harvard University",
+    "country": "United States",
+    "city": "Cambridge, MA",
+    "ranking": 4,
+    "tuitionPerYear": 57200,
+    "acceptanceRate": 3.4,
+    "minGpa": 3.95,
+    "minIelts": 7.5,
+    "programs": [
+      { "name": "A.B. in Applied Mathematics", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "M.S. in Data Science", "level": "Master", "durationMonths": 24 },
+      { "name": "Ph.D. in Quantum Science and Engineering", "level": "PhD", "durationMonths": 60 }
+    ]
+  },
+  {
+    "id": "uni-5",
+    "name": "Stanford University",
+    "country": "United States",
+    "city": "Stanford, CA",
+    "ranking": 5,
+    "tuitionPerYear": 53441,
+    "acceptanceRate": 3.9,
+    "minGpa": 3.9,
+    "minIelts": 7.0,
+    "programs": [
+      { "name": "B.S. in Computer Science", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "M.S. in Computer Science", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Computational and Mathematical Engineering", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Electrical Engineering", "level": "Master", "durationMonths": 18 },
+      { "name": "M.S. in Mechanical Engineering", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Bioengineering", "level": "Master", "durationMonths": 12 },
+      { "name": "M.S. in Education Data Science", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Statistics: Data Science", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Management Science and Engineering", "level": "Master", "durationMonths": 18 },
+      { "name": "Ph.D. in Bioengineering", "level": "PhD", "durationMonths": 60 }
+    ]
+  },
+  {
+    "id": "uni-6",
+    "name": "Imperial College London",
+    "country": "United Kingdom",
+    "city": "London",
+    "ranking": 6,
+    "tuitionPerYear": 48300,
+    "acceptanceRate": 11.5,
+    "minGpa": 3.75,
+    "minIelts": 6.5,
+    "programs": [
+      { "name": "MEng in Computing (Visual Computing and Robotics)", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "M.Sc. in Artificial Intelligence", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Computing", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Advanced Computing", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Statistics (Data Science and Machine Learning)", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Advanced Aeronautical Engineering", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Computing (AI & Machine Learning)", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Advanced Mechanical Engineering", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Applied Machine Learning", "level": "Master", "durationMonths": 12 },
+      { "name": "Ph.D. in Management & Entrepreneurship", "level": "PhD", "durationMonths": 60 }
+    ]
+  },
+  {
+    "id": "uni-7",
+    "name": "ETH Zurich",
+    "country": "Switzerland",
+    "city": "Zurich",
+    "ranking": 7,
+    "tuitionPerYear": 1600,
+    "acceptanceRate": 27.0,
+    "minGpa": 3.6,
+    "minIelts": 7.0,
+    "programs": [
+      { "name": "B.Sc. in Computer Science", "level": "Bachelor", "durationMonths": 36 },
+      { "name": "M.Sc. in Robotics, Systems and Control", "level": "Master", "durationMonths": 24 },
+      { "name": "Ph.D. in Cyber-Physical Systems", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-8",
+    "name": "National University of Singapore (NUS)",
+    "country": "Singapore",
+    "city": "Singapore",
+    "ranking": 8,
+    "tuitionPerYear": 22500,
+    "acceptanceRate": 15.0,
+    "minGpa": 3.7,
+    "minIelts": 6.5,
+    "programs": [
+      { "name": "Bachelor of Computing in Computer Science", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "Master of Computing - Infocomm Security", "level": "Master", "durationMonths": 18 },
+      { "name": "Ph.D. in Computational Biology", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-9",
+    "name": "Carnegie Mellon University",
+    "country": "United States",
+    "city": "Pittsburgh, PA",
+    "ranking": 24,
+    "tuitionPerYear": 62200,
+    "acceptanceRate": 11.0,
+    "minGpa": 3.75,
+    "minIelts": 7.0,
+    "programs": [
+      { "name": "M.S. in Computer Science", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Computational Data Science", "level": "Master", "durationMonths": 16 },
+      { "name": "M.S. in Electrical and Computer Engineering", "level": "Master", "durationMonths": 18 },
+      { "name": "M.S. in Information Systems Management", "level": "Master", "durationMonths": 16 },
+      { "name": "M.S. in Machine Learning", "level": "Master", "durationMonths": 16 },
+      { "name": "M.S. in Robotics", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Artificial Intelligence and Innovation", "level": "Master", "durationMonths": 24 },
+      { "name": "M.S. in Human Computer Interaction", "level": "Master", "durationMonths": 12 },
+      { "name": "M.S. in Information Security", "level": "Master", "durationMonths": 18 },
+      { "name": "Ph.D. in Computer Science", "level": "PhD", "durationMonths": 60 }
+    ]
+  },
+  {
+    "id": "uni-10",
+    "name": "University College London (UCL)",
+    "country": "United Kingdom",
+    "city": "London",
+    "ranking": 9,
+    "tuitionPerYear": 35000,
+    "acceptanceRate": 16.0,
+    "minGpa": 3.65,
+    "minIelts": 7.0,
+    "programs": [
+      { "name": "B.Sc. in Architecture", "level": "Bachelor", "durationMonths": 36 },
+      { "name": "M.Sc. in Data Science and Machine Learning", "level": "Master", "durationMonths": 12 },
+      { "name": "Ph.D. in Neuroscience", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-11",
+    "name": "Technical University of Munich (TUM)",
+    "country": "Germany",
+    "city": "Munich",
+    "ranking": 28,
+    "tuitionPerYear": 6000,
+    "acceptanceRate": 24.0,
+    "minGpa": 3.4,
+    "minIelts": 6.5,
+    "programs": [
+      { "name": "B.Sc. in Information Engineering", "level": "Bachelor", "durationMonths": 36 },
+      { "name": "M.Sc. in Informatics & Data Analytics", "level": "Master", "durationMonths": 24 },
+      { "name": "Ph.D. in Aerospace Engineering", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-12",
+    "name": "University of Toronto",
+    "country": "Canada",
+    "city": "Toronto, ON",
+    "ranking": 21,
+    "tuitionPerYear": 45000,
+    "acceptanceRate": 43.0,
+    "minGpa": 3.5,
+    "minIelts": 6.5,
+    "programs": [
+      { "name": "Honours B.Sc. in Computer Science", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "Master of Applied Science in Software Engineering", "level": "Master", "durationMonths": 24 },
+      { "name": "Ph.D. in Computer Science", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-13",
+    "name": "University of Melbourne",
+    "country": "Australia",
+    "city": "Melbourne, VIC",
+    "ranking": 14,
+    "tuitionPerYear": 38000,
+    "acceptanceRate": 70.0,
+    "minGpa": 3.3,
+    "minIelts": 6.5,
+    "programs": [
+      { "name": "Bachelor of Science (Computing & Software Systems)", "level": "Bachelor", "durationMonths": 36 },
+      { "name": "Master of Information Technology", "level": "Master", "durationMonths": 24 },
+      { "name": "Ph.D. in Information Systems", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-14",
+    "name": "University of Sunderland",
+    "country": "United Kingdom",
+    "city": "Sunderland",
+    "ranking": 85,
+    "tuitionPerYear": 21000,
+    "acceptanceRate": 64.0,
+    "minGpa": 2.8,
+    "minIelts": 6.0,
+    "programs": [
+      { "name": "M.Sc. in Data Science", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in International Business Management", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Pharmaceutical & BioPharmaceutical Formulations", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Engineering Management", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Public Health", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Project Management (London)", "level": "Master", "durationMonths": 12 },
+      { "name": "MBA in Business Administration (Professional Practice)", "level": "Master", "durationMonths": 24 },
+      { "name": "MBA in Business Administration (Marketing)", "level": "Master", "durationMonths": 12 }
+    ]
+  },
+  {
+    "id": "uni-15",
+    "name": "University of West London",
+    "country": "United Kingdom",
+    "city": "London",
+    "ranking": 95,
+    "tuitionPerYear": 20500,
+    "acceptanceRate": 72.0,
+    "minGpa": 2.8,
+    "minIelts": 6.0,
+    "programs": [
+      { "name": "B.Sc. (Hons) in Computer Science", "level": "Bachelor", "durationMonths": 36 },
+      { "name": "M.Sc. in Business Analytics", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Information Systems", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Health Informatics", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Construction Project Management", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Artificial Intelligence", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in International Business Management", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Cyber Security", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Software Engineering", "level": "Master", "durationMonths": 12 },
+      { "name": "Master of Business Administration (MBA)", "level": "Master", "durationMonths": 24 }
+    ]
+  },
+  {
+    "id": "uni-16",
+    "name": "De Montfort University",
+    "country": "United Kingdom",
+    "city": "Leicester",
+    "ranking": 115,
+    "tuitionPerYear": 23800,
+    "acceptanceRate": 75.0,
+    "minGpa": 2.8,
+    "minIelts": 6.0,
+    "programs": [
+      { "name": "M.Sc. in Data Analytics", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Computing", "level": "Master", "durationMonths": 12 },
+      { "name": "Master of Business Administration (Global MBA)", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Engineering Management", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in International Business Management", "level": "Master", "durationMonths": 16 },
+      { "name": "M.Sc. in Cyber Security", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Information Systems Management", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Aeronautical Engineering", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Mechanical Engineering", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Marketing Management", "level": "Master", "durationMonths": 16 }
+    ]
+  },
+  {
+    "id": "uni-17",
+    "name": "University of South Wales",
+    "country": "United Kingdom",
+    "city": "Cardiff & Newport",
+    "ranking": 125,
+    "tuitionPerYear": 20200,
+    "acceptanceRate": 80.0,
+    "minGpa": 2.7,
+    "minIelts": 6.0,
+    "programs": [
+      { "name": "M.Sc. in Data Science", "level": "Master", "durationMonths": 12 },
+      { "name": "Master of Business Administration (MBA)", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Computer Science", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Engineering Management", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Clinical Psychology", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Applied Cyber Security", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Aeronautical Engineering", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Finance and Investment", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Electronics and Information Technology", "level": "Master", "durationMonths": 12 },
+      { "name": "M.Sc. in Construction Project Management", "level": "Master", "durationMonths": 12 }
+    ]
+  },
+  {
+    "id": "uni-18",
+    "name": "University of Tokyo",
+    "country": "Japan",
+    "city": "Tokyo",
+    "ranking": 29,
+    "tuitionPerYear": 4800,
+    "acceptanceRate": 34.0,
+    "minGpa": 3.45,
+    "minIelts": 6.5,
+    "programs": [
+      { "name": "PEAK Bachelor of Environmental Sciences", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "M.Sc. in Electrical Engineering & Information Systems", "level": "Master", "durationMonths": 24 },
+      { "name": "Ph.D. in International Health", "level": "PhD", "durationMonths": 36 }
+    ]
+  },
+  {
+    "id": "uni-19",
+    "name": "University of British Columbia (UBC)",
+    "country": "Canada",
+    "city": "Vancouver, BC",
+    "ranking": 34,
+    "tuitionPerYear": 41500,
+    "acceptanceRate": 52.0,
+    "minGpa": 3.4,
+    "minIelts": 6.5,
+    "programs": [
+      { "name": "B.Sc. in Cognitive Systems", "level": "Bachelor", "durationMonths": 48 },
+      { "name": "Master of Data Science (MDS)", "level": "Master", "durationMonths": 10 },
+      { "name": "Ph.D. in Forestry & Environmental Science", "level": "PhD", "durationMonths": 48 }
+    ]
+  },
+  {
+    "id": "uni-20",
+    "name": "Heidelberg University",
+    "country": "Germany",
+    "city": "Heidelberg",
+    "ranking": 42,
+    "tuitionPerYear": 3000,
+    "acceptanceRate": 16.0,
+    "minGpa": 3.5,
+    "minIelts": 6.5,
+    "programs": [
+      { "name": "B.Sc. in Molecular Biotechnology", "level": "Bachelor", "durationMonths": 36 },
+      { "name": "M.Sc. in Scientific Computing", "level": "Master", "durationMonths": 24 },
+      { "name": "Ph.D. in Translational Medical Research", "level": "PhD", "durationMonths": 36 }
+    ]
+  }
+]

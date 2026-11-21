@@ -1,0 +1,4590 @@
+[
+  {
+    "id": "sunderland",
+    "name": "University of Sunderland",
+    "country": "UK",
+    "state": "England",
+    "city": "Sunderland",
+    "website": "https://www.sunderland.ac.uk",
+    "admissionsUrl": "https://www.sunderland.ac.uk/study/international",
+    "ranking": {
+      "qsWorldRank": null,
+      "qsWorldBand": null,
+      "edition": "QS Europe 2026: 531-540",
+      "ukGuideRank2027": 68,
+      "sources": [
+        "https://www.sunderland.ac.uk/news/2026/university-of-sunderland-marks-new-position-in-qs-world-university-rankings-europe-2026",
+        "https://britannia-study.co.uk/universities/university-ranking/"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": null,
+      "note": null,
+      "sources": []
+    },
+    "programs": [
+      {
+        "id": "sunderland-business-administration-103811",
+        "name": "Business Administration",
+        "level": "Master",
+        "degreeType": "MBA",
+        "category": "Business & Management",
+        "city": "Sunderland",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17000,
+        "totalTuition": 17000,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MBA in Business Administration at University of Sunderland (Sunderland, UK). Runs 12 months. Tuition is about £17,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/business-administration-103811",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-business-administration-marketing-94351",
+        "name": "Business Administration (Marketing)",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Business & Management",
+        "city": "Sunderland",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17000,
+        "totalTuition": 17000,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 79,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Degree Certificate"
+        ],
+        "minGpa": null,
+        "description": "Masters in Business Administration (Marketing) at University of Sunderland (Sunderland, UK). Runs 12 months. Tuition is about £17,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/business-administration-marketing-94351",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-business-administration-professional-practice-77123",
+        "name": "Business Administration (Professional Practice)",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Business & Management",
+        "city": "Sunderland",
+        "durationMonths": 24,
+        "credits": 240,
+        "tuitionPerYear": 20500,
+        "totalTuition": 41000,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "Masters in Business Administration (Professional Practice) at University of Sunderland (Sunderland, UK). Runs 24 months. Tuition is about £20,500 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/business-administration-professional-practice-77123",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-data-science-94448",
+        "name": "Data Science",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Sunderland",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 16500,
+        "totalTuition": 16500,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Degree Certificate"
+        ],
+        "minGpa": null,
+        "description": "MSc in Data Science at University of Sunderland (Sunderland, UK). Runs 12 months. Tuition is about £16,500 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/data-science-94448",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-engineering-management-95212",
+        "name": "Engineering Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "Sunderland",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 15000,
+        "totalTuition": 15000,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Degree Certificate"
+        ],
+        "minGpa": null,
+        "description": "MSc in Engineering Management at University of Sunderland (Sunderland, UK). Runs 12 months. Tuition is about £15,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/engineering-management-95212",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-engineering-management-london-82985",
+        "name": "Engineering Management (London)",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 16500,
+        "totalTuition": 16500,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Engineering Management (London) at University of Sunderland (London, UK). Runs 12 months. Tuition is about £16,500 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/engineering-management-london-82985",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-international-business-management-94154",
+        "name": "International Business Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "Sunderland",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17400,
+        "totalTuition": 17400,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Degree Certificate"
+        ],
+        "minGpa": null,
+        "description": "MSc in International Business Management at University of Sunderland (Sunderland, UK). Runs 12 months. Tuition is about £17,400 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/international-business-management-94154",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-pharmaceutical-and-biopharmaceutical-formulations-82570",
+        "name": "Pharmaceutical and BioPharmaceutical Formulations",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Health & Life Sciences",
+        "city": "Sunderland",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 16500,
+        "totalTuition": 16500,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Pharmaceutical and BioPharmaceutical Formulations at University of Sunderland (Sunderland, UK). Runs 12 months. Tuition is about £16,500 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/pharmaceutical-and-biopharmaceutical-formulations-82570",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-project-management-london-115251",
+        "name": "Project Management (London)",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 15000,
+        "totalTuition": 15000,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "PTE",
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Project Management (London) at University of Sunderland (London, UK). Runs 12 months. Tuition is about £15,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/project-management-london-115251",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "sunderland-public-health-103822",
+        "name": "Public Health",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Health & Life Sciences",
+        "city": "Sunderland",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 15900,
+        "totalTuition": 15900,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Degree Certificate"
+        ],
+        "minGpa": null,
+        "description": "MSc in Public Health at University of Sunderland (Sunderland, UK). Runs 12 months. Tuition is about £15,900 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-sunderland/public-health-103822",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stanford",
+    "name": "Stanford University",
+    "country": "USA",
+    "state": "California",
+    "city": "Stanford",
+    "website": "https://www.stanford.edu",
+    "admissionsUrl": "https://admission.stanford.edu",
+    "ranking": {
+      "qsWorldRank": 2,
+      "qsWorldBand": null,
+      "edition": "QS 2027 (tied 2nd)",
+      "ukGuideRank2027": null,
+      "sources": [
+        "https://aapnews.aap.com.au/news/cision20260617AE86024"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": 3.6,
+      "note": "Undergraduate, Class of 2030 (approx., third-party report)",
+      "sources": [
+        "https://www.crimsoneducation.org/us/blog/admissions-news/college-acceptance-rates/"
+      ]
+    },
+    "programs": [
+      {
+        "id": "stanford-computer-science-58461",
+        "name": "Computer Science",
+        "level": "Bachelor",
+        "degreeType": "BS",
+        "category": "Computer Science & IT",
+        "city": "Stanford",
+        "durationMonths": 48,
+        "credits": 180,
+        "tuitionPerYear": 67731,
+        "totalTuition": 270924,
+        "currency": "USD",
+        "applicationFee": 100,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2027-01-05",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": null,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL",
+            "IELTS",
+            "Duolingo"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": "Required",
+          "act": "Required"
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Common Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "SAT/ACT Scores",
+          "Essays",
+          "Extracurricular Activities",
+          "School/Counselor Report"
+        ],
+        "minGpa": null,
+        "description": "BS in Computer Science at Stanford University (Stanford, USA). Runs 48 months. Tuition is about $67,731 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/computer-science-58461",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "stanford-aeronautics-and-astronautics-207",
+        "name": "Aeronautics and Astronautics",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Stanford",
+        "durationMonths": null,
+        "credits": 45,
+        "tuitionPerYear": 38915,
+        "totalTuition": null,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": null,
+          "toefl": 89,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Aeronautics and Astronautics at Stanford University (Stanford, USA). Tuition is about $38,915 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/aeronautics-and-astronautics-207",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_duration",
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "stanford-bioengineering-214",
+        "name": "Bioengineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Health & Life Sciences",
+        "city": "Stanford",
+        "durationMonths": 12,
+        "credits": 45,
+        "tuitionPerYear": 67950,
+        "totalTuition": 67950,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV"
+        ],
+        "minGpa": null,
+        "description": "MS in Bioengineering at Stanford University (Stanford, USA). Runs 12 months. Tuition is about $67,950 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/bioengineering-214",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(4.5)"
+        ]
+      },
+      {
+        "id": "stanford-computational-and-mathematical-engineering-58552",
+        "name": "Computational and Mathematical Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Stanford",
+        "durationMonths": 24,
+        "credits": 45,
+        "tuitionPerYear": 40081,
+        "totalTuition": 80162,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2027-01-29",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": null,
+          "toefl": 89,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Computational and Mathematical Engineering at Stanford University (Stanford, USA). Runs 24 months. Tuition is about $40,081 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/computational-and-mathematical-engineering-58552",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "stanford-computer-science-210",
+        "name": "Computer Science",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Stanford",
+        "durationMonths": 18,
+        "credits": 45,
+        "tuitionPerYear": 53441,
+        "totalTuition": 80161,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-08",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Supplemental Form"
+        ],
+        "minGpa": null,
+        "description": "MS in Computer Science at Stanford University (Stanford, USA). Runs 18 months. Tuition is about $53,441 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/computer-science-210",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(4.5)"
+        ]
+      },
+      {
+        "id": "stanford-education-data-science-77119",
+        "name": "Education Data Science",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Stanford",
+        "durationMonths": 24,
+        "credits": 51,
+        "tuitionPerYear": 41177,
+        "totalTuition": 82354,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": null,
+          "toefl": 100,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Optional",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Supplemental Form"
+        ],
+        "minGpa": null,
+        "description": "MS in Education Data Science at Stanford University (Stanford, USA). Runs 24 months. Tuition is about $41,177 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/education-data-science-77119",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "stanford-electrical-engineering-62258",
+        "name": "Electrical Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Stanford",
+        "durationMonths": 18,
+        "credits": 45,
+        "tuitionPerYear": 53441,
+        "totalTuition": 80161,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": null,
+          "toefl": 89,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Electrical Engineering at Stanford University (Stanford, USA). Runs 18 months. Tuition is about $53,441 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/electrical-engineering-62258",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "stanford-management-science-and-engineering-114816",
+        "name": "Management Science and Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Stanford",
+        "durationMonths": 18,
+        "credits": 45,
+        "tuitionPerYear": 53441,
+        "totalTuition": 80161,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": 100,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores"
+        ],
+        "minGpa": null,
+        "description": "MS in Management Science and Engineering at Stanford University (Stanford, USA). Runs 18 months. Tuition is about $53,441 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/management-science-and-engineering-114816",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "stanford-mechanical-engineering-212",
+        "name": "Mechanical Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Stanford",
+        "durationMonths": 24,
+        "credits": 45,
+        "tuitionPerYear": 40081,
+        "totalTuition": 80162,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": null,
+          "toefl": 89,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Supplemental Form"
+        ],
+        "minGpa": null,
+        "description": "MS in Mechanical Engineering at Stanford University (Stanford, USA). Runs 24 months. Tuition is about $40,081 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/mechanical-engineering-212",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "stanford-statistics-data-science-64236",
+        "name": "Statistics: Data Science",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Stanford",
+        "durationMonths": 24,
+        "credits": 45,
+        "tuitionPerYear": 37627,
+        "totalTuition": 75254,
+        "currency": "USD",
+        "applicationFee": 125,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2027-01-07",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": null,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": "Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores"
+        ],
+        "minGpa": null,
+        "description": "MS in Statistics: Data Science at Stanford University (Stanford, USA). Runs 24 months. Tuition is about $37,627 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/stanford-university/statistics-data-science-64236",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      }
+    ]
+  },
+  {
+    "id": "cmu",
+    "name": "Carnegie Mellon University",
+    "country": "USA",
+    "state": "Pennsylvania",
+    "city": "Pittsburgh",
+    "website": "https://www.cmu.edu",
+    "admissionsUrl": "https://www.cmu.edu/admission",
+    "ranking": {
+      "qsWorldRank": 52,
+      "qsWorldBand": null,
+      "edition": "QS 2026 (2027 edition not checked)",
+      "ukGuideRank2027": null,
+      "sources": [
+        "https://www.qs.com/ranking-table-test"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": 11.07,
+      "note": "Undergraduate, Class of 2029",
+      "sources": [
+        "https://admissionsight.com/college-overall-acceptance-rates/"
+      ]
+    },
+    "programs": [
+      {
+        "id": "cmu-artificial-intelligence-and-innovation-64124",
+        "name": "Artificial Intelligence and Innovation",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 24,
+        "credits": 195,
+        "tuitionPerYear": 64800,
+        "totalTuition": 129600,
+        "currency": "USD",
+        "applicationFee": 100,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-09",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores",
+          "Video Essay / Statement"
+        ],
+        "minGpa": null,
+        "description": "MS in Artificial Intelligence and Innovation at Carnegie Mellon University (Pittsburgh, USA). Runs 24 months. Tuition is about $64,800 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/artificial-intelligence-and-innovation-64124",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "cmu-computational-data-science-829",
+        "name": "Computational Data Science",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 16,
+        "credits": 144,
+        "tuitionPerYear": 62356,
+        "totalTuition": 83141,
+        "currency": "USD",
+        "applicationFee": 100,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-09",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Spring 2027",
+        "english": {
+          "ielts": null,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL",
+            "IELTS"
+          ]
+        },
+        "aptitude": {
+          "gre": "Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores",
+          "Video Essay / Statement"
+        ],
+        "minGpa": null,
+        "description": "Masters in Computational Data Science at Carnegie Mellon University (Pittsburgh, USA). Runs 16 months. Tuition is about $62,356 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/computational-data-science-829",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "cmu-computer-science-9",
+        "name": "Computer Science",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 18,
+        "credits": 108,
+        "tuitionPerYear": 62200,
+        "totalTuition": 93300,
+        "currency": "USD",
+        "applicationFee": 100,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-09",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "Duolingo"
+          ]
+        },
+        "aptitude": {
+          "gre": "Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores"
+        ],
+        "minGpa": null,
+        "description": "MS in Computer Science at Carnegie Mellon University (Pittsburgh, USA). Runs 18 months. Tuition is about $62,200 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/computer-science-9",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "cmu-electrical-and-computer-engineering-10",
+        "name": "Electrical and Computer Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 18,
+        "credits": 97,
+        "tuitionPerYear": 60300,
+        "totalTuition": 90450,
+        "currency": "USD",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "USD",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 7.0,
+          "toefl": 86,
+          "pte": null,
+          "duolingo": 115,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Optional",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Electrical and Computer Engineering at Carnegie Mellon University (Pittsburgh, USA). Runs 18 months. Tuition is about $60,300 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/electrical-and-computer-engineering-10",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "cmu-human-computer-interaction-834",
+        "name": "Human Computer Interaction",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 12,
+        "credits": 156,
+        "tuitionPerYear": 90600,
+        "totalTuition": 90600,
+        "currency": "USD",
+        "applicationFee": 100,
+        "applicationFeeCurrency": "USD",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 8.5,
+          "toefl": 100,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "Duolingo"
+          ]
+        },
+        "aptitude": {
+          "gre": "Optional",
+          "gmat": "Not Required",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Essays",
+          "Portfolio",
+          "Video Essay / Statement"
+        ],
+        "minGpa": null,
+        "description": "Masters in Human Computer Interaction at Carnegie Mellon University (Pittsburgh, USA). Runs 12 months. Tuition is about $90,600 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/human-computer-interaction-834",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "cmu-information-security-46171",
+        "name": "Information Security",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 18,
+        "credits": 123,
+        "tuitionPerYear": 61510,
+        "totalTuition": 92265,
+        "currency": "USD",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": false,
+        "deadlineRounds": [
+          {
+            "name": "Fall priority 1",
+            "date": "2026-12-01"
+          },
+          {
+            "name": "Fall final deadline",
+            "date": "2027-01-29"
+          }
+        ],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": 100,
+          "pte": null,
+          "duolingo": 120,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Essays",
+          "Video Essay / Statement"
+        ],
+        "minGpa": null,
+        "description": "MS in Information Security at Carnegie Mellon University (Pittsburgh, USA). Runs 18 months. Tuition is about $61,510 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/information-security-46171",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "cmu-information-systems-management-46196",
+        "name": "Information Systems Management",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 16,
+        "credits": 162,
+        "tuitionPerYear": 68707,
+        "totalTuition": 91609,
+        "currency": "USD",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": false,
+        "deadlineRounds": [
+          {
+            "name": "Fall round 1",
+            "date": "2026-12-01"
+          },
+          {
+            "name": "Fall round 2",
+            "date": "2027-01-10"
+          },
+          {
+            "name": "Fall round 3",
+            "date": "2027-02-01"
+          }
+        ],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 6.5,
+          "toefl": 86,
+          "pte": null,
+          "duolingo": 120,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Optional",
+          "gmat": "Optional",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores",
+          "Essays",
+          "Video Essay / Statement"
+        ],
+        "minGpa": null,
+        "description": "Masters in Information Systems Management at Carnegie Mellon University (Pittsburgh, USA). Runs 16 months. Tuition is about $68,707 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/information-systems-management-46196",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_application_fee"
+        ]
+      },
+      {
+        "id": "cmu-machine-learning-835",
+        "name": "Machine Learning",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 16,
+        "credits": 36,
+        "tuitionPerYear": 60552,
+        "totalTuition": 80736,
+        "currency": "USD",
+        "applicationFee": 100,
+        "applicationFeeCurrency": "USD",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 7.0,
+          "toefl": 100,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "Duolingo"
+          ]
+        },
+        "aptitude": {
+          "gre": "Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores"
+        ],
+        "minGpa": null,
+        "description": "MS in Machine Learning at Carnegie Mellon University (Pittsburgh, USA). Runs 16 months. Tuition is about $60,552 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/machine-learning-835",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "cmu-mechanical-engineering-advanced-study-12",
+        "name": "Mechanical Engineering- Advanced Study",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Pittsburgh",
+        "durationMonths": 18,
+        "credits": 126,
+        "tuitionPerYear": 60300,
+        "totalTuition": 90450,
+        "currency": "USD",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "USD",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 84,
+          "pte": null,
+          "duolingo": 105,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Mechanical Engineering- Advanced Study at Carnegie Mellon University (Pittsburgh, USA). Runs 18 months. Tuition is about $60,300 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/mechanical-engineering-advanced-study-12",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "cmu-robotics-831",
+        "name": "Robotics",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Pittsburgh",
+        "durationMonths": 24,
+        "credits": 168,
+        "tuitionPerYear": 62200,
+        "totalTuition": 124400,
+        "currency": "USD",
+        "applicationFee": 100,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-09",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": 105,
+          "pte": null,
+          "duolingo": 130,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Optional",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Essays",
+          "Portfolio",
+          "Video Essay / Statement"
+        ],
+        "minGpa": null,
+        "description": "MS in Robotics at Carnegie Mellon University (Pittsburgh, USA). Runs 24 months. Tuition is about $62,200 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/carnegie-mellon-university/robotics-831",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      }
+    ]
+  },
+  {
+    "id": "uwl",
+    "name": "University of West London",
+    "country": "UK",
+    "state": "England",
+    "city": "London",
+    "website": "https://www.uwl.ac.uk",
+    "admissionsUrl": "https://www.uwl.ac.uk/study/international",
+    "ranking": {
+      "qsWorldRank": null,
+      "qsWorldBand": null,
+      "edition": null,
+      "ukGuideRank2027": 84,
+      "sources": [
+        "https://britannia-study.co.uk/universities/university-ranking/"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": null,
+      "note": null,
+      "sources": []
+    },
+    "programs": [
+      {
+        "id": "uwl-computer-science-94166",
+        "name": "Computer Science",
+        "level": "Bachelor",
+        "degreeType": "BSc (Hons)",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 36,
+        "credits": 360,
+        "tuitionPerYear": 14250,
+        "totalTuition": 42750,
+        "currency": "GBP",
+        "applicationFee": 22,
+        "applicationFeeCurrency": "GBP",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 78,
+          "pte": 51,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Transcripts",
+          "Statement of Purpose / Personal Statement"
+        ],
+        "minGpa": null,
+        "description": "BSc (Hons) in Computer Science at University of West London (London, UK). Runs 36 months. Tuition is about £14,250 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/computer-science-94166",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "uwl-artificial-intelligence-93895",
+        "name": "Artificial Intelligence",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17250,
+        "totalTuition": 17250,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 86,
+          "pte": 58,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Artificial Intelligence at University of West London (London, UK). Runs 12 months. Tuition is about £17,250 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/artificial-intelligence-93895",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "uwl-business-analytics-88469",
+        "name": "Business Analytics",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17250,
+        "totalTuition": 17250,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 86,
+          "pte": 58,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Business Analytics at University of West London (London, UK). Runs 12 months. Tuition is about £17,250 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/business-analytics-88469",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "uwl-construction-project-management-93662",
+        "name": "Construction Project Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Architecture & Construction",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17250,
+        "totalTuition": 17250,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 86,
+          "pte": 58,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Construction Project Management at University of West London (London, UK). Runs 12 months. Tuition is about £17,250 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/construction-project-management-93662",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "uwl-cyber-security-93854",
+        "name": "Cyber Security",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17250,
+        "totalTuition": 17250,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 86,
+          "pte": 58,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Cyber Security at University of West London (London, UK). Runs 12 months. Tuition is about £17,250 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/cyber-security-93854",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "uwl-health-informatics-93852",
+        "name": "Health Informatics",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Health & Life Sciences",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 14750,
+        "totalTuition": 14750,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Health Informatics at University of West London (London, UK). Runs 12 months. Tuition is about £14,750 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/health-informatics-93852",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "uwl-information-systems-73192",
+        "name": "Information Systems",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17250,
+        "totalTuition": 17250,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 86,
+          "pte": 58,
+          "duolingo": 120,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Information Systems at University of West London (London, UK). Runs 12 months. Tuition is about £17,250 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/information-systems-73192",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "uwl-international-business-management-93660",
+        "name": "International Business Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 14750,
+        "totalTuition": 14750,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 86,
+          "pte": 58,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in International Business Management at University of West London (London, UK). Runs 12 months. Tuition is about £14,750 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/international-business-management-93660",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "uwl-mba-77124",
+        "name": "MBA",
+        "level": "Master",
+        "degreeType": "MBA",
+        "category": "Business & Management",
+        "city": "London",
+        "durationMonths": 24,
+        "credits": null,
+        "tuitionPerYear": null,
+        "totalTuition": null,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Transcripts",
+          "Statement of Purpose / Personal Statement"
+        ],
+        "minGpa": null,
+        "description": "MBA in MBA at University of West London (London, UK). Runs 24 months.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/mba-77124",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_tuition",
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "uwl-software-engineering-82639",
+        "name": "Software Engineering",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 14750,
+        "totalTuition": 14750,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 86,
+          "pte": 58,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Software Engineering at University of West London (London, UK). Runs 12 months. Tuition is about £14,750 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-west-london/software-engineering-82639",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dmu",
+    "name": "De Montfort University",
+    "country": "UK",
+    "state": "England",
+    "city": "Leicester",
+    "website": "https://www.dmu.ac.uk",
+    "admissionsUrl": "https://www.dmu.ac.uk/international",
+    "ranking": {
+      "qsWorldRank": null,
+      "qsWorldBand": "851-900",
+      "edition": "QS 2027",
+      "ukGuideRank2027": 110,
+      "sources": [
+        "https://collegedunia.com/uk/college/826-de-montfort-university-leicester/ranking",
+        "https://britannia-study.co.uk/universities/university-ranking/"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": null,
+      "note": null,
+      "sources": []
+    },
+    "programs": [
+      {
+        "id": "dmu-aeronautical-engineering-68650",
+        "name": "Aeronautical Engineering",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "Leicester",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 18600,
+        "totalTuition": 18600,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Aeronautical Engineering at De Montfort University (Leicester, UK). Runs 12 months. Tuition is about £18,600 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/aeronautical-engineering-68650",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-business-administration-global-68659",
+        "name": "Business Administration (Global)",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Business & Management",
+        "city": "Leicester",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 20900,
+        "totalTuition": 20900,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "Masters in Business Administration (Global) at De Montfort University (Leicester, UK). Runs 12 months. Tuition is about £20,900 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/business-administration-global-68659",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-computing-68651",
+        "name": "Computing",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Leicester",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 18600,
+        "totalTuition": 18600,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Computing at De Montfort University (Leicester, UK). Runs 12 months. Tuition is about £18,600 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/computing-68651",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-cyber-security-68658",
+        "name": "Cyber Security",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Leicester",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 18600,
+        "totalTuition": 18600,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Cyber Security at De Montfort University (Leicester, UK). Runs 12 months. Tuition is about £18,600 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/cyber-security-68658",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-data-analytics-68657",
+        "name": "Data Analytics",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Leicester",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 18600,
+        "totalTuition": 18600,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Data Analytics at De Montfort University (Leicester, UK). Runs 12 months. Tuition is about £18,600 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/data-analytics-68657",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-engineering-management-68653",
+        "name": "Engineering Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "Leicester",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 18600,
+        "totalTuition": 18600,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Engineering Management at De Montfort University (Leicester, UK). Runs 12 months. Tuition is about £18,600 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/engineering-management-68653",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-information-systems-management-68656",
+        "name": "Information Systems Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Leicester",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 18600,
+        "totalTuition": 18600,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Information Systems Management at De Montfort University (Leicester, UK). Runs 12 months. Tuition is about £18,600 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/information-systems-management-68656",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-international-business-management-77566",
+        "name": "International Business Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "Leicester",
+        "durationMonths": 16,
+        "credits": null,
+        "tuitionPerYear": 19048,
+        "totalTuition": 25397,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in International Business Management at De Montfort University (Leicester, UK). Runs 16 months. Tuition is about £19,048 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/international-business-management-77566",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-marketing-management-89135",
+        "name": "Marketing Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "Leicester",
+        "durationMonths": 16,
+        "credits": null,
+        "tuitionPerYear": 19048,
+        "totalTuition": 25397,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Marketing Management at De Montfort University (Leicester, UK). Runs 16 months. Tuition is about £19,048 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/marketing-management-89135",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "dmu-mechanical-engineering-68654",
+        "name": "Mechanical Engineering",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "Leicester",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 18600,
+        "totalTuition": 18600,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": [
+            "TOEFL"
+          ]
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Mechanical Engineering at De Montfort University (Leicester, UK). Runs 12 months. Tuition is about £18,600 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/de-montfort-university/mechanical-engineering-68654",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mit",
+    "name": "Massachusetts Institute of Technology",
+    "country": "USA",
+    "state": "Massachusetts",
+    "city": "Cambridge",
+    "website": "https://www.mit.edu",
+    "admissionsUrl": "https://mitadmissions.org",
+    "ranking": {
+      "qsWorldRank": 1,
+      "qsWorldBand": null,
+      "edition": "QS 2027",
+      "ukGuideRank2027": null,
+      "sources": [
+        "https://aapnews.aap.com.au/news/cision20260617AE86024"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": 4.6,
+      "note": "Undergraduate, Class of 2030",
+      "sources": [
+        "https://www.crimsoneducation.org/us/blog/admissions-news/college-acceptance-rates/"
+      ]
+    },
+    "programs": [
+      {
+        "id": "mit-aerospace-engineering-62032",
+        "name": "Aerospace Engineering",
+        "level": "Bachelor",
+        "degreeType": "BS",
+        "category": "Engineering",
+        "city": "Cambridge",
+        "durationMonths": 48,
+        "credits": 180,
+        "tuitionPerYear": 66720,
+        "totalTuition": 266880,
+        "currency": "USD",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2027-01-04",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": 65,
+          "duolingo": 120,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": "Required",
+          "act": "Required"
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "English Proficiency Proof",
+          "SAT/ACT Scores",
+          "Essays",
+          "Extracurricular Activities"
+        ],
+        "minGpa": null,
+        "description": "BS in Aerospace Engineering at Massachusetts Institute of Technology (Cambridge, USA). Runs 48 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/aerospace-engineering-62032",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "mit-computer-science-economics-and-data-science-63245",
+        "name": "Computer Science, Economics, and Data Science",
+        "level": "Bachelor",
+        "degreeType": "BS",
+        "category": "Computer Science & IT",
+        "city": "Cambridge",
+        "durationMonths": 48,
+        "credits": 186,
+        "tuitionPerYear": 66720,
+        "totalTuition": 266880,
+        "currency": "USD",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2027-01-04",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": 65,
+          "duolingo": 120,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": "Required",
+          "act": "Required"
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "English Proficiency Proof",
+          "SAT/ACT Scores",
+          "Essays",
+          "Extracurricular Activities"
+        ],
+        "minGpa": null,
+        "description": "BS in Computer Science, Economics, and Data Science at Massachusetts Institute of Technology (Cambridge, USA). Runs 48 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/computer-science-economics-and-data-science-63245",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "mit-aeronautics-and-astronautics-24",
+        "name": "Aeronautics & Astronautics",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Cambridge",
+        "durationMonths": 24,
+        "credits": 66,
+        "tuitionPerYear": 66720,
+        "totalTuition": 133440,
+        "currency": "USD",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": 135,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Aeronautics & Astronautics at Massachusetts Institute of Technology (Cambridge, USA). Runs 24 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/aeronautics-and-astronautics-24",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "mit-architecture-55955",
+        "name": "Architecture",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Architecture & Construction",
+        "city": "Cambridge",
+        "durationMonths": 42,
+        "credits": 306,
+        "tuitionPerYear": 66720,
+        "totalTuition": 233520,
+        "currency": "USD",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2027-01-07",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": 135,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Portfolio"
+        ],
+        "minGpa": null,
+        "description": "Masters in Architecture at Massachusetts Institute of Technology (Cambridge, USA). Runs 42 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/architecture-55955",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "mit-chemical-engineering-25",
+        "name": "Chemical Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Cambridge",
+        "durationMonths": 12,
+        "credits": 66,
+        "tuitionPerYear": 66720,
+        "totalTuition": 66720,
+        "currency": "USD",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": 100,
+          "pte": null,
+          "duolingo": 135,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Chemical Engineering at Massachusetts Institute of Technology (Cambridge, USA). Runs 12 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/chemical-engineering-25",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "mit-civil-and-environmental-engineering-26",
+        "name": "Civil and Environmental Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Cambridge",
+        "durationMonths": 24,
+        "credits": 66,
+        "tuitionPerYear": 66720,
+        "totalTuition": 133440,
+        "currency": "USD",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-15",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": 100,
+          "pte": null,
+          "duolingo": 135,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Optional",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Technical Work Sample"
+        ],
+        "minGpa": null,
+        "description": "MS in Civil and Environmental Engineering at Massachusetts Institute of Technology (Cambridge, USA). Runs 24 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/civil-and-environmental-engineering-26",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "mit-electrical-engineering-and-computer-science-27",
+        "name": "Electrical Engineering and Computer Science",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Computer Science & IT",
+        "city": "Cambridge",
+        "durationMonths": 24,
+        "credits": 66,
+        "tuitionPerYear": 66720,
+        "totalTuition": 133440,
+        "currency": "USD",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": 100,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "English Proficiency Proof",
+          "Essays"
+        ],
+        "minGpa": null,
+        "description": "MS in Electrical Engineering and Computer Science at Massachusetts Institute of Technology (Cambridge, USA). Runs 24 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/electrical-engineering-and-computer-science-27",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "mit-mechanical-engineering-30",
+        "name": "Mechanical Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Cambridge",
+        "durationMonths": 24,
+        "credits": 72,
+        "tuitionPerYear": 66720,
+        "totalTuition": 133440,
+        "currency": "USD",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": 135,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Mechanical Engineering at Massachusetts Institute of Technology (Cambridge, USA). Runs 24 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/mechanical-engineering-30",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "mit-ocean-engineering-851",
+        "name": "Ocean Engineering",
+        "level": "Master",
+        "degreeType": "MS",
+        "category": "Engineering",
+        "city": "Cambridge",
+        "durationMonths": 24,
+        "credits": 72,
+        "tuitionPerYear": 66720,
+        "totalTuition": 133440,
+        "currency": "USD",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2026-12-01",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": 135,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MS in Ocean Engineering at Massachusetts Institute of Technology (Cambridge, USA). Runs 24 months. Tuition is about $66,720 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/ocean-engineering-851",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "mit-supply-chain-management-62367",
+        "name": "Supply Chain Management",
+        "level": "Master",
+        "degreeType": "MASc",
+        "category": "Business & Management",
+        "city": "Cambridge",
+        "durationMonths": 10,
+        "credits": 90,
+        "tuitionPerYear": 89692,
+        "totalTuition": 89692,
+        "currency": "USD",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "USD",
+        "deadline": "2027-01-29",
+        "deadlineYearInferred": false,
+        "deadlineRounds": [
+          {
+            "name": "Fall round 2",
+            "date": "2027-01-29"
+          },
+          {
+            "name": "Fall round 3",
+            "date": "2027-03-31"
+          }
+        ],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": 135,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Required",
+          "gmat": "Required",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores",
+          "Video Essay / Statement"
+        ],
+        "minGpa": null,
+        "description": "MASc in Supply Chain Management at Massachusetts Institute of Technology (Cambridge, USA). Runs 10 months. Tuition is about $89,692 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/massachusetts-institute-of-technology/supply-chain-management-62367",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "usw",
+    "name": "University of South Wales",
+    "country": "UK",
+    "state": "Wales",
+    "city": "Pontypridd",
+    "website": "https://www.southwales.ac.uk",
+    "admissionsUrl": "https://www.southwales.ac.uk/international",
+    "ranking": {
+      "qsWorldRank": null,
+      "qsWorldBand": null,
+      "edition": null,
+      "ukGuideRank2027": 91,
+      "sources": [
+        "https://britannia-study.co.uk/universities/university-ranking/"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": null,
+      "note": null,
+      "sources": []
+    },
+    "programs": [
+      {
+        "id": "usw-aeronautical-engineering-65163",
+        "name": "Aeronautical Engineering",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 15850,
+        "totalTuition": 15850,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Aeronautical Engineering at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £15,850 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/aeronautical-engineering-65163",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-applied-cyber-security-91732",
+        "name": "Applied Cyber Security",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 17900,
+        "totalTuition": 17900,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 59,
+          "duolingo": 110,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Applied Cyber Security at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £17,900 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/applied-cyber-security-91732",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-business-administration-65177",
+        "name": "Business Administration",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Business & Management",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 14950,
+        "totalTuition": 14950,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 64,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "Masters in Business Administration at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £14,950 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/business-administration-65177",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-clinical-psychology-82525",
+        "name": "Clinical Psychology",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Health & Life Sciences",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 16000,
+        "totalTuition": 16000,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 72,
+          "pte": 64,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Clinical Psychology at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £16,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/clinical-psychology-82525",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-computer-science-65161",
+        "name": "Computer Science",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 15850,
+        "totalTuition": 15850,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 1,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Computer Science at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £15,850 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/computer-science-65161",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-construction-project-management-91712",
+        "name": "Construction Project Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Architecture & Construction",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 16000,
+        "totalTuition": 16000,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 64,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Construction Project Management at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £16,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/construction-project-management-91712",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-data-science-65162",
+        "name": "Data Science",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 15850,
+        "totalTuition": 15850,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Data Science at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £15,850 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/data-science-65162",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-electronics-and-information-technology-65176",
+        "name": "Electronics and Information Technology",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 16000,
+        "totalTuition": 16000,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 64,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Electronics and Information Technology at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £16,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/electronics-and-information-technology-65176",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-engineering-management-65144",
+        "name": "Engineering Management",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 14950,
+        "totalTuition": 14950,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 64,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Engineering Management at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £14,950 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/engineering-management-65144",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      },
+      {
+        "id": "usw-finance-and-investment-80326",
+        "name": "Finance and Investment",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "Pontypridd",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 15850,
+        "totalTuition": 15850,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.0,
+          "toefl": 72,
+          "pte": 59,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Finance and Investment at University of South Wales (Pontypridd, UK). Runs 12 months. Tuition is about £15,850 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-south-wales/finance-and-investment-80326",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_admissions_block"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "imperial",
+    "name": "Imperial College London",
+    "country": "UK",
+    "state": "England",
+    "city": "London",
+    "website": "https://www.imperial.ac.uk",
+    "admissionsUrl": "https://www.imperial.ac.uk/study/apply",
+    "ranking": {
+      "qsWorldRank": 2,
+      "qsWorldBand": null,
+      "edition": "QS 2027 (tied 2nd)",
+      "ukGuideRank2027": 5,
+      "sources": [
+        "https://aapnews.aap.com.au/news/cision20260617AE86024",
+        "https://britannia-study.co.uk/universities/university-ranking/"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": null,
+      "note": null,
+      "sources": []
+    },
+    "programs": [
+      {
+        "id": "imperial-computing-visual-computing-and-robotics-221",
+        "name": "Computing (Visual Computing and Robotics)",
+        "level": "Bachelor",
+        "degreeType": "MEng (integrated)",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 48,
+        "credits": null,
+        "tuitionPerYear": 47800,
+        "totalTuition": 191200,
+        "currency": "GBP",
+        "applicationFee": 34,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-13",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 6.5,
+          "toefl": null,
+          "pte": 62,
+          "duolingo": 115,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 1,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "Admissions Test"
+        ],
+        "minGpa": null,
+        "description": "MEng (integrated) in Computing (Visual Computing and Robotics) at Imperial College London (London, UK). Runs 48 months. Tuition is about £47,800 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/computing-visual-computing-and-robotics-221",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(4.5)"
+        ]
+      },
+      {
+        "id": "imperial-advanced-aeronautical-engineering-51061",
+        "name": "Advanced Aeronautical Engineering",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 45000,
+        "totalTuition": 45000,
+        "currency": "GBP",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "GBP",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": 92,
+          "pte": 62,
+          "duolingo": 115,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "ATAS Certificate"
+        ],
+        "minGpa": null,
+        "description": "MSc in Advanced Aeronautical Engineering at Imperial College London (London, UK). Runs 12 months. Tuition is about £45,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/advanced-aeronautical-engineering-51061",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "imperial-advanced-computing-80129",
+        "name": "Advanced Computing",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 48300,
+        "totalTuition": 48300,
+        "currency": "GBP",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-06",
+        "deadlineYearInferred": false,
+        "deadlineRounds": [
+          {
+            "name": "Fall round 2",
+            "date": "2027-01-06"
+          },
+          {
+            "name": "Fall round 3",
+            "date": "2027-03-10"
+          },
+          {
+            "name": "Fall round 4",
+            "date": "2027-04-28"
+          }
+        ],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": 69,
+          "duolingo": 125,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Advanced Computing at Imperial College London (London, UK). Runs 12 months. Tuition is about £48,300 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/advanced-computing-80129",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "imperial-advanced-mechanical-engineering-51064",
+        "name": "Advanced Mechanical Engineering",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Engineering",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 90,
+        "tuitionPerYear": 45000,
+        "totalTuition": 45000,
+        "currency": "GBP",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "GBP",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 6.5,
+          "toefl": null,
+          "pte": 62,
+          "duolingo": 115,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof",
+          "ATAS Certificate"
+        ],
+        "minGpa": null,
+        "description": "MSc in Advanced Mechanical Engineering at Imperial College London (London, UK). Runs 12 months. Tuition is about £45,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/advanced-mechanical-engineering-51064",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(4.5)",
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "imperial-applied-machine-learning-72084",
+        "name": "Applied Machine Learning",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 90,
+        "tuitionPerYear": 46000,
+        "totalTuition": 46000,
+        "currency": "GBP",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "GBP",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 7.0,
+          "toefl": 100,
+          "pte": 69,
+          "duolingo": 125,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Applied Machine Learning at Imperial College London (London, UK). Runs 12 months. Tuition is about £46,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/applied-machine-learning-72084",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "imperial-artificial-intelligence-60411",
+        "name": "Artificial Intelligence",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 90,
+        "tuitionPerYear": 48300,
+        "totalTuition": 48300,
+        "currency": "GBP",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-06",
+        "deadlineYearInferred": false,
+        "deadlineRounds": [
+          {
+            "name": "Fall round 2",
+            "date": "2027-01-06"
+          },
+          {
+            "name": "Fall round 3",
+            "date": "2027-03-10"
+          },
+          {
+            "name": "Fall round 4",
+            "date": "2027-04-28"
+          }
+        ],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": 69,
+          "duolingo": 125,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Artificial Intelligence at Imperial College London (London, UK). Runs 12 months. Tuition is about £48,300 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/artificial-intelligence-60411",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "imperial-computing-51075",
+        "name": "Computing",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 90,
+        "tuitionPerYear": 48300,
+        "totalTuition": 48300,
+        "currency": "GBP",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-06",
+        "deadlineYearInferred": false,
+        "deadlineRounds": [
+          {
+            "name": "Fall round 2",
+            "date": "2027-01-06"
+          },
+          {
+            "name": "Fall round 3",
+            "date": "2027-03-10"
+          },
+          {
+            "name": "Fall round 4",
+            "date": "2027-04-28"
+          }
+        ],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": 69,
+          "duolingo": 125,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Computing at Imperial College London (London, UK). Runs 12 months. Tuition is about £48,300 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/computing-51075",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "imperial-computing-artificial-intelligence-and-machine-learning-78328",
+        "name": "Computing (Artificial Intelligence and Machine Learning)",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 90,
+        "tuitionPerYear": 46000,
+        "totalTuition": 46000,
+        "currency": "GBP",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-06-18",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": 100,
+          "pte": 69,
+          "duolingo": 125,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Computing (Artificial Intelligence and Machine Learning) at Imperial College London (London, UK). Runs 12 months. Tuition is about £46,000 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/computing-artificial-intelligence-and-machine-learning-78328",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "imperial-statistics-data-science-and-machine-learning-51078",
+        "name": "Statistics (Data Science and Machine Learning)",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "London",
+        "durationMonths": 12,
+        "credits": 90,
+        "tuitionPerYear": 44800,
+        "totalTuition": 44800,
+        "currency": "GBP",
+        "applicationFee": 90,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-06",
+        "deadlineYearInferred": false,
+        "deadlineRounds": [
+          {
+            "name": "Fall round 2",
+            "date": "2027-01-06"
+          },
+          {
+            "name": "Fall round 3",
+            "date": "2027-03-10"
+          },
+          {
+            "name": "Fall round 4",
+            "date": "2027-04-28"
+          }
+        ],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": 69,
+          "duolingo": 125,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Statistics (Data Science and Machine Learning) at Imperial College London (London, UK). Runs 12 months. Tuition is about £44,800 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/statistics-data-science-and-machine-learning-51078",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "toefl_value_invalid_dropped(5)"
+        ]
+      },
+      {
+        "id": "imperial-management-and-entrepreneurship-73649",
+        "name": "Management & Entrepreneurship",
+        "level": "PhD",
+        "degreeType": "PhD",
+        "category": "Business & Management",
+        "city": "London",
+        "durationMonths": 60,
+        "credits": null,
+        "tuitionPerYear": null,
+        "totalTuition": null,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 7.0,
+          "toefl": null,
+          "pte": null,
+          "duolingo": 125,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Min 328",
+          "gmat": "Min 700",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores"
+        ],
+        "minGpa": null,
+        "description": "PhD in Management & Entrepreneurship at Imperial College London (London, UK). Runs 60 months.",
+        "sourceUrl": "https://yocket.com/universities/imperial-college-london/management-and-entrepreneurship-73649",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_tuition",
+          "toefl_value_invalid_dropped(5)",
+          "missing_admissions_block"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "oxford",
+    "name": "University of Oxford",
+    "country": "UK",
+    "state": "England",
+    "city": "Oxford",
+    "website": "https://www.ox.ac.uk",
+    "admissionsUrl": "https://www.ox.ac.uk/admissions",
+    "ranking": {
+      "qsWorldRank": 4,
+      "qsWorldBand": null,
+      "edition": "QS 2027",
+      "ukGuideRank2027": null,
+      "sources": [
+        "https://aapnews.aap.com.au/news/cision20260617AE86024"
+      ]
+    },
+    "acceptanceRate": {
+      "percent": null,
+      "note": null,
+      "sources": []
+    },
+    "programs": [
+      {
+        "id": "oxford-computer-science-60548",
+        "name": "Computer Science",
+        "level": "Bachelor",
+        "degreeType": "BA",
+        "category": "Computer Science & IT",
+        "city": "Oxford",
+        "durationMonths": 36,
+        "credits": null,
+        "tuitionPerYear": 66580,
+        "totalTuition": 199740,
+        "currency": "GBP",
+        "applicationFee": 34,
+        "applicationFeeCurrency": "GBP",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 7.5,
+          "toefl": 110,
+          "pte": 76,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "BA in Computer Science at University of Oxford (Oxford, UK). Runs 36 months. Tuition is about £66,580 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/computer-science-60548",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "oxford-accounting-and-finance-50955",
+        "name": "Accounting And Finance",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Business & Management",
+        "city": "Oxford",
+        "durationMonths": null,
+        "credits": null,
+        "tuitionPerYear": null,
+        "totalTuition": null,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": null,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [],
+        "minGpa": null,
+        "description": "Masters in Accounting And Finance at University of Oxford (Oxford, UK).",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/accounting-and-finance-50955",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_duration",
+          "missing_tuition",
+          "no_english_requirement_found",
+          "missing_admissions_block",
+          "missing_prerequisites"
+        ]
+      },
+      {
+        "id": "oxford-advanced-computer-science-50954",
+        "name": "Advanced Computer Science",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Oxford",
+        "durationMonths": 12,
+        "credits": 180,
+        "tuitionPerYear": 46350,
+        "totalTuition": 46350,
+        "currency": "GBP",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-06",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": 110,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": "Not Required",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Passport Copy"
+        ],
+        "minGpa": null,
+        "description": "MSc in Advanced Computer Science at University of Oxford (Oxford, UK). Runs 12 months. Tuition is about £46,350 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/advanced-computer-science-50954",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "oxford-business-administration-53898",
+        "name": "Business Administration",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Business & Management",
+        "city": "Oxford",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 88800,
+        "totalTuition": 88800,
+        "currency": "GBP",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "GBP",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 7.5,
+          "toefl": 110,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Min 320",
+          "gmat": "Min 650",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 2,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores"
+        ],
+        "minGpa": null,
+        "description": "Masters in Business Administration at University of Oxford (Oxford, UK). Runs 12 months. Tuition is about £88,800 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/business-administration-53898",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "oxford-economics-for-development-83825",
+        "name": "Economics for Development",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Social Sciences & Law",
+        "city": "Oxford",
+        "durationMonths": 9,
+        "credits": null,
+        "tuitionPerYear": 43150,
+        "totalTuition": 43150,
+        "currency": "GBP",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-26",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": 110,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Required",
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "GRE/GMAT Scores",
+          "Written Work"
+        ],
+        "minGpa": null,
+        "description": "MSc in Economics for Development at University of Oxford (Oxford, UK). Runs 9 months. Tuition is about £43,150 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/economics-for-development-83825",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "oxford-engineering-project-management-50971",
+        "name": "Engineering Project Management",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Engineering",
+        "city": "Oxford",
+        "durationMonths": null,
+        "credits": null,
+        "tuitionPerYear": null,
+        "totalTuition": null,
+        "currency": "GBP",
+        "applicationFee": null,
+        "applicationFeeCurrency": null,
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": null,
+          "toefl": null,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": null,
+        "documents": [],
+        "minGpa": null,
+        "description": "Masters in Engineering Project Management at University of Oxford (Oxford, UK).",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/engineering-project-management-50971",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_duration",
+          "missing_tuition",
+          "no_english_requirement_found",
+          "missing_admissions_block",
+          "missing_prerequisites"
+        ]
+      },
+      {
+        "id": "oxford-law-and-finance-16843",
+        "name": "Law and Finance",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "Oxford",
+        "durationMonths": 10,
+        "credits": 180,
+        "tuitionPerYear": 59930,
+        "totalTuition": 59930,
+        "currency": "GBP",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-27",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": 110,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": null,
+          "gmat": null,
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Passport Copy",
+          "Written Work"
+        ],
+        "minGpa": null,
+        "description": "MSc in Law and Finance at University of Oxford (Oxford, UK). Runs 10 months. Tuition is about £59,930 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/law-and-finance-16843",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "oxford-mathematical-and-computational-finance-60394",
+        "name": "Mathematical and Computational Finance",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Business & Management",
+        "city": "Oxford",
+        "durationMonths": 10,
+        "credits": null,
+        "tuitionPerYear": 45542,
+        "totalTuition": 45542,
+        "currency": "GBP",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-27",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": 110,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": "Not Required",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "English Proficiency Proof"
+        ],
+        "minGpa": null,
+        "description": "MSc in Mathematical and Computational Finance at University of Oxford (Oxford, UK). Runs 10 months. Tuition is about £45,542 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/mathematical-and-computational-finance-60394",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      },
+      {
+        "id": "oxford-public-policy-50982",
+        "name": "Public Policy",
+        "level": "Master",
+        "degreeType": "Masters",
+        "category": "Social Sciences & Law",
+        "city": "Oxford",
+        "durationMonths": 12,
+        "credits": null,
+        "tuitionPerYear": 54450,
+        "totalTuition": 54450,
+        "currency": "GBP",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "GBP",
+        "deadline": null,
+        "deadlineYearInferred": false,
+        "deadlineRounds": [],
+        "intake": null,
+        "english": {
+          "ielts": 7.5,
+          "toefl": 110,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Optional",
+          "gmat": "Optional",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Written Work"
+        ],
+        "minGpa": null,
+        "description": "Masters in Public Policy at University of Oxford (Oxford, UK). Runs 12 months. Tuition is about £54,450 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/public-policy-50982",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": [
+          "missing_deadline"
+        ]
+      },
+      {
+        "id": "oxford-social-data-science-73309",
+        "name": "Social Data Science",
+        "level": "Master",
+        "degreeType": "MSc",
+        "category": "Computer Science & IT",
+        "city": "Oxford",
+        "durationMonths": 10,
+        "credits": null,
+        "tuitionPerYear": 40730,
+        "totalTuition": 40730,
+        "currency": "GBP",
+        "applicationFee": 75,
+        "applicationFeeCurrency": "GBP",
+        "deadline": "2027-01-07",
+        "deadlineYearInferred": true,
+        "deadlineRounds": [],
+        "intake": "Fall 2027",
+        "english": {
+          "ielts": 7.5,
+          "toefl": 110,
+          "pte": null,
+          "duolingo": null,
+          "requiredNoScore": []
+        },
+        "aptitude": {
+          "gre": "Not Required",
+          "gmat": "Not Required",
+          "sat": null,
+          "act": null
+        },
+        "recommendationLetters": 3,
+        "documents": [
+          "Online Application",
+          "Application Fee",
+          "Transcripts",
+          "Statement of Purpose / Personal Statement",
+          "Resume / CV",
+          "English Proficiency Proof",
+          "Written Work"
+        ],
+        "minGpa": null,
+        "description": "MSc in Social Data Science at University of Oxford (Oxford, UK). Runs 10 months. Tuition is about £40,730 per year for international students.",
+        "sourceUrl": "https://yocket.com/universities/university-of-oxford/social-data-science-73309",
+        "dataSource": "yocket-scrape-2026-11-21 (unverified vs official site)",
+        "dataIssues": []
+      }
+    ]
+  }
+]
