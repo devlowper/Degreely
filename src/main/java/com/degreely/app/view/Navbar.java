@@ -5,7 +5,6 @@ import com.degreely.app.util.Theme;
 import com.formdev.flatlaf.FlatClientProperties;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,8 +19,8 @@ import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 
 /**
- * Modern top navigation bar with brand identity, Home & Degreely AI navigation,
- * and quick access to study abroad counseling.
+ * Clean, minimal top navigation bar matching the Claude aesthetic.
+ * Contains brand identity on the left and Home / Degreely AI navigation tabs.
  */
 public class Navbar extends JPanel {
 
@@ -41,7 +40,7 @@ public class Navbar extends JPanel {
                 BorderFactory.createMatteBorder(0, 0, 1, 0, Theme.BORDER),
                 BorderFactory.createEmptyBorder(6, 24, 6, 24)
         ));
-        setPreferredSize(new Dimension(1000, 56));
+        setPreferredSize(new Dimension(1000, 52));
 
         // 1. Left: Brand Logo & Title
         JPanel brandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 4));
@@ -54,58 +53,31 @@ public class Navbar extends JPanel {
             }
         });
 
-        JLabel logoIcon = new JLabel(Icons.spark(20, Theme.PRIMARY));
+        JLabel logoIcon = new JLabel(Icons.spark(18, Theme.PRIMARY));
         JLabel brandName = new JLabel("Degreely");
-        brandName.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 19));
+        brandName.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 18));
         brandName.setForeground(Theme.TEXT);
-
-        JLabel badge = new JLabel("Global Study Abroad");
-        badge.setFont(Theme.FONT_SMALL);
-        badge.setForeground(Theme.PRIMARY);
-        badge.setOpaque(true);
-        badge.setBackground(Theme.PRIMARY_LIGHT);
-        badge.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(2, 8, 2, 8)
-        ));
 
         brandPanel.add(logoIcon);
         brandPanel.add(brandName);
-        brandPanel.add(badge);
         add(brandPanel, BorderLayout.WEST);
 
         // 2. Center: Navigation Tabs (Home, Degreely AI)
-        JPanel navTabsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 4));
+        JPanel navTabsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 4));
         navTabsPanel.setOpaque(false);
 
-        homeButton = createNavButton("Home", Icons.home(16, Theme.TEXT_SECONDARY), TAB_HOME);
-        aiButton = createNavButton("Degreely AI", Icons.spark(16, Theme.PRIMARY), TAB_AI);
+        homeButton = createNavButton("Home", Icons.home(15, Theme.TEXT_SECONDARY), TAB_HOME);
+        aiButton = createNavButton("Degreely AI", Icons.spark(15, Theme.PRIMARY), TAB_AI);
 
         navTabsPanel.add(homeButton);
         navTabsPanel.add(aiButton);
         add(navTabsPanel, BorderLayout.CENTER);
 
-        // 3. Right: Live Stats & Action CTA
-        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 14, 4));
-        rightPanel.setOpaque(false);
-
-        JLabel liveCountLabel = new JLabel("● 20 Universities Live");
-        liveCountLabel.setFont(Theme.FONT_SMALL);
-        liveCountLabel.setForeground(Theme.GREEN_TEXT);
-
-        JButton askAiBtn = new JButton("Ask AI Counselor ✦");
-        askAiBtn.setFont(Theme.FONT_BUTTON);
-        askAiBtn.setForeground(Color.WHITE);
-        askAiBtn.setBackground(Theme.PRIMARY);
-        askAiBtn.setFocusPainted(false);
-        askAiBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        askAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
-        askAiBtn.setBorder(BorderFactory.createEmptyBorder(7, 16, 7, 16));
-        askAiBtn.addActionListener(e -> setActiveTab(TAB_AI));
-
-        rightPanel.add(liveCountLabel);
-        rightPanel.add(askAiBtn);
-        add(rightPanel, BorderLayout.EAST);
+        // 3. Right: Clean spacer to keep layout balanced
+        JPanel rightSpacer = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        rightSpacer.setOpaque(false);
+        rightSpacer.setPreferredSize(new Dimension(120, 32));
+        add(rightSpacer, BorderLayout.EAST);
 
         updateTabStyles();
     }
@@ -117,7 +89,7 @@ public class Navbar extends JPanel {
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn.setIconTextGap(8);
         btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
-        btn.setBorder(BorderFactory.createEmptyBorder(6, 14, 6, 14));
+        btn.setBorder(BorderFactory.createEmptyBorder(6, 16, 6, 16));
         btn.addActionListener(e -> setActiveTab(tabKey));
         return btn;
     }
@@ -139,11 +111,11 @@ public class Navbar extends JPanel {
 
     private void updateTabStyles() {
         if (TAB_HOME.equals(currentTab)) {
-            styleActive(homeButton, Icons.home(16, Theme.PRIMARY));
-            styleInactive(aiButton, Icons.spark(16, Theme.TEXT_SECONDARY));
+            styleActive(homeButton, Icons.home(15, Theme.PRIMARY));
+            styleInactive(aiButton, Icons.spark(15, Theme.TEXT_SECONDARY));
         } else {
-            styleInactive(homeButton, Icons.home(16, Theme.TEXT_SECONDARY));
-            styleActive(aiButton, Icons.spark(16, Theme.PRIMARY));
+            styleInactive(homeButton, Icons.home(15, Theme.TEXT_SECONDARY));
+            styleActive(aiButton, Icons.spark(15, Theme.PRIMARY));
         }
         revalidate();
         repaint();
@@ -156,7 +128,7 @@ public class Navbar extends JPanel {
         btn.setFont(new Font(Theme.FONT_BODY.getFamily(), Font.BOLD, 14));
         btn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(5, 13, 5, 13)
+                BorderFactory.createEmptyBorder(5, 15, 5, 15)
         ));
     }
 
@@ -165,6 +137,6 @@ public class Navbar extends JPanel {
         btn.setBackground(Color.WHITE);
         btn.setForeground(Theme.TEXT_SECONDARY);
         btn.setFont(new Font(Theme.FONT_BODY.getFamily(), Font.PLAIN, 14));
-        btn.setBorder(BorderFactory.createEmptyBorder(6, 14, 6, 14));
+        btn.setBorder(BorderFactory.createEmptyBorder(6, 16, 6, 16));
     }
 }

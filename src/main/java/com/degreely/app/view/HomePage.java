@@ -12,21 +12,18 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -38,8 +35,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.InputStream;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.List;
@@ -48,8 +43,8 @@ import java.util.function.Consumer;
 
 /**
  * Modern Home Page displaying:
- * 1. Contemporary Hero section with 3D study abroad illustration, headline, quick metrics, and CTAs.
- * 2. Real-time University Discovery catalog featuring verified data, multi-criteria filters, and deep-link to AI Counselor.
+ * 1. Contemporary Hero section with text on the left, high-res 3D illustration on the right, quick metrics, and CTAs.
+ * 2. Full-height University Discovery catalog with seamless dynamic scrolling (no clipping or overlapping at bottom).
  */
 public class HomePage extends JPanel {
 
@@ -76,32 +71,30 @@ public class HomePage extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Theme.BACKGROUND);
 
-        // Content Panel stacked vertically
+        // Content panel stacked vertically with generous bottom padding so the last cards never get cut off
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setOpaque(false);
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_24, Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(24, 32, 60, 32));
 
-        // Center column with maximum width constraint
-        JPanel centerWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        centerWrapper.setOpaque(false);
-        contentPanel.setMaximumSize(new Dimension(1160, Integer.MAX_VALUE));
-        contentPanel.setPreferredSize(new Dimension(1120, 1800));
-        centerWrapper.add(contentPanel);
-
-        // 1. Modern Hero Section
+        // 1. Hero Section: Left Text + Right Image
         JPanel heroSection = createHeroSection();
         contentPanel.add(heroSection);
         contentPanel.add(Box.createVerticalStrut(Theme.SPACING_32));
 
-        // 2. University Discovery Section
+        // 2. University Discovery Catalog Section
         catalogSection = createCatalogSection();
         contentPanel.add(catalogSection);
 
-        scrollPane = new JScrollPane(centerWrapper);
+        // BorderLayout.NORTH inside scroll container allows contentPanel to size its height dynamically
+        JPanel scrollContentWrapper = new JPanel(new BorderLayout());
+        scrollContentWrapper.setOpaque(false);
+        scrollContentWrapper.add(contentPanel, BorderLayout.NORTH);
+
+        scrollPane = new JScrollPane(scrollContentWrapper);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getViewport().setBackground(Theme.BACKGROUND);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(18);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
         add(scrollPane, BorderLayout.CENTER);
 
@@ -110,7 +103,7 @@ public class HomePage extends JPanel {
     }
 
     /**
-     * Creates modern hero section with hero visual image, headline, highlights, and CTAs.
+     * Creates contemporary Hero section with clear text on the left and illustration on the right.
      */
     private JPanel createHeroSection() {
         JPanel hero = new JPanel(new BorderLayout(32, 0)) {
@@ -127,14 +120,14 @@ public class HomePage extends JPanel {
             }
         };
         hero.setOpaque(false);
-        hero.setBorder(BorderFactory.createEmptyBorder(36, 40, 36, 40));
-        hero.setMaximumSize(new Dimension(1120, 360));
-        hero.setPreferredSize(new Dimension(1120, 340));
+        hero.setBorder(BorderFactory.createEmptyBorder(32, 36, 32, 36));
+        hero.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // Left Column: Text, CTAs, and Highlights
+        // Left Column: Headline, Subtitle, CTAs, Highlights
         JPanel leftCol = new JPanel();
         leftCol.setLayout(new BoxLayout(leftCol, BoxLayout.Y_AXIS));
         leftCol.setOpaque(false);
+        leftCol.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         // Category Badge
         JPanel badgePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
@@ -154,7 +147,7 @@ public class HomePage extends JPanel {
 
         // Main Headline
         JLabel headline = new JLabel("<html>Find Your Dream University &amp; Program Worldwide</html>");
-        headline.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 28));
+        headline.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 26));
         headline.setForeground(Theme.TEXT);
         leftCol.add(headline);
         leftCol.add(Box.createVerticalStrut(10));
@@ -180,7 +173,7 @@ public class HomePage extends JPanel {
         exploreBtn.setBorder(BorderFactory.createEmptyBorder(9, 20, 9, 20));
         exploreBtn.addActionListener(e -> scrollToCatalog());
 
-        JButton chatAiBtn = new JButton("Chat with Degreely AI ✦", Icons.spark(16, Theme.PRIMARY));
+        JButton chatAiBtn = new JButton("Chat with Degreely AI ✦", Icons.spark(15, Theme.PRIMARY));
         chatAiBtn.setFont(Theme.FONT_BUTTON);
         chatAiBtn.setBackground(Theme.PRIMARY_LIGHT);
         chatAiBtn.setForeground(Theme.PRIMARY);
@@ -198,7 +191,7 @@ public class HomePage extends JPanel {
         ctaRow.add(exploreBtn);
         ctaRow.add(chatAiBtn);
         leftCol.add(ctaRow);
-        leftCol.add(Box.createVerticalStrut(22));
+        leftCol.add(Box.createVerticalStrut(20));
 
         // Stats Strip
         JPanel statsRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 24, 0));
@@ -212,8 +205,10 @@ public class HomePage extends JPanel {
         hero.add(leftCol, BorderLayout.CENTER);
 
         // Right Column: Hero Visual Illustration
-        JPanel rightCol = createHeroVisualPanel();
-        hero.add(rightCol, BorderLayout.EAST);
+        JPanel rightColWrapper = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        rightColWrapper.setOpaque(false);
+        rightColWrapper.add(createHeroVisualPanel());
+        hero.add(rightColWrapper, BorderLayout.EAST);
 
         return hero;
     }
@@ -237,7 +232,7 @@ public class HomePage extends JPanel {
     }
 
     /**
-     * Creates hero visual panel loading hero_study_abroad.jpg with smooth scaling & fallback.
+     * Creates hero visual panel loading hero_study_abroad.jpg on the right side.
      */
     private JPanel createHeroVisualPanel() {
         JPanel panel = new JPanel() {
@@ -257,7 +252,7 @@ public class HomePage extends JPanel {
                 int h = getHeight();
 
                 // Clip to rounded rectangle
-                g2.setClip(new RoundRectangle2D.Float(0, 0, w, h, 16, 16));
+                g2.setClip(new RoundRectangle2D.Float(0, 0, w, h, 14, 14));
 
                 Image original = loadHeroImage();
                 if (original != null) {
@@ -268,7 +263,6 @@ public class HomePage extends JPanel {
                     }
                     g2.drawImage(cachedScaledImg, 0, 0, this);
                 } else {
-                    // Modern gradient fallback with university building icon
                     g2.setColor(Theme.PRIMARY_LIGHT);
                     g2.fillRect(0, 0, w, h);
                     Icons.university(64, Theme.PRIMARY).paintIcon(this, g2, (w - 64) / 2, (h - 64) / 2);
@@ -277,14 +271,13 @@ public class HomePage extends JPanel {
                 // Subtle border
                 g2.setClip(null);
                 g2.setColor(Theme.BORDER);
-                g2.drawRoundRect(0, 0, w - 1, h - 1, 16, 16);
+                g2.drawRoundRect(0, 0, w - 1, h - 1, 14, 14);
                 g2.dispose();
             }
         };
 
         panel.setOpaque(false);
-        panel.setPreferredSize(new Dimension(380, 260));
-        panel.setMaximumSize(new Dimension(420, 280));
+        panel.setPreferredSize(new Dimension(380, 240));
         return panel;
     }
 
@@ -305,8 +298,7 @@ public class HomePage extends JPanel {
         JPanel section = new JPanel();
         section.setLayout(new BoxLayout(section, BoxLayout.Y_AXIS));
         section.setOpaque(false);
-        section.setMaximumSize(new Dimension(1120, Integer.MAX_VALUE));
-        section.setPreferredSize(new Dimension(1120, 1400));
+        section.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         // Section Title & Subtitle
         JPanel headerPanel = new JPanel(new BorderLayout());
@@ -345,6 +337,7 @@ public class HomePage extends JPanel {
         // University Cards Grid (2 columns)
         universitiesGrid = new JPanel(new GridLayout(0, 2, 20, 20));
         universitiesGrid.setOpaque(false);
+        universitiesGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
         section.add(universitiesGrid);
 
         return section;
@@ -366,7 +359,7 @@ public class HomePage extends JPanel {
         };
         bar.setOpaque(false);
         bar.setBorder(BorderFactory.createEmptyBorder(6, 12, 6, 12));
-        bar.setMaximumSize(new Dimension(1120, 56));
+        bar.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         // Search Input
         searchField = new JTextField(18);
@@ -493,6 +486,12 @@ public class HomePage extends JPanel {
 
         universitiesGrid.revalidate();
         universitiesGrid.repaint();
+        if (catalogSection != null) {
+            catalogSection.revalidate();
+            catalogSection.repaint();
+        }
+        revalidate();
+        repaint();
     }
 
     /**
