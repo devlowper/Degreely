@@ -97,7 +97,7 @@ public class DeadlineCard extends JPanel {
         bottomRow.setOpaque(false);
 
         String dateFormatted = formatDeadlineDate(deadline.getDeadlineDate());
-        JLabel dateLabel = new JLabel("📅 Deadline: " + dateFormatted);
+        JLabel dateLabel = new JLabel("Deadline: " + dateFormatted);
         dateLabel.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 13));
         dateLabel.setForeground(Theme.PRIMARY);
 

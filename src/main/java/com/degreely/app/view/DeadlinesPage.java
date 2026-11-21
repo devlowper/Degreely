@@ -159,9 +159,30 @@ public class DeadlinesPage extends JPanel {
         if (list.isEmpty()) {
             JPanel empty = UI.card();
             empty.setLayout(new BoxLayout(empty, BoxLayout.Y_AXIS));
-            empty.add(UI.sectionLabel("No Deadlines Tracked"));
+            empty.setBorder(BorderFactory.createCompoundBorder(
+                    empty.getBorder(),
+                    BorderFactory.createEmptyBorder(Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32)
+            ));
+
+            JLabel badge = new JLabel("APPLICATIONS");
+            badge.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
+            badge.setForeground(Theme.PRIMARY);
+            badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FFF7ED;");
+            badge.setOpaque(true);
+            badge.setBorder(BorderFactory.createEmptyBorder(4, 12, 4, 12));
+            badge.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            JLabel title = UI.sectionLabel("No Deadlines Tracked");
+            title.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            JLabel desc = UI.secondaryLabel("Use the form on the left to add your target university application deadlines.");
+            desc.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            empty.add(badge);
+            empty.add(Box.createVerticalStrut(Theme.SPACING_12));
+            empty.add(title);
             empty.add(Box.createVerticalStrut(Theme.SPACING_4));
-            empty.add(UI.secondaryLabel("Use the form on the left to add your admission application deadlines."));
+            empty.add(desc);
             cardsContainer.add(empty);
         } else {
             for (ApplicationDeadline d : list) {

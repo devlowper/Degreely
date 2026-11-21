@@ -16,13 +16,12 @@
 - [Key Highlights](#-key-highlights)
 - [System Architecture](#-system-architecture)
 - [Core Modules & Features](#-core-modules--features)
-  - [1. University Search & Discovery](#1--university-search--discovery)
+  - [1. University Discovery & Search Hub](#1--university-discovery--search-hub)
   - [2. Comprehensive University Details](#2--comprehensive-university-details)
   - [3. Worldwide Scholarships & Funding](#3--worldwide-scholarships--funding)
   - [4. Side-by-Side University Comparison](#4--side-by-side-university-comparison)
   - [5. Intelligent Admission Predictor](#5--intelligent-admission-predictor)
   - [6. Application Deadline Tracker](#6--application-deadline-tracker)
-  - [7. Dark / Light Mode Theme Switching](#7--dark--light-mode-theme-switching)
 - [Design System & Tokens](#-design-system--tokens)
 - [Project Structure](#-project-structure)
 - [Quick Start Guide](#-quick-start-guide)
@@ -48,16 +47,17 @@ No external database server (like MySQL or PostgreSQL) is required. The platform
 
 - **Zero Database Setup**: Plug-and-play. All university and scholarship data are loaded from classpath JSON resources, while personal application deadlines are saved locally.
 - **Modern FlatLaf UI**: Styled with clean 8px rounded corners, subtle 1px borders, smooth hover interactions, and cohesive typography.
+- **Unified Discovery Hub**: Welcoming hero banner with quick statistics merged directly into the university catalog for zero-click exploration.
 - **Non-Blocking Concurrency**: Data filtering and search run on background threads using `SwingWorker`, ensuring a fluid 60 FPS experience with no UI freezing.
 - **Smart Admission Predictor**: Multi-variable mathematical model that computes real admission probabilities based on GPA, IELTS, and degree selectivity.
-- **Dynamic Theme Switcher**: Instant switching between `FlatLightLaf` and `FlatDarkLaf` with zero restart required.
 - **Built-in Maven Wrapper**: Includes `mvnw` and `mvnw.cmd` configured with automatic `JAVA_HOME` detection for a frictionless first run.
 
 ---
 
 ## 🏛️ Core Modules & Features
 
-### 1. 🏛️ University Search & Discovery
+### 1. 🏛️ University Discovery & Search Hub
+- **Integrated Hero Header**: Welcoming overview displaying total counts (20 world universities, 80+ degree programs, 8 countries, and tuition highlights).
 - **Catalog**: Features **20 world-leading universities** (MIT, Stanford, Oxford, Cambridge, ETH Zurich, NUS, TUM, University of Tokyo, etc.) across 8 countries.
 - **80+ Academic Programs**: Real Bachelor's, Master's, and PhD offerings with credit requirements and program durations.
 - **Interactive Filter Sidebar**:
@@ -113,11 +113,6 @@ No external database server (like MySQL or PostgreSQL) is required. The platform
   - 🔵 *Applied*
   - 🟢 *Done*
 - **Persistent Storage**: Automatically serialized to JSON at `~/.degreely/deadlines.json` across app restarts.
-
-### 7. 🌙 Dark / Light Mode Theme Switching
-- Top navigation bar includes a toggle button to switch between FlatLaf light and dark themes seamlessly at runtime:
-  - `FlatLightLaf.setup()` ⟷ `FlatDarkLaf.setup()`
-  - `FlatLaf.updateUI()` smoothly re-renders the entire component tree.
 
 ---
 
@@ -176,9 +171,8 @@ Degreely/
         │       │
         │       └── view/                 # UI pages & components
         │           ├── MainFrame.java            # Main window & CardLayout host
-        │           ├── Navbar.java               # Top navigation bar with dark mode toggle
-        │           ├── HomePage.java             # Welcome landing screen
-        │           ├── UniversitiesPage.java     # University catalog with filter sidebar
+        │           ├── Navbar.java               # Top navigation bar with active indicator
+        │           ├── UniversitiesPage.java     # University catalog with hero banner & filters
         │           ├── UniversityDetailsPage.java# Deep-dive university details with tabs
         │           ├── ScholarshipsPage.java     # Scholarship catalog & closing alerts
         │           ├── ComparePage.java          # Multi-university comparison table

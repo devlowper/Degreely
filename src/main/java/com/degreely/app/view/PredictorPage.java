@@ -133,7 +133,7 @@ public class PredictorPage extends JPanel {
         card.add(Box.createVerticalStrut(Theme.SPACING_24));
 
         // Submit Button
-        JButton checkBtn = UI.primaryButton("Check Chance  ⚡");
+        JButton checkBtn = UI.primaryButton("Check Chance");
         checkBtn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 42));
         checkBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         checkBtn.addActionListener(e -> calculate());
@@ -201,8 +201,12 @@ public class PredictorPage extends JPanel {
                 BorderFactory.createEmptyBorder(Theme.SPACING_12, Theme.SPACING_16, Theme.SPACING_12, Theme.SPACING_16)
         ));
 
-        JLabel iconLabel = new JLabel("💡");
-        iconLabel.setFont(new Font(Theme.FONT_TITLE.getName(), Font.PLAIN, 20));
+        JLabel iconLabel = new JLabel("ADVICE");
+        iconLabel.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 10));
+        iconLabel.setForeground(Theme.PRIMARY);
+        iconLabel.putClientProperty(FlatClientProperties.STYLE, "arc: 6; background: #FFF7ED;");
+        iconLabel.setOpaque(true);
+        iconLabel.setBorder(BorderFactory.createEmptyBorder(3, 8, 3, 8));
 
         adviceLabel.setFont(Theme.FONT_BODY);
         adviceLabel.setForeground(Theme.TEXT);

@@ -2,9 +2,6 @@ package com.degreely.app.view;
 
 import com.degreely.app.util.Theme;
 import com.degreely.app.util.UI;
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,7 +13,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -28,8 +24,7 @@ public class Navbar extends JPanel {
 
     private final List<NavItemButton> navButtons = new ArrayList<>();
     private final Consumer<String> onNavigate;
-    private String activePage = "Home";
-    private JButton themeToggleBtn;
+    private String activePage = "Universities";
 
     public Navbar(Consumer<String> onNavigate) {
         this.onNavigate = onNavigate;
@@ -45,7 +40,7 @@ public class Navbar extends JPanel {
                 BorderFactory.createEmptyBorder(0, Theme.SPACING_32, 0, Theme.SPACING_32)
         ));
 
-        // Left: Logo
+        // Left: Logo & Brand Name
         JLabel logo = new JLabel("Degreely");
         logo.setFont(new java.awt.Font(Theme.FONT_TITLE.getName(), java.awt.Font.BOLD, 22));
         logo.setForeground(Theme.PRIMARY);
@@ -53,7 +48,7 @@ public class Navbar extends JPanel {
         logo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setActive("Home");
+                setActive("Universities");
             }
         });
 
@@ -62,49 +57,37 @@ public class Navbar extends JPanel {
         leftPanel.add(logo);
 
         // Center: Navigation Menu Items
-        JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, Theme.SPACING_8, 0));
+        JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, Theme.SPACING_12, 0));
         centerPanel.setOpaque(false);
 
-        String[] pages = {"Home", "Universities", "Scholarships", "Compare", "Predictor", "Deadlines"};
+        String[] pages = {"Universities", "Scholarships", "Compare", "Predictor", "Deadlines"};
         for (String page : pages) {
             NavItemButton btn = new NavItemButton(page);
-            btn.setActive(page.equals("Home"));
+            btn.setActive(page.equals("Universities"));
             btn.addActionListener(e -> setActive(page));
             navButtons.add(btn);
             centerPanel.add(btn);
         }
 
-        // Right: Theme Toggle (Dark/Light mode)
-        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 14));
+        // Right: Clean subtle brand tagline
+        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 22));
         rightPanel.setOpaque(false);
 
-        themeToggleBtn = UI.outlineButton("🌙 Dark");
-        themeToggleBtn.setFont(Theme.FONT_SMALL);
-        themeToggleBtn.setMargin(new Insets(6, 12, 6, 12));
-        themeToggleBtn.addActionListener(e -> toggleTheme());
-        rightPanel.add(themeToggleBtn);
+        JLabel tag = new JLabel("Degree & Scholarship Directory");
+        tag.setFont(Theme.FONT_SMALL);
+        tag.setForeground(Theme.TEXT_MUTED);
+        rightPanel.add(tag);
 
         add(leftPanel, BorderLayout.WEST);
         add(centerPanel, BorderLayout.CENTER);
         add(rightPanel, BorderLayout.EAST);
     }
 
-    private void toggleTheme() {
-        try {
-            if (FlatLaf.isLafDark()) {
-                FlatLightLaf.setup();
-                themeToggleBtn.setText("🌙 Dark");
-            } else {
-                FlatDarkLaf.setup();
-                themeToggleBtn.setText("☀️ Light");
-            }
-            FlatLaf.updateUI();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
     public void setActive(String pageName) {
+        // If "Home" is passed by any legacy link, normalize to "Universities"
+        if ("Home".equalsIgnoreCase(pageName)) {
+            pageName = "Universities";
+        }
         this.activePage = pageName;
         for (NavItemButton btn : navButtons) {
             btn.setActive(btn.getText().equals(pageName));

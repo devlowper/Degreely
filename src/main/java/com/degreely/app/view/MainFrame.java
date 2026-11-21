@@ -21,9 +21,9 @@ public class MainFrame extends JFrame {
     }
 
     private void initUI() {
-        setTitle("Degreely");
-        setSize(1200, 750);
-        setMinimumSize(new Dimension(1000, 650));
+        setTitle("Degreely — Degree & Scholarship Search Platform");
+        setSize(1240, 780);
+        setMinimumSize(new Dimension(1050, 680));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         getContentPane().setBackground(Theme.BACKGROUND);
@@ -36,9 +36,8 @@ public class MainFrame extends JFrame {
         // Details Page
         detailsPage = new UniversityDetailsPage(this::navigateTo, this::openUniversityDetails);
 
-        // Content Area with CardLayout
+        // Content Area with CardLayout (Home is merged directly into Universities)
         contentArea.setBackground(Theme.BACKGROUND);
-        contentArea.add(new HomePage(this::navigateTo), "Home");
         contentArea.add(new UniversitiesPage(this::openUniversityDetails), "Universities");
         contentArea.add(detailsPage, "UniversityDetails");
         contentArea.add(new ScholarshipsPage(), "Scholarships");
@@ -48,8 +47,8 @@ public class MainFrame extends JFrame {
 
         add(contentArea, BorderLayout.CENTER);
 
-        // Show default page
-        showPage("Home");
+        // Show default landing page: Universities
+        showPage("Universities");
     }
 
     public void openUniversityDetails(University university) {
@@ -60,6 +59,9 @@ public class MainFrame extends JFrame {
     }
 
     public void navigateTo(String pageName) {
+        if ("Home".equalsIgnoreCase(pageName)) {
+            pageName = "Universities";
+        }
         if (navbar != null) {
             navbar.setActive(pageName);
         } else {
@@ -68,6 +70,9 @@ public class MainFrame extends JFrame {
     }
 
     public void showPage(String pageName) {
+        if ("Home".equalsIgnoreCase(pageName)) {
+            pageName = "Universities";
+        }
         cardLayout.show(contentArea, pageName);
     }
 }

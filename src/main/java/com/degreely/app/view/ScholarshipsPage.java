@@ -188,9 +188,13 @@ public class ScholarshipsPage extends JPanel {
                 BorderFactory.createEmptyBorder(Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32)
         ));
 
-        JLabel icon = new JLabel("🎓");
-        icon.setFont(new Font(Theme.FONT_TITLE.getName(), Font.PLAIN, 32));
-        icon.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel badge = new JLabel("SCHOLARSHIPS");
+        badge.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
+        badge.setForeground(Theme.PRIMARY);
+        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FFF7ED;");
+        badge.setOpaque(true);
+        badge.setBorder(BorderFactory.createEmptyBorder(4, 12, 4, 12));
+        badge.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel title = UI.sectionLabel("No Scholarships Found");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -207,8 +211,8 @@ public class ScholarshipsPage extends JPanel {
             applyFilters();
         });
 
-        empty.add(icon);
-        empty.add(Box.createVerticalStrut(Theme.SPACING_8));
+        empty.add(badge);
+        empty.add(Box.createVerticalStrut(Theme.SPACING_12));
         empty.add(title);
         empty.add(Box.createVerticalStrut(Theme.SPACING_4));
         empty.add(sub);

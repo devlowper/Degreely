@@ -21,10 +21,12 @@ import javax.swing.SwingWorker;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Insets;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
@@ -61,30 +63,92 @@ public class UniversitiesPage extends JPanel {
     }
 
     private void initUI() {
-        setLayout(new BorderLayout(Theme.SPACING_24, 0));
+        setLayout(new BorderLayout(0, Theme.SPACING_16));
         setBackground(Theme.BACKGROUND);
         setBorder(BorderFactory.createEmptyBorder(
-                Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32));
+                Theme.SPACING_24, Theme.SPACING_32, Theme.SPACING_24, Theme.SPACING_32));
 
-        // 1. Left Filter Sidebar
+        // 1. Top Section: Hero Banner (Integrated from Home Page)
+        JPanel heroBanner = createHeroBanner();
+        add(heroBanner, BorderLayout.NORTH);
+
+        // 2. Main Workspace: Split into Left Filter Sidebar and Right Content Area
+        JPanel workspace = new JPanel(new BorderLayout(Theme.SPACING_24, 0));
+        workspace.setOpaque(false);
+
+        // Filter Sidebar
         JPanel sidebar = createFilterSidebar();
-        add(sidebar, BorderLayout.WEST);
+        workspace.add(sidebar, BorderLayout.WEST);
 
-        // 2. Right Content Area (Search bar + Scrollable cards)
+        // Content Area (Search bar + Scrollable cards)
         JPanel mainContent = createMainContent();
-        add(mainContent, BorderLayout.CENTER);
+        workspace.add(mainContent, BorderLayout.CENTER);
+
+        add(workspace, BorderLayout.CENTER);
+    }
+
+    /**
+     * Hero Header Banner merged from Home Page to provide a welcoming, modern entry point.
+     */
+    private JPanel createHeroBanner() {
+        JPanel bannerCard = UI.card();
+        bannerCard.setLayout(new BorderLayout(Theme.SPACING_16, Theme.SPACING_12));
+        bannerCard.setBorder(BorderFactory.createCompoundBorder(
+                bannerCard.getBorder(),
+                BorderFactory.createEmptyBorder(Theme.SPACING_4, Theme.SPACING_8, Theme.SPACING_4, Theme.SPACING_8)
+        ));
+
+        JPanel textPanel = new JPanel();
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+        textPanel.setOpaque(false);
+
+        JLabel title = UI.titleLabel("Find Your Dream Degree & University Abroad");
+        title.setFont(new Font(Theme.FONT_TITLE.getName(), Font.BOLD, 22));
+
+        JLabel subtitle = UI.secondaryLabel("Explore world-class undergraduate and postgraduate programs. Filter by tuition, English requirements, and admission selectivity.");
+        subtitle.setFont(Theme.FONT_BODY);
+
+        textPanel.add(title);
+        textPanel.add(Box.createVerticalStrut(Theme.SPACING_4));
+        textPanel.add(subtitle);
+
+        // Stat Badges Row
+        JPanel pillsRow = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 0));
+        pillsRow.setOpaque(false);
+        pillsRow.setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_8, 0, 0, 0));
+
+        pillsRow.add(createStatPill("20 Top Universities"));
+        pillsRow.add(createStatPill("80+ Degree Programs"));
+        pillsRow.add(createStatPill("Tuition: $0 - $70k/yr"));
+        pillsRow.add(createStatPill("8 Global Destinations"));
+
+        textPanel.add(pillsRow);
+
+        bannerCard.add(textPanel, BorderLayout.CENTER);
+        return bannerCard;
+    }
+
+    private JPanel createStatPill(String text) {
+        JPanel pill = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 4));
+        pill.setBackground(Theme.LIGHT_BLUE_HIGHLIGHT);
+        pill.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #EFF6FF;");
+        JLabel label = new JLabel(text);
+        label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
+        label.setForeground(Theme.PRIMARY);
+        pill.add(label);
+        return pill;
     }
 
     private JPanel createFilterSidebar() {
         JPanel card = UI.card();
-        card.setPreferredSize(new Dimension(290, 600));
+        card.setPreferredSize(new Dimension(290, 520));
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
 
         // Sidebar Title
         JLabel title = UI.sectionLabel("Filters");
-        title.setFont(new Font(Theme.FONT_SECTION.getName(), Font.BOLD, 18));
+        title.setFont(new Font(Theme.FONT_SECTION.getName(), Font.BOLD, 17));
         card.add(title);
-        card.add(Box.createVerticalStrut(Theme.SPACING_16));
+        card.add(Box.createVerticalStrut(Theme.SPACING_12));
 
         // Country Filter
         JLabel countryLabel = new JLabel("Country");
@@ -99,7 +163,7 @@ public class UniversitiesPage extends JPanel {
         countryCombo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
         countryCombo.addActionListener(e -> applyFilters());
         card.add(countryCombo);
-        card.add(Box.createVerticalStrut(Theme.SPACING_16));
+        card.add(Box.createVerticalStrut(Theme.SPACING_12));
 
         // Degree Level Filter
         JLabel levelLabel = new JLabel("Degree Level");
@@ -111,7 +175,7 @@ public class UniversitiesPage extends JPanel {
         levelCombo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
         levelCombo.addActionListener(e -> applyFilters());
         card.add(levelCombo);
-        card.add(Box.createVerticalStrut(Theme.SPACING_16));
+        card.add(Box.createVerticalStrut(Theme.SPACING_12));
 
         // Max Tuition Slider
         JPanel tuitionLabelRow = new JPanel(new BorderLayout());
@@ -130,7 +194,7 @@ public class UniversitiesPage extends JPanel {
         tuitionSlider.setOpaque(false);
         tuitionSlider.setMajorTickSpacing(20000);
         tuitionSlider.setMinorTickSpacing(5000);
-        tuitionSlider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
+        tuitionSlider.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
         tuitionSlider.addChangeListener(e -> {
             NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.US);
             nf.setMaximumFractionDigits(0);
@@ -140,7 +204,7 @@ public class UniversitiesPage extends JPanel {
             }
         });
         card.add(tuitionSlider);
-        card.add(Box.createVerticalStrut(Theme.SPACING_16));
+        card.add(Box.createVerticalStrut(Theme.SPACING_12));
 
         // Min IELTS Score Filter
         JLabel ieltsLabel = new JLabel("Min IELTS Requirement");
@@ -152,7 +216,7 @@ public class UniversitiesPage extends JPanel {
         ieltsCombo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
         ieltsCombo.addActionListener(e -> applyFilters());
         card.add(ieltsCombo);
-        card.add(Box.createVerticalStrut(Theme.SPACING_24));
+        card.add(Box.createVerticalStrut(Theme.SPACING_16));
 
         // Action Buttons: Apply & Reset
         JPanel btnRow = new JPanel(new FlowLayout(FlowLayout.CENTER, Theme.SPACING_8, 0));
@@ -160,10 +224,12 @@ public class UniversitiesPage extends JPanel {
 
         JButton applyBtn = UI.primaryButton("Apply");
         applyBtn.setFont(Theme.FONT_SMALL);
+        applyBtn.setMargin(new Insets(6, 16, 6, 16));
         applyBtn.addActionListener(e -> applyFilters());
 
         JButton resetBtn = UI.outlineButton("Reset");
         resetBtn.setFont(Theme.FONT_SMALL);
+        resetBtn.setMargin(new Insets(6, 16, 6, 16));
         resetBtn.addActionListener(e -> resetFilters());
 
         btnRow.add(applyBtn);
@@ -175,7 +241,7 @@ public class UniversitiesPage extends JPanel {
     }
 
     private JPanel createMainContent() {
-        JPanel panel = new JPanel(new BorderLayout(0, Theme.SPACING_16));
+        JPanel panel = new JPanel(new BorderLayout(0, Theme.SPACING_12));
         panel.setOpaque(false);
 
         // Top bar with search input and results counter
@@ -281,9 +347,13 @@ public class UniversitiesPage extends JPanel {
                 BorderFactory.createEmptyBorder(Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32)
         ));
 
-        JLabel icon = new JLabel("🔍");
-        icon.setFont(new Font(Theme.FONT_TITLE.getName(), Font.PLAIN, 32));
-        icon.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel badge = new JLabel("UNIVERSITIES");
+        badge.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
+        badge.setForeground(Theme.PRIMARY);
+        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FFF7ED;");
+        badge.setOpaque(true);
+        badge.setBorder(BorderFactory.createEmptyBorder(4, 12, 4, 12));
+        badge.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel title = UI.sectionLabel("No Universities Found");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -295,8 +365,8 @@ public class UniversitiesPage extends JPanel {
         reset.setAlignmentX(Component.CENTER_ALIGNMENT);
         reset.addActionListener(e -> resetFilters());
 
-        empty.add(icon);
-        empty.add(Box.createVerticalStrut(Theme.SPACING_8));
+        empty.add(badge);
+        empty.add(Box.createVerticalStrut(Theme.SPACING_12));
         empty.add(title);
         empty.add(Box.createVerticalStrut(Theme.SPACING_4));
         empty.add(sub);
