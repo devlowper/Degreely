@@ -1,5 +1,6 @@
 package com.degreely.app.view.components.chat;
 
+import com.degreely.app.util.Icons;
 import com.degreely.app.util.Theme;
 import com.degreely.app.util.UI;
 import com.formdev.flatlaf.FlatClientProperties;
@@ -14,6 +15,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -39,7 +41,7 @@ public class StarterPromptsPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_24, Theme.SPACING_32));
 
         // 1. Centered Spark Icon
-        JPanel sparkIcon = new JPanel() {
+        JPanel sparkIcon = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 9)) {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -47,10 +49,6 @@ public class StarterPromptsPanel extends JPanel {
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(Theme.PRIMARY);
                 g2.fillRoundRect(0, 0, getWidth(), getHeight(), 14, 14);
-
-                g2.setColor(Color.WHITE);
-                g2.setFont(new Font(Font.SERIF, Font.BOLD, 22));
-                g2.drawString("✦", 12, 28);
                 g2.dispose();
             }
         };
@@ -58,6 +56,7 @@ public class StarterPromptsPanel extends JPanel {
         sparkIcon.setMaximumSize(new Dimension(42, 42));
         sparkIcon.setOpaque(false);
         sparkIcon.setAlignmentX(CENTER_ALIGNMENT);
+        sparkIcon.add(new JLabel(Icons.spark(20, Color.WHITE)));
 
         add(Box.createVerticalGlue());
         add(sparkIcon);
@@ -83,18 +82,22 @@ public class StarterPromptsPanel extends JPanel {
         grid.setMaximumSize(new Dimension(760, 180));
 
         grid.add(createCard(
+                Icons.university(18, Theme.PRIMARY),
                 "Compare universities for MSc in Germany",
                 "Tuition, living cost, and English requirements side-by-side"
         ));
         grid.add(createCard(
+                Icons.coins(18, Theme.PRIMARY),
                 "Cheapest countries for study abroad",
                 "Explore zero-tuition and low-cost public institutions"
         ));
         grid.add(createCard(
+                Icons.documentCheck(18, Theme.PRIMARY),
                 "IELTS and GPA requirements for Canada",
                 "Check admissions cutoffs and visa score guidelines"
         ));
         grid.add(createCard(
+                Icons.pen(18, Theme.PRIMARY),
                 "Review my SOP & Academic Profile",
                 "Attach draft SOP or CV for constructive admissions feedback"
         ));
@@ -104,7 +107,7 @@ public class StarterPromptsPanel extends JPanel {
         add(Box.createVerticalGlue());
     }
 
-    private JPanel createCard(String title, String desc) {
+    private JPanel createCard(javax.swing.Icon icon, String title, String desc) {
         JPanel card = new JPanel();
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
         card.setBackground(Theme.CARD_BG);
@@ -115,15 +118,24 @@ public class StarterPromptsPanel extends JPanel {
         ));
         card.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
+        JPanel headerRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        headerRow.setOpaque(false);
+        headerRow.setAlignmentX(LEFT_ALIGNMENT);
+
+        JLabel ic = new JLabel(icon);
         JLabel t = new JLabel(title);
         t.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 13));
         t.setForeground(Theme.TEXT);
+        headerRow.add(ic);
+        headerRow.add(t);
 
         JLabel d = new JLabel(desc);
         d.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
         d.setForeground(Theme.TEXT_MUTED);
+        d.setAlignmentX(LEFT_ALIGNMENT);
+        d.setBorder(BorderFactory.createEmptyBorder(0, 26, 0, 0));
 
-        card.add(t);
+        card.add(headerRow);
         card.add(Box.createVerticalStrut(4));
         card.add(d);
 

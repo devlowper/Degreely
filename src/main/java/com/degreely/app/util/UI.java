@@ -86,13 +86,24 @@ public final class UI {
     }
 
     /**
-     * Creates a compact styled pill badge.
+     * Creates a compact styled pill badge with text.
      */
     public static JPanel badge(String text, Color bg, Color fg) {
-        JPanel badge = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 3));
+        return badge(text, null, bg, fg);
+    }
+
+    /**
+     * Creates a compact styled pill badge with an optional icon and text.
+     */
+    public static JPanel badge(String text, javax.swing.Icon icon, Color bg, Color fg) {
+        JPanel badge = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 3));
         badge.setBackground(bg);
         badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12;");
         JLabel label = new JLabel(text);
+        if (icon != null) {
+            label.setIcon(icon);
+            label.setIconTextGap(5);
+        }
         label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
         label.setForeground(fg);
         badge.add(label);

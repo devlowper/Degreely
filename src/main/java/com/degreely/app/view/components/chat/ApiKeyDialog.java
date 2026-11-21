@@ -49,9 +49,16 @@ public class ApiKeyDialog extends JDialog {
         content.setBorder(BorderFactory.createEmptyBorder(
                 Theme.SPACING_24, Theme.SPACING_24, Theme.SPACING_24, Theme.SPACING_24));
 
+        JPanel titleRow = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 0));
+        titleRow.setOpaque(false);
+
+        JLabel iconLabel = new JLabel(com.degreely.app.util.Icons.settings(20, Theme.PRIMARY));
         JLabel title = UI.sectionLabel("Gemini API Configuration");
         title.setFont(new Font(Theme.FONT_TITLE.getName(), Font.BOLD, 18));
-        content.add(title);
+
+        titleRow.add(iconLabel);
+        titleRow.add(title);
+        content.add(titleRow);
         content.add(Box.createVerticalStrut(Theme.SPACING_4));
 
         JLabel desc = UI.secondaryLabel("Enter your Gemini API key to power Night Owl AI Counselor.");

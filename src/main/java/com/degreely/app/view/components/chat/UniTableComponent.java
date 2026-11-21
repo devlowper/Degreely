@@ -2,6 +2,7 @@ package com.degreely.app.view.components.chat;
 
 import com.degreely.app.model.UniTableData;
 import com.degreely.app.model.UniTableData.UniversityEntry;
+import com.degreely.app.util.Icons;
 import com.degreely.app.util.Theme;
 import com.degreely.app.util.UI;
 import com.formdev.flatlaf.FlatClientProperties;
@@ -85,11 +86,15 @@ public class UniTableComponent extends JPanel {
         actionBtns.setOpaque(false);
 
         JButton copyBtn = UI.outlineButton("Copy Table");
+        copyBtn.setIcon(Icons.copy(13, Theme.PRIMARY));
+        copyBtn.setIconTextGap(6);
         copyBtn.setFont(Theme.FONT_SMALL);
         copyBtn.setMargin(new Insets(4, 10, 4, 10));
         copyBtn.addActionListener(e -> copyToClipboard());
 
         JButton csvBtn = UI.outlineButton("Export CSV");
+        csvBtn.setIcon(Icons.download(13, Theme.PRIMARY));
+        csvBtn.setIconTextGap(6);
         csvBtn.setFont(Theme.FONT_SMALL);
         csvBtn.setMargin(new Insets(4, 10, 4, 10));
         csvBtn.addActionListener(e -> exportToCsv());

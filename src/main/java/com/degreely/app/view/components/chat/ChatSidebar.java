@@ -3,6 +3,7 @@ package com.degreely.app.view.components.chat;
 import com.degreely.app.controller.ChatStorageService;
 import com.degreely.app.controller.GeminiService;
 import com.degreely.app.model.ChatSession;
+import com.degreely.app.util.Icons;
 import com.degreely.app.util.Theme;
 import com.degreely.app.util.UI;
 import com.formdev.flatlaf.FlatClientProperties;
@@ -76,9 +77,7 @@ public class ChatSidebar extends JPanel {
         JPanel brandRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         brandRow.setOpaque(false);
 
-        JLabel brandIcon = new JLabel("✦");
-        brandIcon.setFont(new Font(Font.SERIF, Font.BOLD, 18));
-        brandIcon.setForeground(Theme.PRIMARY);
+        JLabel brandIcon = new JLabel(Icons.spark(18, Theme.PRIMARY));
 
         JLabel appName = new JLabel("Night Owl");
         appName.setFont(new Font(Font.SERIF, Font.BOLD, 19));
@@ -96,6 +95,7 @@ public class ChatSidebar extends JPanel {
 
         // Search chats input
         searchField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Search chats... (Ctrl+K)");
+        searchField.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, Icons.search(14, Theme.TEXT_MUTED));
         searchField.putClientProperty(FlatClientProperties.STYLE, "arc: 8; margin: 4,8,4,8;");
         searchField.setFont(Theme.FONT_SMALL);
         searchField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 32));
@@ -184,13 +184,13 @@ public class ChatSidebar extends JPanel {
         ));
 
         // 1. My Profile Button
-        JButton profileBtn = createSidebarActionBtn("👤  My Student Profile", e -> {
+        JButton profileBtn = createSidebarActionBtn("My Student Profile", Icons.user(15, Theme.TEXT_SECONDARY), e -> {
             Frame owner = (Frame) SwingUtilities.getWindowAncestor(this);
             new ProfileDialog(owner).setVisible(true);
         });
 
         // 2. API Key / Settings Button
-        JButton settingsBtn = createSidebarActionBtn("⚙️  Gemini Settings", e -> {
+        JButton settingsBtn = createSidebarActionBtn("Gemini Settings", Icons.settings(15, Theme.TEXT_SECONDARY), e -> {
             Frame owner = (Frame) SwingUtilities.getWindowAncestor(this);
             new ApiKeyDialog(owner).setVisible(true);
         });
@@ -221,8 +221,12 @@ public class ChatSidebar extends JPanel {
         return bottom;
     }
 
-    private JButton createSidebarActionBtn(String text, java.awt.event.ActionListener al) {
+    private JButton createSidebarActionBtn(String text, javax.swing.Icon icon, java.awt.event.ActionListener al) {
         JButton btn = new JButton(text);
+        if (icon != null) {
+            btn.setIcon(icon);
+            btn.setIconTextGap(8);
+        }
         btn.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 12));
         btn.setForeground(Theme.TEXT_SECONDARY);
         btn.setBorderPainted(false);
@@ -292,8 +296,13 @@ public class ChatSidebar extends JPanel {
         item.setBorder(BorderFactory.createEmptyBorder(6, 16, 6, 12));
         item.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        String titleText = (s.isPinned() ? "📌 " : "") + s.getTitle();
-        JLabel l = new JLabel(titleText);
+        JLabel l = new JLabel(s.getTitle());
+        if (s.isPinned()) {
+            l.setIcon(Icons.pin(13, Theme.PRIMARY));
+        } else {
+            l.setIcon(Icons.chat(13, Theme.TEXT_MUTED));
+        }
+        l.setIconTextGap(8);
         l.setFont(new Font(Theme.FONT_BODY.getName(), isSelected ? Font.BOLD : Font.PLAIN, 12));
         l.setForeground(Theme.TEXT);
 
@@ -334,12 +343,14 @@ public class ChatSidebar extends JPanel {
         JPopupMenu menu = new JPopupMenu();
 
         JMenuItem pinItem = new JMenuItem(s.isPinned() ? "Unpin chat" : "Pin chat");
+        pinItem.setIcon(Icons.pin(14, Theme.PRIMARY));
         pinItem.addActionListener(evt -> {
             storageService.togglePin(s.getId());
             renderSessionList();
         });
 
         JMenuItem renameItem = new JMenuItem("Rename chat");
+        renameItem.setIcon(Icons.pen(14, Theme.TEXT_SECONDARY));
         renameItem.addActionListener(evt -> {
             String newTitle = JOptionPane.showInputDialog(this, "Enter new chat title:", s.getTitle());
             if (newTitle != null && !newTitle.isBlank()) {
@@ -349,6 +360,7 @@ public class ChatSidebar extends JPanel {
         });
 
         JMenuItem deleteItem = new JMenuItem("Delete chat");
+        deleteItem.setIcon(Icons.trash(14, Color.decode("#DC2626")));
         deleteItem.addActionListener(evt -> {
             int ret = JOptionPane.showConfirmDialog(this, "Delete \"" + s.getTitle() + "\"?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
             if (ret == JOptionPane.YES_OPTION) {

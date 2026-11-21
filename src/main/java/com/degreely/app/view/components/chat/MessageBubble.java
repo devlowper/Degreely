@@ -1,6 +1,7 @@
 package com.degreely.app.view.components.chat;
 
 import com.degreely.app.model.ChatMessage;
+import com.degreely.app.util.Icons;
 import com.degreely.app.util.Theme;
 import com.degreely.app.util.UI;
 import com.formdev.flatlaf.FlatClientProperties;
@@ -63,7 +64,7 @@ public class MessageBubble extends JPanel {
                 JPanel filesRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 2));
                 filesRow.setOpaque(false);
                 for (String fname : message.getFileNames()) {
-                    JPanel chip = UI.badge("📎 " + fname, Theme.LIGHT_BLUE_HIGHLIGHT, Theme.BLUE_TEXT);
+                    JPanel chip = UI.badge(fname, Icons.paperclip(12, Theme.BLUE_TEXT), Theme.LIGHT_BLUE_HIGHLIGHT, Theme.BLUE_TEXT);
                     filesRow.add(chip);
                 }
                 bubble.add(filesRow);
@@ -83,7 +84,7 @@ public class MessageBubble extends JPanel {
             leftContainer.setOpaque(false);
 
             // Spark Icon Avatar
-            JPanel avatar = new JPanel() {
+            JPanel avatar = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 5)) {
                 @Override
                 protected void paintComponent(Graphics g) {
                     super.paintComponent(g);
@@ -91,15 +92,12 @@ public class MessageBubble extends JPanel {
                     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                     g2.setColor(Theme.PRIMARY);
                     g2.fillRoundRect(0, 0, getWidth(), getHeight(), 8, 8);
-
-                    g2.setColor(Color.WHITE);
-                    g2.setFont(new Font(Theme.FONT_BUTTON.getName(), Font.BOLD, 14));
-                    g2.drawString("✦", 8, 19);
                     g2.dispose();
                 }
             };
             avatar.setPreferredSize(new Dimension(28, 28));
             avatar.setOpaque(false);
+            avatar.add(new JLabel(Icons.spark(16, Color.WHITE)));
 
             JPanel avatarWrap = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 4));
             avatarWrap.setOpaque(false);
@@ -128,6 +126,8 @@ public class MessageBubble extends JPanel {
             actionRow.setBorder(BorderFactory.createEmptyBorder(6, 0, 0, 0));
 
             JButton copyBtn = new JButton("Copy");
+            copyBtn.setIcon(Icons.copy(13, Theme.TEXT_MUTED));
+            copyBtn.setIconTextGap(5);
             copyBtn.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
             copyBtn.setForeground(Theme.TEXT_MUTED);
             copyBtn.setBorderPainted(false);
@@ -145,6 +145,8 @@ public class MessageBubble extends JPanel {
 
             if (onRegenerate != null) {
                 JButton regenBtn = new JButton("Regenerate");
+                regenBtn.setIcon(Icons.refresh(13, Theme.TEXT_MUTED));
+                regenBtn.setIconTextGap(5);
                 regenBtn.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
                 regenBtn.setForeground(Theme.TEXT_MUTED);
                 regenBtn.setBorderPainted(false);

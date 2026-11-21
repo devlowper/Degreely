@@ -1,5 +1,6 @@
 package com.degreely.app.view.components.chat;
 
+import com.degreely.app.util.Icons;
 import com.degreely.app.util.Theme;
 import com.degreely.app.util.UI;
 import com.formdev.flatlaf.FlatClientProperties;
@@ -73,9 +74,7 @@ public class ComposerPanel extends JPanel {
         ));
 
         // Left: Paperclip Button for file upload
-        JButton paperclipBtn = new JButton("📎");
-        paperclipBtn.setFont(new Font(Theme.FONT_BUTTON.getName(), Font.PLAIN, 15));
-        paperclipBtn.setForeground(Theme.TEXT_MUTED);
+        JButton paperclipBtn = new JButton(Icons.paperclip(16, Theme.TEXT_MUTED));
         paperclipBtn.setBorderPainted(false);
         paperclipBtn.setContentAreaFilled(false);
         paperclipBtn.setFocusPainted(false);
@@ -204,6 +203,8 @@ public class ComposerPanel extends JPanel {
                 chip.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), Color.decode("#BFDBFE"), 1, 12));
 
                 JLabel name = new JLabel(f.getName());
+                name.setIcon(Icons.paperclip(12, Theme.BLUE_TEXT));
+                name.setIconTextGap(4);
                 name.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
                 name.setForeground(Theme.BLUE_TEXT);
 

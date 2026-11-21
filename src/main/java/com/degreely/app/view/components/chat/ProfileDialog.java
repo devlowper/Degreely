@@ -44,7 +44,8 @@ public class ProfileDialog extends JDialog {
     }
 
     private void initUI() {
-        setSize(560, 580);
+        setSize(620, 640);
+        setResizable(false);
         setLocationRelativeTo(getOwner());
         getContentPane().setBackground(Theme.CARD_BG);
         setLayout(new BorderLayout());
@@ -55,9 +56,16 @@ public class ProfileDialog extends JDialog {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(
                 Theme.SPACING_24, Theme.SPACING_24, Theme.SPACING_24, Theme.SPACING_24));
 
+        JPanel titleRow = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 0));
+        titleRow.setOpaque(false);
+
+        JLabel iconLabel = new JLabel(com.degreely.app.util.Icons.user(20, Theme.PRIMARY));
         JLabel title = UI.sectionLabel("Student Academic Profile");
         title.setFont(new Font(Theme.FONT_TITLE.getName(), Font.BOLD, 18));
-        mainPanel.add(title);
+
+        titleRow.add(iconLabel);
+        titleRow.add(title);
+        mainPanel.add(titleRow);
         mainPanel.add(Box.createVerticalStrut(Theme.SPACING_4));
 
         JLabel desc = UI.secondaryLabel("Night Owl AI uses your profile silently to personalize admission recommendations.");
@@ -102,6 +110,8 @@ public class ProfileDialog extends JDialog {
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getViewport().setBackground(Theme.CARD_BG);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
         add(scrollPane, BorderLayout.CENTER);
     }
