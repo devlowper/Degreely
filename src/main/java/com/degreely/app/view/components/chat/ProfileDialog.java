@@ -10,19 +10,20 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.Scrollable;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
 
 public class ProfileDialog extends JDialog {
 
@@ -44,17 +45,18 @@ public class ProfileDialog extends JDialog {
     }
 
     private void initUI() {
-        setSize(620, 640);
-        setResizable(false);
+        setSize(680, 650);
+        setMinimumSize(new Dimension(560, 520));
+        setResizable(true);
         setLocationRelativeTo(getOwner());
         getContentPane().setBackground(Theme.CARD_BG);
         setLayout(new BorderLayout());
 
-        JPanel mainPanel = new JPanel();
+        // Custom Scrollable panel that guarantees 100% viewport width matching without horizontal clipping
+        ScrollablePanel mainPanel = new ScrollablePanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setOpaque(false);
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(
-                Theme.SPACING_24, Theme.SPACING_24, Theme.SPACING_24, Theme.SPACING_24));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(24, 28, 24, 28));
 
         JPanel titleRow = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 0));
         titleRow.setOpaque(false);
@@ -68,12 +70,12 @@ public class ProfileDialog extends JDialog {
         mainPanel.add(titleRow);
         mainPanel.add(Box.createVerticalStrut(Theme.SPACING_4));
 
-        JLabel desc = UI.secondaryLabel("Degreely AI uses your profile silently to personalize admission recommendations.");
+        JLabel desc = UI.secondaryLabel("<html>Degreely AI uses your profile silently to personalize admission recommendations, GPA requirements, and scholarship matching.</html>");
         mainPanel.add(desc);
         mainPanel.add(Box.createVerticalStrut(Theme.SPACING_16));
 
-        // Form Fields (2-column layout)
-        JPanel grid = new JPanel(new GridLayout(0, 2, Theme.SPACING_16, Theme.SPACING_12));
+        // Form Fields (2-column layout that evenly divides available width)
+        JPanel grid = new JPanel(new GridLayout(0, 2, 16, 12));
         grid.setOpaque(false);
 
         grid.add(createField("Current / Target Degree", degreeField, "e.g. Bachelor / Master"));
@@ -92,15 +94,15 @@ public class ProfileDialog extends JDialog {
         mainPanel.add(Box.createVerticalStrut(Theme.SPACING_16));
 
         // Buttons
-        JPanel btnRow = new JPanel(new FlowLayout(FlowLayout.RIGHT, Theme.SPACING_8, 0));
+        JPanel btnRow = new JPanel(new FlowLayout(FlowLayout.RIGHT, Theme.SPACING_12, 0));
         btnRow.setOpaque(false);
 
         JButton cancelBtn = UI.outlineButton("Cancel");
-        cancelBtn.setFont(Theme.FONT_SMALL);
+        cancelBtn.setFont(Theme.FONT_BUTTON);
         cancelBtn.addActionListener(e -> dispose());
 
         JButton saveBtn = UI.primaryButton("Save Profile");
-        saveBtn.setFont(Theme.FONT_SMALL);
+        saveBtn.setFont(Theme.FONT_BUTTON);
         saveBtn.addActionListener(e -> saveProfileData());
 
         btnRow.add(cancelBtn);
@@ -128,6 +130,7 @@ public class ProfileDialog extends JDialog {
         field.setFont(Theme.FONT_BODY);
         field.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, placeholder);
         field.putClientProperty(FlatClientProperties.STYLE, "arc: 8; margin: 6,10,6,10;");
+        field.setPreferredSize(new Dimension(100, 36));
         field.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
 
         p.add(l);
@@ -171,5 +174,36 @@ public class ProfileDialog extends JDialog {
         profileService.saveProfile(p);
         JOptionPane.showMessageDialog(this, "Profile updated! AI Counselor will now tailor responses to your background.", "Profile Saved", JOptionPane.INFORMATION_MESSAGE);
         dispose();
+    }
+
+    /**
+     * Scrollable panel implementation ensuring the content tracks the exact viewport width,
+     * preventing any right-side clipping.
+     */
+    private static class ScrollablePanel extends JPanel implements Scrollable {
+        @Override
+        public Dimension getPreferredScrollableViewportSize() {
+            return getPreferredSize();
+        }
+
+        @Override
+        public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
+            return 16;
+        }
+
+        @Override
+        public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
+            return 64;
+        }
+
+        @Override
+        public boolean getScrollableTracksViewportWidth() {
+            return true;
+        }
+
+        @Override
+        public boolean getScrollableTracksViewportHeight() {
+            return false;
+        }
     }
 }
