@@ -18,10 +18,11 @@
 - [Core Modules & Features](#-core-modules--features)
   - [1. University Discovery & Search Hub](#1--university-discovery--search-hub)
   - [2. Comprehensive University Details](#2--comprehensive-university-details)
-  - [3. Worldwide Scholarships & Funding](#3--worldwide-scholarships--funding)
-  - [4. Side-by-Side University Comparison](#4--side-by-side-university-comparison)
-  - [5. Intelligent Admission Predictor](#5--intelligent-admission-predictor)
-  - [6. Application Deadline Tracker](#6--application-deadline-tracker)
+  - [3. ✦ Night Owl AI Study Abroad Counselor](#3--night-owl-ai-study-abroad-counselor)
+  - [4. Worldwide Scholarships & Funding](#4--worldwide-scholarships--funding)
+  - [5. Side-by-Side University Comparison](#5--side-by-side-university-comparison)
+  - [6. Intelligent Admission Predictor](#6--intelligent-admission-predictor)
+  - [7. Application Deadline Tracker](#7--application-deadline-tracker)
 - [Design System & Tokens](#-design-system--tokens)
 - [Project Structure](#-project-structure)
 - [Quick Start Guide](#-quick-start-guide)
@@ -77,20 +78,35 @@ No external database server (like MySQL or PostgreSQL) is required. The platform
   - **Pre-requisites**: Minimum GPA, IELTS band, TOEFL score, and required document checklist.
 - **Similar Institutions Sidebar**: Recommends similar universities based on country and ranking proximity.
 
-### 3. 💰 Worldwide Scholarships & Funding
+### 3. ✦ Night Owl AI Study Abroad Counselor (Claude-Style Chatbot)
+- **AI-Powered Admissions Advising**: Focused on students from Bangladesh and South Asia planning to study abroad. Answers questions on university selection, requirements, visas, exams (IELTS/GRE), and SOP reviews.
+- **Claude.ai Look & Feel**:
+  - **Left Sidebar (264px)**: Serif app title, orange "New chat" button, chat search (Ctrl+K), "Recents" categorized by *Today / Yesterday / Previous 7 days / Older*, with pin, rename, and delete actions.
+  - **Empty State**: Centered warm spark icon, large serif greeting (*"Hello, night owl"*), and 4 quick starter prompt cards.
+  - **Message Stream**: Right-aligned user bubbles (`#F1F5F9`) and left-aligned assistant messages with full markdown formatting, "Thinking..." indicator, and Copy / Regenerate actions.
+  - **Composer (24px radius)**: Auto-growing input, paperclip file attachment button (PDF, Images, TXT, CSV, DOCX), file chips with remove button, and orange send button.
+- **Dynamic University Comparison Tables (`uni-table`)**:
+  - Whenever comparison or lookup is requested, Gemini returns a structured JSON block which is automatically rendered as an interactive, side-by-side comparison table card with attribute row groups (Admissions, Costs, Living Expenses, Deadlines, Work Rights).
+  - Highlights cheapest tuition and nearest deadline. Includes **Copy Table** and **Export CSV** buttons.
+- **Multimodal Document Upload**: Send SOP drafts, CVs, and transcripts for constructive admissions evaluation.
+- **Student Profile Personalization**: Local profile modal (CGPA, IELTS, target countries, budget) silently injected into Gemini system context.
+- **Chat History & Export**: Conversations automatically saved to `~/.degreely/chats.json` and exportable as Markdown (`.md`).
+- **Configurable API Key**: Set via `GEMINI_API_KEY` environment variable or the in-app Gemini Settings dialog (`gemini-2.5-flash`, `gemini-1.5-flash`, `gemini-1.5-pro`).
+
+### 4. 💰 Worldwide Scholarships & Funding
 - **Prestigious Aid Opportunities**: Includes Fulbright, Rhodes, Gates Cambridge, Knight-Hennessy, DAAD, ETH Zurich Excellence, Vanier CGS, and MEXT.
 - **Smart Deadline Detection**: Displays a prominent red **`Closing soon (Xd left)`** badge for deadlines falling within 30 days.
 - **One-Click Application**: "Apply Link ↗" opens official scholarship portals directly in the user's default browser.
 - **Keyword & Country Search**: Filter funding opportunities by host country, study level, or scholarship title.
 
-### 4. ⚖️ Side-by-Side University Comparison
+### 5. ⚖️ Side-by-Side University Comparison
 - **Matrix View**: Compare up to **3 universities simultaneously**.
 - **Singleton State Management**: Powered by `CompareManager` with listener callbacks to update the view when selections change.
 - **Automated Best-Value Green Highlighting**:
   - Automatically identifies and highlights the best metric in soft pastel green (`#DCFCE7`) with a `★ Best` badge (e.g., best world rank, lowest annual tuition, highest acceptance rate, lowest GPA cutoff).
 - **Interactive Controls**: Add universities from any card or details page; remove individual columns with one click.
 
-### 5. 🎯 Intelligent Admission Predictor
+### 6. 🎯 Intelligent Admission Predictor
 - **Predictive Algorithm**: Evaluates applicant profile against institutional criteria using `PredictorService`:
   - GPA Delta vs. university requirement.
   - IELTS English Band Delta.
@@ -104,7 +120,7 @@ No external database server (like MySQL or PostgreSQL) is required. The platform
     - 🟢 **> 70% (Strong Match)**: High probability profile.
   - Tailored actionable advice explaining strengths and actionable steps.
 
-### 6. 📅 Application Deadline Tracker
+### 7. 📅 Application Deadline Tracker
 - **Personalized Tracker**: Add upcoming university applications with program name, target university, and deadline date.
 - **Chronological Ordering**: Closest deadlines automatically float to the top of the queue.
 - **Days Left Countdown**: Real-time counter showing exact days remaining, "Due Today!", or overdue status.
@@ -156,13 +172,20 @@ Degreely/
         │       │   ├── University.java           # University entity
         │       │   ├── Program.java              # Degree program entity
         │       │   ├── Scholarship.java          # Scholarship entity
-        │       │   └── ApplicationDeadline.java  # User deadline entity
+        │       │   ├── ApplicationDeadline.java  # User deadline entity
+        │       │   ├── ChatMessage.java          # Night Owl chat message entity
+        │       │   ├── ChatSession.java          # Night Owl conversation session
+        │       │   ├── StudentProfile.java       # Academic background profile
+        │       │   └── UniTableData.java         # Structured comparison table entity
         │       │
         │       ├── controller/           # Business logic & services
         │       │   ├── UniversityService.java    # Search, sorting & filtering logic
         │       │   ├── CompareManager.java       # Singleton comparison state
         │       │   ├── PredictorService.java     # Admission scoring algorithm
-        │       │   └── DeadlineService.java      # Local JSON file persistence
+        │       │   ├── DeadlineService.java      # Local JSON file persistence
+        │       │   ├── GeminiService.java        # Gemini REST client & prompt manager
+        │       │   ├── ChatStorageService.java   # Chat session persistence
+        │       │   └── StudentProfileService.java# Profile context manager
         │       │
         │       ├── util/                 # Reusable helpers & design tokens
         │       │   ├── Theme.java                # Color palette, spacing & fonts
@@ -174,6 +197,7 @@ Degreely/
         │           ├── Navbar.java               # Top navigation bar with active indicator
         │           ├── UniversitiesPage.java     # University catalog with hero banner & filters
         │           ├── UniversityDetailsPage.java# Deep-dive university details with tabs
+        │           ├── ChatPage.java             # Night Owl AI Counselor workspace
         │           ├── ScholarshipsPage.java     # Scholarship catalog & closing alerts
         │           ├── ComparePage.java          # Multi-university comparison table
         │           ├── PredictorPage.java        # Interactive admission calculator
@@ -182,7 +206,15 @@ Degreely/
         │               ├── UniversityCard.java
         │               ├── UniversityDetailsDialog.java
         │               ├── ScholarshipCard.java
-        │               └── DeadlineCard.java
+        │               ├── DeadlineCard.java
+        │               └── chat/
+        │                   ├── ChatSidebar.java          # 264px history sidebar
+        │                   ├── ComposerPanel.java        # 24px rounded input with attachment
+        │                   ├── MessageBubble.java        # User bubble & assistant markdown
+        │                   ├── UniTableComponent.java    # Dynamic comparison table component
+        │                   ├── StarterPromptsPanel.java  # "Hello, night owl" greeting
+        │                   ├── ProfileDialog.java        # Academic profile modal
+        │                   └── ApiKeyDialog.java         # Gemini API settings modal
         │
         └── resources/
             └── data/

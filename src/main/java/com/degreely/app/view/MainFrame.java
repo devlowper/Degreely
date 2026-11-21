@@ -41,6 +41,7 @@ public class MainFrame extends JFrame {
         contentArea.add(new UniversitiesPage(this::openUniversityDetails), "Universities");
         contentArea.add(detailsPage, "UniversityDetails");
         contentArea.add(new ScholarshipsPage(), "Scholarships");
+        contentArea.add(new ChatPage(), "Night Owl AI");
         contentArea.add(new ComparePage(this::navigateTo), "Compare");
         contentArea.add(new PredictorPage(), "Predictor");
         contentArea.add(new DeadlinesPage(), "Deadlines");

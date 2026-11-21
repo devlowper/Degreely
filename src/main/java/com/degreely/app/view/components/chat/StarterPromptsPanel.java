@@ -1,0 +1,158 @@
+package com.degreely.app.view.components.chat;
+
+import com.degreely.app.util.Theme;
+import com.degreely.app.util.UI;
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
+
+public class StarterPromptsPanel extends JPanel {
+
+    private final Consumer<String> onSelectPrompt;
+
+    public StarterPromptsPanel(Consumer<String> onSelectPrompt) {
+        this.onSelectPrompt = onSelectPrompt;
+        initUI();
+    }
+
+    private void initUI() {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setOpaque(false);
+        setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_24, Theme.SPACING_32));
+
+        // 1. Centered Spark Icon
+        JPanel sparkIcon = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g.create();
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setColor(Theme.PRIMARY);
+                g2.fillRoundRect(0, 0, getWidth(), getHeight(), 14, 14);
+
+                g2.setColor(Color.WHITE);
+                g2.setFont(new Font(Font.SERIF, Font.BOLD, 22));
+                g2.drawString("✦", 12, 28);
+                g2.dispose();
+            }
+        };
+        sparkIcon.setPreferredSize(new Dimension(42, 42));
+        sparkIcon.setMaximumSize(new Dimension(42, 42));
+        sparkIcon.setOpaque(false);
+        sparkIcon.setAlignmentX(CENTER_ALIGNMENT);
+
+        add(Box.createVerticalGlue());
+        add(sparkIcon);
+        add(Box.createVerticalStrut(Theme.SPACING_12));
+
+        // 2. Greeting Title ("Hello, night owl") in Serif font
+        JLabel greeting = new JLabel("Hello, night owl");
+        greeting.setFont(new Font(Font.SERIF, Font.PLAIN, 32));
+        greeting.setForeground(Theme.TEXT);
+        greeting.setAlignmentX(CENTER_ALIGNMENT);
+        add(greeting);
+        add(Box.createVerticalStrut(Theme.SPACING_8));
+
+        JLabel subtitle = UI.secondaryLabel("Your dedicated AI study-abroad counselor for universities, costs, requirements, and scholarships.");
+        subtitle.setFont(Theme.FONT_BODY);
+        subtitle.setAlignmentX(CENTER_ALIGNMENT);
+        add(subtitle);
+        add(Box.createVerticalStrut(Theme.SPACING_32));
+
+        // 3. Four Starter Cards Grid (2x2)
+        JPanel grid = new JPanel(new GridLayout(2, 2, Theme.SPACING_12, Theme.SPACING_12));
+        grid.setOpaque(false);
+        grid.setMaximumSize(new Dimension(760, 180));
+
+        grid.add(createCard(
+                "Compare universities for MSc in Germany",
+                "Tuition, living cost, and English requirements side-by-side"
+        ));
+        grid.add(createCard(
+                "Cheapest countries for study abroad",
+                "Explore zero-tuition and low-cost public institutions"
+        ));
+        grid.add(createCard(
+                "IELTS and GPA requirements for Canada",
+                "Check admissions cutoffs and visa score guidelines"
+        ));
+        grid.add(createCard(
+                "Review my SOP & Academic Profile",
+                "Attach draft SOP or CV for constructive admissions feedback"
+        ));
+
+        grid.setAlignmentX(CENTER_ALIGNMENT);
+        add(grid);
+        add(Box.createVerticalGlue());
+    }
+
+    private JPanel createCard(String title, String desc) {
+        JPanel card = new JPanel();
+        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+        card.setBackground(Theme.CARD_BG);
+        card.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FFFFFF;");
+        card.setBorder(BorderFactory.createCompoundBorder(
+                new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 12),
+                BorderFactory.createEmptyBorder(12, 16, 12, 16)
+        ));
+        card.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        JLabel t = new JLabel(title);
+        t.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 13));
+        t.setForeground(Theme.TEXT);
+
+        JLabel d = new JLabel(desc);
+        d.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
+        d.setForeground(Theme.TEXT_MUTED);
+
+        card.add(t);
+        card.add(Box.createVerticalStrut(4));
+        card.add(d);
+
+        // Hover Effect
+        card.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                card.setBorder(BorderFactory.createCompoundBorder(
+                        new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.PRIMARY, 1, 12),
+                        BorderFactory.createEmptyBorder(12, 16, 12, 16)
+                ));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                card.setBorder(BorderFactory.createCompoundBorder(
+                        new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 12),
+                        BorderFactory.createEmptyBorder(12, 16, 12, 16)
+                ));
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (onSelectPrompt != null) {
+                    onSelectPrompt.accept(title);
+                }
+            }
+        });
+
+        return card;
+    }
+}
