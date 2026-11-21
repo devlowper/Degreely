@@ -239,6 +239,32 @@ public final class Icons {
     }
 
     /**
+     * Home house icon.
+     */
+    public static Icon home(int size, Color color) {
+        return new VectorIcon(size, size, (g2, w, h) -> {
+            g2.setColor(color);
+            g2.setStroke(new BasicStroke(1.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+            GeneralPath roof = new GeneralPath();
+            roof.moveTo(w * 0.15, h * 0.44);
+            roof.lineTo(w * 0.50, h * 0.16);
+            roof.lineTo(w * 0.85, h * 0.44);
+            g2.draw(roof);
+
+            GeneralPath body = new GeneralPath();
+            body.moveTo(w * 0.24, h * 0.42);
+            body.lineTo(w * 0.24, h * 0.84);
+            body.lineTo(w * 0.76, h * 0.84);
+            body.lineTo(w * 0.76, h * 0.42);
+            g2.draw(body);
+
+            // Door
+            g2.drawRect((int)(w * 0.42), (int)(h * 0.56), (int)(w * 0.16), (int)(h * 0.28));
+        });
+    }
+
+    /**
      * University building icon.
      */
     public static Icon university(int size, Color color) {

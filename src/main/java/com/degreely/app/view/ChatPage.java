@@ -102,6 +102,14 @@ public class ChatPage extends JPanel {
         add(mainArea, BorderLayout.CENTER);
     }
 
+    /**
+     * Programmatically send an inquiry to the AI counselor (e.g. from Home page university cards).
+     */
+    public void askQuestion(String prompt) {
+        if (prompt == null || prompt.trim().isEmpty()) return;
+        handleSendMessage(prompt.trim(), null);
+    }
+
     private JPanel createTopBar() {
         JPanel bar = new JPanel(new BorderLayout());
         bar.setBackground(Color.WHITE);
