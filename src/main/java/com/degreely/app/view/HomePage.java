@@ -91,6 +91,7 @@ public class HomePage extends JPanel {
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getViewport().setBackground(Theme.BACKGROUND);
         scrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         add(scrollPane, BorderLayout.CENTER);
 
@@ -266,8 +267,8 @@ public class HomePage extends JPanel {
         section.add(filterBar);
         section.add(Box.createVerticalStrut(Theme.SPACING_24));
 
-        // University Cards Grid (2 columns)
-        universitiesGrid = new JPanel(new GridLayout(0, 2, 20, 20));
+        // University Cards Stack (1 by 1 downwards, no side scroll)
+        universitiesGrid = new JPanel(new GridLayout(0, 1, 0, 16));
         universitiesGrid.setOpaque(false);
         universitiesGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
         section.add(universitiesGrid);
@@ -486,8 +487,8 @@ public class HomePage extends JPanel {
         center.add(locationLabel);
         center.add(Box.createVerticalStrut(12));
 
-        // Metrics Grid (Tuition, GPA, IELTS, Acceptance)
-        JPanel metricsPanel = new JPanel(new GridLayout(2, 2, 8, 8));
+        // Metrics Row (4 metrics side-by-side in 1 by 1 view)
+        JPanel metricsPanel = new JPanel(new GridLayout(1, 4, 12, 0));
         metricsPanel.setOpaque(false);
 
         String tuitionStr = u.getTuitionPerYear() == 0 ? "Tuition-Free ($0)" : "$" + NumberFormat.getNumberInstance(Locale.US).format((int) u.getTuitionPerYear()) + " / yr";
@@ -497,12 +498,18 @@ public class HomePage extends JPanel {
         metricsPanel.add(createMetricPill("Acceptance", u.getAcceptanceRate() + "%", Theme.TEXT));
 
         center.add(metricsPanel);
-        center.add(Box.createVerticalStrut(12));
+        center.add(Box.createVerticalStrut(10));
+
+        card.add(center, BorderLayout.CENTER);
+
+        // Bottom Row: Program Tags on Left, Ask AI Button on Right
+        JPanel bottomRow = new JPanel(new BorderLayout(16, 0));
+        bottomRow.setOpaque(false);
 
         // Programs Preview Pills
-        JPanel progPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 4));
+        JPanel progPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 2));
         progPanel.setOpaque(false);
-        int maxPrograms = Math.min(3, u.getPrograms().size());
+        int maxPrograms = Math.min(4, u.getPrograms().size());
         for (int i = 0; i < maxPrograms; i++) {
             Program p = u.getPrograms().get(i);
             JLabel progTag = new JLabel(p.getName() + " (" + p.getLevel() + ")");
@@ -513,18 +520,15 @@ public class HomePage extends JPanel {
             progTag.setBorder(BorderFactory.createEmptyBorder(2, 6, 2, 6));
             progPanel.add(progTag);
         }
-        if (u.getPrograms().size() > 3) {
-            JLabel moreTag = new JLabel("+" + (u.getPrograms().size() - 3) + " more");
+        if (u.getPrograms().size() > 4) {
+            JLabel moreTag = new JLabel("+" + (u.getPrograms().size() - 4) + " more");
             moreTag.setFont(Theme.FONT_SMALL);
             moreTag.setForeground(Theme.TEXT_MUTED);
             progPanel.add(moreTag);
         }
-        center.add(progPanel);
+        bottomRow.add(progPanel, BorderLayout.CENTER);
 
-        card.add(center, BorderLayout.CENTER);
-
-        // Bottom Action Button: Ask AI Counselor
-        JButton askAiBtn = new JButton("Ask AI Counselor About " + (u.getName().length() > 22 ? u.getName().substring(0, 20) + "..." : u.getName()) + " ✦", Icons.spark(14, Theme.PRIMARY));
+        JButton askAiBtn = new JButton("Ask AI Counselor ✦", Icons.spark(14, Theme.PRIMARY));
         askAiBtn.setFont(Theme.FONT_BUTTON);
         askAiBtn.setForeground(Theme.PRIMARY);
         askAiBtn.setBackground(Theme.PRIMARY_LIGHT);
@@ -533,7 +537,7 @@ public class HomePage extends JPanel {
         askAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         askAiBtn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(8, 12, 8, 12)
+                BorderFactory.createEmptyBorder(7, 16, 7, 16)
         ));
         askAiBtn.addActionListener(e -> {
             String prompt = "Tell me all about admission requirements, scholarships, deadlines, and cost of attendance for " + u.getName() + " in " + u.getCountry() + ".";
@@ -541,8 +545,9 @@ public class HomePage extends JPanel {
                 onAskAI.accept(prompt);
             }
         });
+        bottomRow.add(askAiBtn, BorderLayout.EAST);
 
-        card.add(askAiBtn, BorderLayout.SOUTH);
+        card.add(bottomRow, BorderLayout.SOUTH);
 
         return card;
     }
