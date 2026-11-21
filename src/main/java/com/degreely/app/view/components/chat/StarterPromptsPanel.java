@@ -29,9 +29,15 @@ import java.util.function.Consumer;
 public class StarterPromptsPanel extends JPanel {
 
     private final Consumer<String> onSelectPrompt;
+    private final Runnable onComparePrompt;
 
     public StarterPromptsPanel(Consumer<String> onSelectPrompt) {
+        this(onSelectPrompt, null);
+    }
+
+    public StarterPromptsPanel(Consumer<String> onSelectPrompt, Runnable onComparePrompt) {
         this.onSelectPrompt = onSelectPrompt;
+        this.onComparePrompt = onComparePrompt;
         initUI();
     }
 
@@ -82,24 +88,34 @@ public class StarterPromptsPanel extends JPanel {
         grid.setMaximumSize(new Dimension(760, 180));
 
         grid.add(createCard(
-                Icons.university(18, Theme.PRIMARY),
-                "Compare universities for MSc in Germany",
-                "Tuition, living cost, and English requirements side-by-side"
+                Icons.scale(18, Theme.PRIMARY),
+                "Compare 2 or 3 Universities in Table",
+                "Side-by-side comparison of tuition, living cost, GPA & deadlines",
+                () -> {
+                    if (onComparePrompt != null) {
+                        onComparePrompt.run();
+                    } else if (onSelectPrompt != null) {
+                        onSelectPrompt.accept("Compare Technical University of Munich, University of Toronto, and ETH Zurich for Master in Computer Science in a detailed comparison table.");
+                    }
+                }
         ));
         grid.add(createCard(
                 Icons.coins(18, Theme.PRIMARY),
                 "Cheapest countries for study abroad",
-                "Explore zero-tuition and low-cost public institutions"
+                "Explore zero-tuition and low-cost public institutions",
+                () -> { if (onSelectPrompt != null) onSelectPrompt.accept("Which countries offer free or cheapest tuition for international Master's programs?"); }
         ));
         grid.add(createCard(
                 Icons.documentCheck(18, Theme.PRIMARY),
                 "IELTS and GPA requirements for Canada",
-                "Check admissions cutoffs and visa score guidelines"
+                "Check admissions cutoffs and visa score guidelines",
+                () -> { if (onSelectPrompt != null) onSelectPrompt.accept("What are the minimum GPA and IELTS requirements for Master's programs in Canada?"); }
         ));
         grid.add(createCard(
                 Icons.pen(18, Theme.PRIMARY),
                 "Review my SOP & Academic Profile",
-                "Attach draft SOP or CV for constructive admissions feedback"
+                "Attach draft SOP or CV for constructive admissions feedback",
+                () -> { if (onSelectPrompt != null) onSelectPrompt.accept("Please review my academic profile and Statement of Purpose for admission eligibility."); }
         ));
 
         grid.setAlignmentX(CENTER_ALIGNMENT);
@@ -107,7 +123,7 @@ public class StarterPromptsPanel extends JPanel {
         add(Box.createVerticalGlue());
     }
 
-    private JPanel createCard(javax.swing.Icon icon, String title, String desc) {
+    private JPanel createCard(javax.swing.Icon icon, String title, String desc, Runnable onClick) {
         JPanel card = new JPanel();
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
         card.setBackground(Theme.CARD_BG);
@@ -159,8 +175,8 @@ public class StarterPromptsPanel extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (onSelectPrompt != null) {
-                    onSelectPrompt.accept(title);
+                if (onClick != null) {
+                    onClick.run();
                 }
             }
         });

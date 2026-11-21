@@ -182,8 +182,12 @@ public class MessageBubble extends JPanel {
 
     private String convertMarkdownToHtml(String md) {
         if (md == null) return "";
+
+        // First convert any markdown tables into styled HTML tables
+        String formatted = formatMarkdownTables(md);
+
         // Convert basic markdown formatting to safe styled HTML
-        String html = md
+        String html = formatted
                 .replaceAll("(?m)^### (.*)$", "<h3 style='margin:8px 0 4px 0; color:#0F172A; font-size:15px;'>$1</h3>")
                 .replaceAll("(?m)^## (.*)$", "<h2 style='margin:12px 0 6px 0; color:#0F172A; font-size:16px;'>$1</h2>")
                 .replaceAll("(?m)^# (.*)$", "<h1 style='margin:14px 0 8px 0; color:#0F172A; font-size:18px;'>$1</h1>")
@@ -198,9 +202,65 @@ public class MessageBubble extends JPanel {
                 html + "</body></html>";
     }
 
+    private String formatMarkdownTables(String text) {
+        if (!text.contains("|")) return text;
+        String[] lines = text.split("\r?\n");
+        StringBuilder sb = new StringBuilder();
+        boolean inTable = false;
+        boolean isHeader = true;
+
+        for (String line : lines) {
+            String trimmed = line.trim();
+            if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
+                if (trimmed.matches("^\\|[\\s\\-:\\|]+$")) {
+                    isHeader = false;
+                    continue;
+                }
+                if (!inTable) {
+                    inTable = true;
+                    isHeader = true;
+                    sb.append("<table style='border-collapse:collapse; width:100%; margin:8px 0; border:1px solid #E2E8F0; font-family:sans-serif; font-size:12px;'>");
+                }
+                String[] rawCells = trimmed.substring(1, trimmed.length() - 1).split("\\|");
+                sb.append("<tr style='background:").append(isHeader ? "#F8FAFC" : "#FFFFFF").append(";'>");
+                for (String c : rawCells) {
+                    String tag = isHeader ? "th" : "td";
+                    String style = isHeader ? "padding:8px 10px; border:1px solid #E2E8F0; font-weight:bold; color:#0F172A; text-align:left;" 
+                                            : "padding:6px 10px; border:1px solid #E2E8F0; color:#334155;";
+                    sb.append("<").append(tag).append(" style='").append(style).append("'>")
+                      .append(c.trim())
+                      .append("</").append(tag).append(">");
+                }
+                sb.append("</tr>");
+            } else {
+                if (inTable) {
+                    sb.append("</table>");
+                    inTable = false;
+                }
+                sb.append(line).append("\n");
+            }
+        }
+        if (inTable) {
+            sb.append("</table>");
+        }
+        return sb.toString();
+    }
+
     private String removeUniTableBlock(String content) {
         if (content == null) return "";
-        return content.replaceAll("```(?:uni-table|json)?\\s*\\{[\\s\\S]*?\"universities\"[\\s\\S]*?\\}\\s*```", "").trim();
+        String cleaned = content.replaceAll("```(?:uni-table|json)?\\s*\\{[\\s\\S]*?\"universities\"[\\s\\S]*?\\}\\s*```", "").trim();
+        // Also remove bare JSON if present
+        int idx = cleaned.indexOf("\"universities\"");
+        if (idx != -1) {
+            int start = cleaned.lastIndexOf('{', idx);
+            if (start != -1) {
+                int end = cleaned.lastIndexOf('}');
+                if (end > start) {
+                    cleaned = cleaned.substring(0, start) + cleaned.substring(end + 1);
+                }
+            }
+        }
+        return cleaned.trim();
     }
 
     private String escapeHtml(String text) {

@@ -2,15 +2,21 @@ package com.degreely.app.view;
 
 import com.degreely.app.controller.ChatStorageService;
 import com.degreely.app.controller.GeminiService;
+import com.degreely.app.controller.UniversityService;
 import com.degreely.app.model.ChatMessage;
 import com.degreely.app.model.ChatSession;
+import com.degreely.app.model.UniTableData;
+import com.degreely.app.model.University;
+import com.degreely.app.util.Icons;
 import com.degreely.app.util.Theme;
 import com.degreely.app.util.UI;
 import com.degreely.app.view.components.chat.ChatSidebar;
+import com.degreely.app.view.components.chat.CompareDialog;
 import com.degreely.app.view.components.chat.ComposerPanel;
 import com.degreely.app.view.components.chat.MessageBubble;
 import com.degreely.app.view.components.chat.StarterPromptsPanel;
 import com.formdev.flatlaf.FlatClientProperties;
+import com.google.gson.Gson;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -29,6 +35,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Frame;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -88,8 +95,8 @@ public class ChatPage extends JPanel {
 
         mainArea.add(messagesScrollPane, BorderLayout.CENTER);
 
-        // Bottom Composer
-        composerPanel = new ComposerPanel(this::handleSendMessage, this::handleStopGeneration);
+        // Bottom Composer with Compare Action
+        composerPanel = new ComposerPanel(this::handleSendMessage, this::handleStopGeneration, this::openCompareDialog);
         mainArea.add(composerPanel, BorderLayout.SOUTH);
 
         add(mainArea, BorderLayout.CENTER);
@@ -113,14 +120,22 @@ public class ChatPage extends JPanel {
 
         left.add(headerTitleLabel);
 
-        // Right Actions: Export chat as Markdown
-        JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT, Theme.SPACING_8, 12));
+        // Right Actions: Compare Universities & Export chat
+        JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT, Theme.SPACING_8, 10));
         right.setOpaque(false);
+
+        JButton compareBtn = UI.outlineButton("Compare Universities");
+        compareBtn.setIcon(Icons.scale(14, Theme.PRIMARY));
+        compareBtn.setIconTextGap(6);
+        compareBtn.setFont(Theme.FONT_SMALL);
+        compareBtn.setToolTipText("Compare 2 or 3 universities side-by-side in a table");
+        compareBtn.addActionListener(e -> openCompareDialog());
 
         JButton exportBtn = UI.outlineButton("Export Chat");
         exportBtn.setFont(Theme.FONT_SMALL);
         exportBtn.addActionListener(e -> exportCurrentChat());
 
+        right.add(compareBtn);
         right.add(exportBtn);
 
         bar.add(left, BorderLayout.WEST);
@@ -146,10 +161,11 @@ public class ChatPage extends JPanel {
         messagesColumn.removeAll();
 
         if (currentSession == null || currentSession.getMessages().isEmpty()) {
-            // Render Starter Prompts empty state
-            StarterPromptsPanel starter = new StarterPromptsPanel(prompt -> {
-                composerPanel.setPromptText(prompt);
-            });
+            // Render Starter Prompts empty state with Compare action
+            StarterPromptsPanel starter = new StarterPromptsPanel(
+                    prompt -> composerPanel.setPromptText(prompt),
+                    this::openCompareDialog
+            );
             messagesColumn.add(starter);
         } else {
             for (ChatMessage msg : currentSession.getMessages()) {
@@ -288,6 +304,99 @@ public class ChatPage extends JPanel {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Failed to export: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
+        }
+    }
+
+    public void openCompareDialog() {
+        Frame owner = (Frame) SwingUtilities.getWindowAncestor(this);
+        CompareDialog dialog = new CompareDialog(owner, this::handleCompareUniversities);
+        dialog.setVisible(true);
+    }
+
+    private void handleCompareUniversities(List<University> selectedUnis, String program, String degree) {
+        if (selectedUnis == null || selectedUnis.size() < 2) return;
+
+        StringBuilder names = new StringBuilder();
+        for (int i = 0; i < selectedUnis.size(); i++) {
+            if (i > 0 && i == selectedUnis.size() - 1) names.append(" and ");
+            else if (i > 0) names.append(", ");
+            names.append(selectedUnis.get(i).getName());
+        }
+
+        String userPrompt = "Please compare " + names + " side-by-side for " + degree + " in " + program + " in a detailed comparison table.";
+
+        // Pre-build structured UniTableData from our comprehensive institutional dataset
+        UniTableData tableData = UniversityService.getInstance().buildComparisonTable(selectedUnis, program, degree);
+        String tableJson = new Gson().toJson(tableData);
+
+        if (currentSession == null) {
+            currentSession = new ChatSession("Compare: " + selectedUnis.get(0).getName() + " vs " + selectedUnis.get(1).getName());
+        }
+
+        // 1. Add user message
+        ChatMessage userMsg = new ChatMessage("user", userPrompt);
+        currentSession.addMessage(userMsg);
+
+        // 2. Process AI counseling response
+        if (geminiService.hasApiKey()) {
+            renderMessages();
+            composerPanel.setGenerating(true);
+
+            JPanel thinkingPanel = createThinkingIndicator();
+            messagesColumn.add(thinkingPanel);
+            messagesColumn.revalidate();
+            messagesColumn.repaint();
+            scrollToBottom();
+
+            chatWorker = new SwingWorker<>() {
+                @Override
+                protected ChatMessage doInBackground() throws Exception {
+                    String promptWithDirective = userPrompt + 
+                            "\n\nTABLE DIRECTIVE: Output the side-by-side comparison using the ```uni-table fenced JSON specification with all fields filled accurately.";
+                    ChatMessage reply = geminiService.sendMessage(currentSession, promptWithDirective, null);
+                    // Ensure the tableJson is set if Gemini didn't format the JSON block properly
+                    if (reply.getUniTableJson() == null || reply.getUniTableJson().isBlank()) {
+                        reply.setUniTableJson(tableJson);
+                    }
+                    return reply;
+                }
+
+                @Override
+                protected void done() {
+                    composerPanel.setGenerating(false);
+                    if (isCancelled()) return;
+                    try {
+                        ChatMessage reply = get();
+                        currentSession.addMessage(reply);
+                        storageService.saveSession(currentSession);
+                        sidebar.renderSessionList();
+                        renderMessages();
+                    } catch (Exception ex) {
+                        messagesColumn.remove(thinkingPanel);
+                        ChatMessage fallback = new ChatMessage("assistant",
+                                "Here is the side-by-side comparison for **" + degree + " in " + program +
+                                "** across **" + names + "**:\n\n" +
+                                "Below is the interactive comparison table detailing tuition fees, living costs, minimum GPA cutoffs, and application deadlines:");
+                        fallback.setUniTableJson(tableJson);
+                        currentSession.addMessage(fallback);
+                        storageService.saveSession(currentSession);
+                        sidebar.renderSessionList();
+                        renderMessages();
+                    }
+                }
+            };
+            chatWorker.execute();
+        } else {
+            // Immediate local comparison response (instant offline mode, no API key required!)
+            ChatMessage reply = new ChatMessage("assistant",
+                    "Here is the detailed side-by-side comparison for **" + degree + " in " + program +
+                    "** across **" + names + "**.\n\n" +
+                    "Compare annual tuition, monthly living expenses, minimum GPA, English language criteria, and post-study work options in the table below:");
+            reply.setUniTableJson(tableJson);
+            currentSession.addMessage(reply);
+            storageService.saveSession(currentSession);
+            sidebar.renderSessionList();
+            renderMessages();
         }
     }
 }

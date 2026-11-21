@@ -42,11 +42,17 @@ public class ComposerPanel extends JPanel {
     private final JButton stopBtn;
     private final BiConsumer<String, List<File>> onSendMessage;
     private final Runnable onStopGeneration;
+    private final Runnable onCompareRequested;
     private boolean isGenerating = false;
 
     public ComposerPanel(BiConsumer<String, List<File>> onSendMessage, Runnable onStopGeneration) {
+        this(onSendMessage, onStopGeneration, null);
+    }
+
+    public ComposerPanel(BiConsumer<String, List<File>> onSendMessage, Runnable onStopGeneration, Runnable onCompareRequested) {
         this.onSendMessage = onSendMessage;
         this.onStopGeneration = onStopGeneration;
+        this.onCompareRequested = onCompareRequested;
 
         this.sendBtn = createSendButton();
         this.stopBtn = createStopButton();
@@ -73,7 +79,7 @@ public class ComposerPanel extends JPanel {
                 BorderFactory.createEmptyBorder(8, 14, 8, 14)
         ));
 
-        // Left: Paperclip Button for file upload
+        // Left: Paperclip Button for file upload + Compare Button
         JButton paperclipBtn = new JButton(Icons.paperclip(16, Theme.TEXT_MUTED));
         paperclipBtn.setBorderPainted(false);
         paperclipBtn.setContentAreaFilled(false);
@@ -82,9 +88,20 @@ public class ComposerPanel extends JPanel {
         paperclipBtn.setToolTipText("Attach SOP, CV, Transcripts, or brochures (PDF, Images, TXT, CSV)");
         paperclipBtn.addActionListener(e -> chooseFiles());
 
-        JPanel leftWrap = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 4));
+        JButton compareBtn = new JButton(Icons.scale(16, Theme.TEXT_MUTED));
+        compareBtn.setBorderPainted(false);
+        compareBtn.setContentAreaFilled(false);
+        compareBtn.setFocusPainted(false);
+        compareBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        compareBtn.setToolTipText("Compare 2 or 3 universities side-by-side in a table");
+        compareBtn.addActionListener(e -> {
+            if (onCompareRequested != null) onCompareRequested.run();
+        });
+
+        JPanel leftWrap = new JPanel(new FlowLayout(FlowLayout.LEFT, 2, 4));
         leftWrap.setOpaque(false);
         leftWrap.add(paperclipBtn);
+        leftWrap.add(compareBtn);
 
         // Center: Textarea with auto-growing height & placeholder
         inputArea.setFont(Theme.FONT_BODY);

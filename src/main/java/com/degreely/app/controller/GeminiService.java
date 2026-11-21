@@ -298,12 +298,30 @@ public class GeminiService {
 
     public String extractUniTableJson(String text) {
         if (text == null) return null;
-        // Search for ```uni-table ... ``` or ```json ... ``` with "universities"
+        // 1. Search for ```uni-table ... ``` or ```json ... ``` with "universities"
         Pattern pattern = Pattern.compile("```(?:uni-table|json)?\\s*(\\{[\\s\\S]*?\"universities\"[\\s\\S]*?\\})\\s*```", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
             return matcher.group(1).trim();
         }
+
+        // 2. Fallback: Search for bare JSON object containing "universities"
+        int idx = text.indexOf("\"universities\"");
+        if (idx != -1) {
+            int start = text.lastIndexOf('{', idx);
+            if (start != -1) {
+                int end = text.lastIndexOf('}');
+                if (end > start) {
+                    try {
+                        String candidate = text.substring(start, end + 1).trim();
+                        // Validate JSON
+                        JsonParser.parseString(candidate);
+                        return candidate;
+                    } catch (Exception ignored) {}
+                }
+            }
+        }
+
         return null;
     }
 

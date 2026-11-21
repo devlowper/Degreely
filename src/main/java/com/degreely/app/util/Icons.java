@@ -339,6 +339,35 @@ public final class Icons {
     }
 
     /**
+     * Balance scale icon for university comparisons.
+     */
+    public static Icon scale(int size, Color color) {
+        return new VectorIcon(size, size, (g2, w, h) -> {
+            g2.setColor(color);
+            g2.setStroke(new BasicStroke(1.4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+            int cx = w / 2;
+            // Central beam
+            g2.drawLine(cx, (int)(h * 0.16), cx, (int)(h * 0.82));
+            // Base
+            g2.drawLine((int)(w * 0.28), (int)(h * 0.82), (int)(w * 0.72), (int)(h * 0.82));
+
+            // Top crossbar
+            g2.drawLine((int)(w * 0.16), (int)(h * 0.28), (int)(w * 0.84), (int)(h * 0.28));
+
+            // Left pan strings & pan
+            g2.drawLine((int)(w * 0.16), (int)(h * 0.28), (int)(w * 0.10), (int)(h * 0.56));
+            g2.drawLine((int)(w * 0.16), (int)(h * 0.28), (int)(w * 0.24), (int)(h * 0.56));
+            g2.drawArc((int)(w * 0.08), (int)(h * 0.50), (int)(w * 0.18), (int)(h * 0.16), 180, 180);
+
+            // Right pan strings & pan
+            g2.drawLine((int)(w * 0.84), (int)(h * 0.28), (int)(w * 0.76), (int)(h * 0.56));
+            g2.drawLine((int)(w * 0.84), (int)(h * 0.28), (int)(w * 0.90), (int)(h * 0.56));
+            g2.drawArc((int)(w * 0.74), (int)(h * 0.50), (int)(w * 0.18), (int)(h * 0.16), 180, 180);
+        });
+    }
+
+    /**
      * Internal functional interface to draw vector graphics.
      */
     @FunctionalInterface
