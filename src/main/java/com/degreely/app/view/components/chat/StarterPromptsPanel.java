@@ -44,7 +44,8 @@ public class StarterPromptsPanel extends JPanel {
     private void initUI() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(false);
-        setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_24, Theme.SPACING_32));
+        setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_24,
+                Theme.SPACING_32));
 
         // 1. Centered Spark Icon
         JPanel sparkIcon = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 9)) {
@@ -76,7 +77,8 @@ public class StarterPromptsPanel extends JPanel {
         add(greeting);
         add(Box.createVerticalStrut(Theme.SPACING_8));
 
-        JLabel subtitle = UI.secondaryLabel("Your dedicated AI study-abroad counselor for universities, costs, requirements, and scholarships.");
+        JLabel subtitle = UI.secondaryLabel(
+                "Your dedicated AI study-abroad counselor for universities, costs, requirements, and scholarships.");
         subtitle.setFont(Theme.FONT_BODY);
         subtitle.setAlignmentX(CENTER_ALIGNMENT);
         add(subtitle);
@@ -130,8 +132,7 @@ public class StarterPromptsPanel extends JPanel {
         card.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FFFFFF;");
         card.setBorder(BorderFactory.createCompoundBorder(
                 new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 12),
-                BorderFactory.createEmptyBorder(12, 16, 12, 16)
-        ));
+                BorderFactory.createEmptyBorder(12, 16, 12, 16)));
         card.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         JPanel headerRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
@@ -161,16 +162,14 @@ public class StarterPromptsPanel extends JPanel {
             public void mouseEntered(MouseEvent e) {
                 card.setBorder(BorderFactory.createCompoundBorder(
                         new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.PRIMARY, 1, 12),
-                        BorderFactory.createEmptyBorder(12, 16, 12, 16)
-                ));
+                        BorderFactory.createEmptyBorder(12, 16, 12, 16)));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 card.setBorder(BorderFactory.createCompoundBorder(
                         new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 12),
-                        BorderFactory.createEmptyBorder(12, 16, 12, 16)
-                ));
+                        BorderFactory.createEmptyBorder(12, 16, 12, 16)));
             }
 
             @Override

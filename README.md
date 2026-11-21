@@ -42,80 +42,34 @@ Powered by the **Google Gemini API** (`gemini-2.5-flash` by default, with model 
 
 ---
 
-## 🏛️ Core Modules & Features
+## 🏛️ Core Features & Capabilities
 
-### 1. 🏛️ University Discovery & Search Hub
-- **Integrated Hero Header**: Welcoming overview displaying total counts (20 world universities, 80+ degree programs, 8 countries, and tuition highlights).
-- **Catalog**: Features **20 world-leading universities** (MIT, Stanford, Oxford, Cambridge, ETH Zurich, NUS, TUM, University of Tokyo, etc.) across 8 countries.
-- **80+ Academic Programs**: Real Bachelor's, Master's, and PhD offerings with credit requirements and program durations.
-- **Interactive Filter Sidebar**:
-  - **Country Dropdown**: US, UK, Canada, Germany, Switzerland, Singapore, Australia, Japan.
-  - **Degree Level**: Filter by *Bachelor*, *Master*, or *PhD*.
-  - **Max Annual Tuition Slider**: Live range from \$0 to \$70,000/year with instant value badge.
-  - **Minimum IELTS Cutoff**: Instant filtering by English proficiency score.
-  - **Live Search Field**: Real-time filtering by university name, city, or country.
-- **Card UI**: Clean white cards with world ranking pills, key metrics, and hover border highlights in signature orange (`#E37712`).
-
-### 2. 📖 Comprehensive University Details
-- **Dedicated Page Navigation**: Integrated into the parent `CardLayout` with a "← Back to Universities" header.
-- **Underlined Orange Tab Navigation**:
-  - **About**: Global overview, history, world rankings, and complete degree program catalog.
-  - **Costs**: Tuition fees, estimated annual living expenses per city, and total annual budget calculation.
-  - **Admissions**: Acceptance rates, Fall & Spring application deadlines, application fees, and selectivity tier.
-  - **Pre-requisites**: Minimum GPA, IELTS band, TOEFL score, and required document checklist.
-- **Similar Institutions Sidebar**: Recommends similar universities based on country and ranking proximity.
-
-### 3. ✦ Degreely AI Study Abroad Counselor (Claude-Style Chatbot)
-- **AI-Powered Admissions Advising**: Focused on students from Bangladesh and South Asia planning to study abroad. Answers questions on university selection, requirements, visas, exams (IELTS/GRE), and SOP reviews.
-- **Claude.ai Look & Feel**:
-  - **Left Sidebar (264px)**: Serif app title, orange "New chat" button, chat search (Ctrl+K), "Recents" categorized by *Today / Yesterday / Previous 7 days / Older*, with pin, rename, and delete actions.
+### 1. ✦ Degreely AI Study Abroad Counselor (Claude-Style Interface)
+- **AI-Powered Admissions Advising**: Focused on students from Bangladesh and South Asia planning to study abroad. Answers questions on university selection, admission cutoffs, visas, exams (IELTS/TOEFL/GRE), and SOP reviews.
+- **Claude.ai Minimal Layout**:
+  - **Left Sidebar (264px)**: Serif app title, orange "New chat" button, instant search (`Ctrl+K`), categorized history (*Today / Yesterday / Previous 7 days / Older*), with pin, rename, and delete actions.
   - **Empty State**: Centered warm spark icon, large serif greeting (*"Welcome to Degreely"*), and 4 quick starter prompt cards.
   - **Message Stream**: Right-aligned user bubbles (`#F1F5F9`) and left-aligned assistant messages with full markdown formatting, "Thinking..." indicator, and Copy / Regenerate actions.
-  - **Composer (24px radius)**: Auto-growing input, paperclip file attachment button (PDF, Images, TXT, CSV, DOCX), file chips with remove button, and orange send button.
-- **Dynamic University Comparison Tables (`uni-table`)**:
-  - Whenever comparison or lookup is requested, Gemini returns a structured JSON block which is automatically rendered as an interactive, side-by-side comparison table card with attribute row groups (Admissions, Costs, Living Expenses, Deadlines, Work Rights).
-  - Highlights cheapest tuition and nearest deadline. Includes **Copy Table** and **Export CSV** buttons.
-- **Multimodal Document Upload**: Send SOP drafts, CVs, and transcripts for constructive admissions evaluation.
-- **Student Profile Personalization**: Local profile modal (CGPA, IELTS, target countries, budget) silently injected into Gemini system context.
-- **Chat History & Export**: Conversations automatically saved to `~/.degreely/chats.json` and exportable as Markdown (`.md`).
-- **Configurable API Key**: Set via `GEMINI_API_KEY` environment variable or the in-app Gemini Settings dialog (`gemini-2.5-flash`, `gemini-1.5-flash`, `gemini-1.5-pro`).
+  - **Composer (24px radius)**: Auto-growing input, paperclip file attachment button (PDF, Images, TXT, CSV, DOCX), 2-3 university compare button (`⚖️`), and orange send button.
 
-### 4. 💰 Worldwide Scholarships & Funding
-- **Prestigious Aid Opportunities**: Includes Fulbright, Rhodes, Gates Cambridge, Knight-Hennessy, DAAD, ETH Zurich Excellence, Vanier CGS, and MEXT.
-- **Smart Deadline Detection**: Displays a prominent red **`Closing soon (Xd left)`** badge for deadlines falling within 30 days.
-- **One-Click Application**: "Apply Link ↗" opens official scholarship portals directly in the user's default browser.
-- **Keyword & Country Search**: Filter funding opportunities by host country, study level, or scholarship title.
+### 2. ⚖️ 2 & 3 University Side-by-Side Comparison Tables (`uni-table`)
+- **Direct Compare Dialog**: Pick 1st, 2nd, and optional 3rd university from the top 20 global institutions with custom field of study and degree level.
+- **Structured Comparison Matrix**:
+  - **Admission Requirements**: Min GPA, IELTS/TOEFL cutoffs, GRE/GMAT requirements, document checklists.
+  - **Cost & Financial Aid**: Annual tuition fees, monthly living costs by country, scholarships (DAAD, Vanier, Chevening, Fulbright).
+  - **Deadlines & Intake**: Application deadlines and available intakes (Fall / Spring).
+  - **Post-Study Work**: PSW visa rights (e.g. 18-month German Job Seeking visa, 3-year Canadian PGWP, 3-year US STEM OPT).
+- **Interactive Controls**: Table header includes **Copy Table** and **Export CSV** for instant spreadsheet export.
+- **Dual Engine**: Generates instantly from local database, and enriches with deep AI insights when Gemini API key is configured.
 
-### 5. ⚖️ Side-by-Side University Comparison
-- **Matrix View**: Compare up to **3 universities simultaneously**.
-- **Singleton State Management**: Powered by `CompareManager` with listener callbacks to update the view when selections change.
-- **Automated Best-Value Green Highlighting**:
-  - Automatically identifies and highlights the best metric in soft pastel green (`#DCFCE7`) with a `★ Best` badge (e.g., best world rank, lowest annual tuition, highest acceptance rate, lowest GPA cutoff).
-- **Interactive Controls**: Add universities from any card or details page; remove individual columns with one click.
+### 3. 📎 Multimodal Document Evaluation
+- Attach SOP drafts, CVs, transcripts, and admission letters (PDF, PNG, JPG, TXT, CSV, DOCX) directly into the chat for constructive admissions feedback.
 
-### 6. 🎯 Intelligent Admission Predictor
-- **Predictive Algorithm**: Evaluates applicant profile against institutional criteria using `PredictorService`:
-  - GPA Delta vs. university requirement.
-  - IELTS English Band Delta.
-  - Degree level rigor multiplier (PhD > Master > Bachelor).
-  - Institution baseline acceptance rate.
-- **Visual Results**:
-  - Prominent percentage score (0% to 100%).
-  - Rounded color-coded progress bar:
-    - 🔴 **< 40% (Reach)**: High selectivity / requires profile strengthening.
-    - 🟠 **40% – 70% (Target)**: Competitive candidate with solid alignment.
-    - 🟢 **> 70% (Strong Match)**: High probability profile.
-  - Tailored actionable advice explaining strengths and actionable steps.
+### 4. 👤 Personalized Student Profile
+- In-app profile modal stores your current degree, CGPA, IELTS score, preferred countries, and budget, silently tailoring all AI answers to your exact background.
 
-### 7. 📅 Application Deadline Tracker
-- **Personalized Tracker**: Add upcoming university applications with program name, target university, and deadline date.
-- **Chronological Ordering**: Closest deadlines automatically float to the top of the queue.
-- **Days Left Countdown**: Real-time counter showing exact days remaining, "Due Today!", or overdue status.
-- **Status Lifecycle**: Track progress across three stages:
-  - 🟡 *Pending*
-  - 🔵 *Applied*
-  - 🟢 *Done*
-- **Persistent Storage**: Automatically serialized to JSON at `~/.degreely/deadlines.json` across app restarts.
+### 5. 💾 Local Conversation Persistence & Markdown Export
+- All chats are saved locally to `~/.degreely/chats.json` with zero database setup required, and can be exported as `.md` files anytime.
 
 ---
 
@@ -153,55 +107,41 @@ Degreely/
     └── main/
         ├── java/
         │   └── com/degreely/app/
-        │       ├── Main.java             # Entry point, Look-and-Feel initializer
-        │       │
-        │       ├── model/                # Data transfer objects
-        │       │   ├── University.java           # University entity
-        │       │   ├── Program.java              # Degree program entity
-        │       │   ├── Scholarship.java          # Scholarship entity
-        │       │   ├── ApplicationDeadline.java  # User deadline entity
-        │       │   ├── ChatMessage.java          # Degreely chat message entity
-        │       │   ├── ChatSession.java          # Degreely conversation session
-        │       │   ├── StudentProfile.java       # Academic background profile
-        │       │   └── UniTableData.java         # Structured comparison table entity
+        │       ├── Main.java             # Entry point & Look-and-Feel initializer
         │       │
         │       ├── controller/           # Business logic & services
-        │       │   ├── UniversityService.java    # Search, sorting & filtering logic
-        │       │   ├── CompareManager.java       # Singleton comparison state
-        │       │   ├── PredictorService.java     # Admission scoring algorithm
-        │       │   ├── DeadlineService.java      # Local JSON file persistence
-        │       │   ├── GeminiService.java        # Gemini REST client & prompt manager
-        │       │   ├── ChatStorageService.java   # Chat session persistence
-        │       │   └── StudentProfileService.java# Profile context manager
+        │       │   ├── ChatStorageService.java   # Local conversation persistence (~/.degreely/chats.json)
+        │       │   ├── GeminiService.java        # Gemini REST client & streaming prompt manager
+        │       │   ├── StudentProfileService.java# Profile context manager (~/.degreely/profile.json)
+        │       │   └── UniversityService.java    # Institutional data & comparison table builder
+        │       │
+        │       ├── model/                # Clean data transfer entities
+        │       │   ├── ChatMessage.java          # Message entity (role, content, files, uniTableJson)
+        │       │   ├── ChatSession.java          # Conversation session (id, title, timestamp)
+        │       │   ├── Program.java              # Degree program entity
+        │       │   ├── Scholarship.java          # International scholarship entity
+        │       │   ├── StudentProfile.java       # Academic background profile entity
+        │       │   ├── UniTableData.java         # Structured 2-3 university comparison model
+        │       │   └── University.java           # University institution entity
         │       │
         │       ├── util/                 # Reusable helpers & design tokens
-        │       │   ├── Theme.java                # Color palette, spacing & fonts
-        │       │   ├── UI.java                   # Standardized FlatLaf component factory
-        │       │   └── JsonLoader.java           # Resource JSON parser with Gson
+        │       │   ├── Icons.java                # Resolution-independent vector icons (Graphics2D)
+        │       │   ├── JsonLoader.java           # Classpath JSON resource loader
+        │       │   ├── Theme.java                # Design tokens, color palette, typography
+        │       │   └── UI.java                   # Standardized component factory (buttons, badges)
         │       │
-        │       └── view/                 # UI pages & components
-        │           ├── MainFrame.java            # Main window & CardLayout host
-        │           ├── Navbar.java               # Top navigation bar with active indicator
-        │           ├── UniversitiesPage.java     # University catalog with hero banner & filters
-        │           ├── UniversityDetailsPage.java# Deep-dive university details with tabs
-        │           ├── ChatPage.java             # Degreely AI Counselor workspace
-        │           ├── ScholarshipsPage.java     # Scholarship catalog & closing alerts
-        │           ├── ComparePage.java          # Multi-university comparison table
-        │           ├── PredictorPage.java        # Interactive admission calculator
-        │           ├── DeadlinesPage.java        # Local deadline manager
-        │           └── components/
-        │               ├── UniversityCard.java
-        │               ├── UniversityDetailsDialog.java
-        │               ├── ScholarshipCard.java
-        │               ├── DeadlineCard.java
-        │               └── chat/
-        │                   ├── ChatSidebar.java          # 264px history sidebar
-        │                   ├── ComposerPanel.java        # 24px rounded input with attachment
-        │                   ├── MessageBubble.java        # User bubble & assistant markdown
-        │                   ├── UniTableComponent.java    # Dynamic comparison table component
-        │                   ├── StarterPromptsPanel.java  # "Welcome to Degreely" greeting
-        │                   ├── ProfileDialog.java        # Academic profile modal
-        │                   └── ApiKeyDialog.java         # Gemini API settings modal
+        │       └── view/                 # User interface views & components
+        │           ├── MainFrame.java            # Main application window
+        │           ├── ChatPage.java             # Claude-style central chat workspace
+        │           └── components/chat/
+        │               ├── ApiKeyDialog.java         # Gemini API settings modal
+        │               ├── ChatSidebar.java          # 264px history sidebar with search (Ctrl+K)
+        │               ├── CompareDialog.java        # 2-3 university compare dialog
+        │               ├── ComposerPanel.java        # 24px rounded input with attachment & compare
+        │               ├── MessageBubble.java        # User bubbles, assistant markdown & HTML tables
+        │               ├── ProfileDialog.java        # Academic student profile modal
+        │               ├── StarterPromptsPanel.java  # "Welcome to Degreely" greeting & starter cards
+        │               └── UniTableComponent.java    # Interactive comparison table with CSV export
         │
         └── resources/
             └── data/
