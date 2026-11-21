@@ -8,7 +8,6 @@ import com.degreely.app.util.Theme;
 import com.degreely.app.view.components.chat.CompareDialog;
 import com.formdev.flatlaf.FlatClientProperties;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -32,10 +31,7 @@ import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.RenderingHints;
-import java.awt.geom.RoundRectangle2D;
-import java.net.URL;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
@@ -103,10 +99,10 @@ public class HomePage extends JPanel {
     }
 
     /**
-     * Creates contemporary Hero section with clear text on the left and illustration on the right.
+     * Creates contemporary Hero section with centered headline, subtitle, CTAs, and quick stats.
      */
     private JPanel createHeroSection() {
-        JPanel hero = new JPanel(new BorderLayout(32, 0)) {
+        JPanel hero = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -119,19 +115,15 @@ public class HomePage extends JPanel {
                 g2.dispose();
             }
         };
+        hero.setLayout(new BoxLayout(hero, BoxLayout.Y_AXIS));
         hero.setOpaque(false);
-        hero.setBorder(BorderFactory.createEmptyBorder(32, 36, 32, 36));
+        hero.setBorder(BorderFactory.createEmptyBorder(40, 48, 36, 48));
         hero.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // Left Column: Headline, Subtitle, CTAs, Highlights
-        JPanel leftCol = new JPanel();
-        leftCol.setLayout(new BoxLayout(leftCol, BoxLayout.Y_AXIS));
-        leftCol.setOpaque(false);
-        leftCol.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        // Category Badge
-        JPanel badgePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        // 1. Centered Category Badge
+        JPanel badgePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         badgePanel.setOpaque(false);
+        badgePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         JLabel badge = new JLabel("🎓 Global Higher Education Portal • 2026 Admissions");
         badge.setFont(Theme.FONT_SMALL);
         badge.setForeground(Theme.PRIMARY);
@@ -139,29 +131,32 @@ public class HomePage extends JPanel {
         badge.setBackground(Theme.PRIMARY_LIGHT);
         badge.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(4, 12, 4, 12)
+                BorderFactory.createEmptyBorder(5, 14, 5, 14)
         ));
         badgePanel.add(badge);
-        leftCol.add(badgePanel);
-        leftCol.add(Box.createVerticalStrut(12));
+        hero.add(badgePanel);
+        hero.add(Box.createVerticalStrut(14));
 
-        // Main Headline
-        JLabel headline = new JLabel("<html>Find Your Dream University &amp; Program Worldwide</html>");
-        headline.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 26));
+        // 2. Centered Main Headline
+        JLabel headline = new JLabel("<html><div style='text-align: center;'>Find Your Dream University &amp; Program Worldwide</div></html>");
+        headline.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 28));
         headline.setForeground(Theme.TEXT);
-        leftCol.add(headline);
-        leftCol.add(Box.createVerticalStrut(10));
+        headline.setAlignmentX(Component.CENTER_ALIGNMENT);
+        hero.add(headline);
+        hero.add(Box.createVerticalStrut(12));
 
-        // Subtitle
-        JLabel subtitle = new JLabel("<html>Compare QS rankings, verified tuition costs, IELTS cutoffs, and living expenses across top universities in the US, UK, Canada, Germany, and more. 24/7 AI-powered admission counseling.</html>");
+        // 3. Centered Subtitle
+        JLabel subtitle = new JLabel("<html><div style='text-align: center; max-width: 740px;'>Compare QS rankings, verified tuition costs, IELTS cutoffs, and living expenses across top universities in the US, UK, Canada, Germany, and more. 24/7 AI-powered admission counseling.</div></html>");
         subtitle.setFont(Theme.FONT_BODY_LARGE);
         subtitle.setForeground(Theme.TEXT_SECONDARY);
-        leftCol.add(subtitle);
-        leftCol.add(Box.createVerticalStrut(20));
+        subtitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        hero.add(subtitle);
+        hero.add(Box.createVerticalStrut(24));
 
-        // Action Buttons Row
-        JPanel ctaRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 0));
+        // 4. Centered Action Buttons Row
+        JPanel ctaRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 14, 0));
         ctaRow.setOpaque(false);
+        ctaRow.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton exploreBtn = new JButton("Explore 20 Universities ↓");
         exploreBtn.setFont(Theme.FONT_BUTTON);
@@ -170,7 +165,7 @@ public class HomePage extends JPanel {
         exploreBtn.setFocusPainted(false);
         exploreBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         exploreBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
-        exploreBtn.setBorder(BorderFactory.createEmptyBorder(9, 20, 9, 20));
+        exploreBtn.setBorder(BorderFactory.createEmptyBorder(10, 22, 10, 22));
         exploreBtn.addActionListener(e -> scrollToCatalog());
 
         JButton chatAiBtn = new JButton("Chat with Degreely AI ✦", Icons.spark(15, Theme.PRIMARY));
@@ -182,7 +177,7 @@ public class HomePage extends JPanel {
         chatAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         chatAiBtn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(8, 18, 8, 18)
+                BorderFactory.createEmptyBorder(9, 20, 9, 20)
         ));
         chatAiBtn.addActionListener(e -> {
             if (onNavigateToAI != null) onNavigateToAI.run();
@@ -190,25 +185,18 @@ public class HomePage extends JPanel {
 
         ctaRow.add(exploreBtn);
         ctaRow.add(chatAiBtn);
-        leftCol.add(ctaRow);
-        leftCol.add(Box.createVerticalStrut(20));
+        hero.add(ctaRow);
+        hero.add(Box.createVerticalStrut(26));
 
-        // Stats Strip
-        JPanel statsRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 24, 0));
+        // 5. Centered Stats Strip
+        JPanel statsRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 36, 0));
         statsRow.setOpaque(false);
+        statsRow.setAlignmentX(Component.CENTER_ALIGNMENT);
         statsRow.add(createStatItem("20", "Top Universities"));
         statsRow.add(createStatItem("8", "Destinations"));
         statsRow.add(createStatItem("80+", "Degree Programs"));
         statsRow.add(createStatItem("$0/yr", "Tuition in Germany"));
-        leftCol.add(statsRow);
-
-        hero.add(leftCol, BorderLayout.CENTER);
-
-        // Right Column: Hero Visual Illustration
-        JPanel rightColWrapper = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-        rightColWrapper.setOpaque(false);
-        rightColWrapper.add(createHeroVisualPanel());
-        hero.add(rightColWrapper, BorderLayout.EAST);
+        hero.add(statsRow);
 
         return hero;
     }
@@ -217,78 +205,22 @@ public class HomePage extends JPanel {
         JPanel p = new JPanel();
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
         p.setOpaque(false);
+        p.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel valLbl = new JLabel(value);
-        valLbl.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 17));
+        valLbl.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 18));
         valLbl.setForeground(Theme.PRIMARY);
+        valLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel lbl = new JLabel(label);
         lbl.setFont(Theme.FONT_SMALL);
         lbl.setForeground(Theme.TEXT_MUTED);
+        lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         p.add(valLbl);
+        p.add(Box.createVerticalStrut(2));
         p.add(lbl);
         return p;
-    }
-
-    /**
-     * Creates hero visual panel loading hero_study_abroad.jpg on the right side.
-     */
-    private JPanel createHeroVisualPanel() {
-        JPanel panel = new JPanel() {
-            private Image cachedScaledImg;
-            private int lastW = -1;
-            private int lastH = -1;
-
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2 = (Graphics2D) g.create();
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-
-                int w = getWidth();
-                int h = getHeight();
-
-                // Clip to rounded rectangle
-                g2.setClip(new RoundRectangle2D.Float(0, 0, w, h, 14, 14));
-
-                Image original = loadHeroImage();
-                if (original != null) {
-                    if (cachedScaledImg == null || lastW != w || lastH != h) {
-                        cachedScaledImg = original.getScaledInstance(w, h, Image.SCALE_SMOOTH);
-                        lastW = w;
-                        lastH = h;
-                    }
-                    g2.drawImage(cachedScaledImg, 0, 0, this);
-                } else {
-                    g2.setColor(Theme.PRIMARY_LIGHT);
-                    g2.fillRect(0, 0, w, h);
-                    Icons.university(64, Theme.PRIMARY).paintIcon(this, g2, (w - 64) / 2, (h - 64) / 2);
-                }
-
-                // Subtle border
-                g2.setClip(null);
-                g2.setColor(Theme.BORDER);
-                g2.drawRoundRect(0, 0, w - 1, h - 1, 14, 14);
-                g2.dispose();
-            }
-        };
-
-        panel.setOpaque(false);
-        panel.setPreferredSize(new Dimension(380, 240));
-        return panel;
-    }
-
-    private Image loadHeroImage() {
-        try {
-            URL url = getClass().getResource("/images/hero_study_abroad.jpg");
-            if (url != null) {
-                return ImageIO.read(url);
-            }
-        } catch (Exception ignored) {}
-        return null;
     }
 
     /**
