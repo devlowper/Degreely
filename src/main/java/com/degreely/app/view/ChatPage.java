@@ -84,8 +84,8 @@ public class ChatPage extends JPanel {
 
         JPanel centerWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         centerWrapper.setOpaque(false);
-        messagesColumn.setMaximumSize(new Dimension(800, Integer.MAX_VALUE));
-        messagesColumn.setPreferredSize(new Dimension(800, 400));
+        messagesColumn.setMaximumSize(new Dimension(860, Integer.MAX_VALUE));
+        messagesColumn.setPreferredSize(new Dimension(860, 400));
         centerWrapper.add(messagesColumn);
 
         messagesScrollPane.setViewportView(centerWrapper);

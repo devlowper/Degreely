@@ -150,23 +150,22 @@ public class UniTableComponent extends JPanel {
         tableGrid.add(createGroupHeader("POST-STUDY WORK"));
         tableGrid.add(createAttributeRow("Work Rights & Visa", unis, UniversityEntry::getWorkRights));
 
-        // Wrap tableGrid in a smooth horizontal scroll pane for responsive behavior
-        JScrollPane scrollPane = new JScrollPane(tableGrid);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder());
-        scrollPane.getViewport().setBackground(Theme.CARD_BG);
-        scrollPane.getHorizontalScrollBar().setUnitIncrement(16);
-        add(scrollPane);
+        // Add tableGrid directly to avoid zero-height nested scrollpane collapse
+        add(tableGrid);
 
-        // 3. Footer: Disclaimer & Sources
-        add(Box.createVerticalStrut(Theme.SPACING_12));
-        JPanel footerPanel = new JPanel(new BorderLayout());
+        // 3. Footer: Stacked Sources & Disclaimer (avoids horizontal collision/overlap)
+        add(Box.createVerticalStrut(Theme.SPACING_16));
+        JPanel footerPanel = new JPanel();
+        footerPanel.setLayout(new BoxLayout(footerPanel, BoxLayout.Y_AXIS));
         footerPanel.setOpaque(false);
+        footerPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Theme.BORDER));
 
-        JLabel disclaimer = UI.mutedLabel("Figures are estimates. Always verify on the official university website before applying.");
-        disclaimer.setFont(new Font(Theme.FONT_SMALL.getName(), Font.ITALIC, 11));
-
-        JPanel linksPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, Theme.SPACING_8, 0));
+        JPanel linksPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 6));
         linksPanel.setOpaque(false);
+        JLabel srcLabel = UI.mutedLabel("Sources:");
+        srcLabel.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
+        linksPanel.add(srcLabel);
+
         for (UniversityEntry u : unis) {
             if (u.getSourceUrl() != null && !u.getSourceUrl().isBlank()) {
                 JButton linkBtn = new JButton(u.getName() + " ↗");
@@ -174,6 +173,7 @@ public class UniTableComponent extends JPanel {
                 linkBtn.setForeground(Color.decode("#1757AC"));
                 linkBtn.setBorderPainted(false);
                 linkBtn.setContentAreaFilled(false);
+                linkBtn.setFocusPainted(false);
                 linkBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 linkBtn.addActionListener(e -> {
                     try {
@@ -184,8 +184,12 @@ public class UniTableComponent extends JPanel {
             }
         }
 
-        footerPanel.add(disclaimer, BorderLayout.WEST);
-        footerPanel.add(linksPanel, BorderLayout.EAST);
+        JLabel disclaimer = UI.mutedLabel("Figures are estimates. Always verify specific criteria on official university websites before applying.");
+        disclaimer.setFont(new Font(Theme.FONT_SMALL.getName(), Font.ITALIC, 11));
+        disclaimer.setBorder(BorderFactory.createEmptyBorder(2, 8, 4, 8));
+
+        footerPanel.add(linksPanel);
+        footerPanel.add(disclaimer);
         add(footerPanel);
     }
 
@@ -204,21 +208,17 @@ public class UniTableComponent extends JPanel {
         JPanel p = new JPanel();
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
         p.setOpaque(false);
+        p.setBorder(BorderFactory.createEmptyBorder(0, 4, 4, 4));
 
-        JLabel name = new JLabel(u.getName());
-        name.setFont(new Font(Theme.FONT_TITLE.getName(), Font.BOLD, 14));
-        name.setForeground(Theme.TEXT);
-
+        JLabel name = new JLabel("<html><b style='color:#0F172A; font-size:12px; line-height:1.2;'>" + u.getName() + "</b></html>");
         JLabel country = new JLabel(u.getCountry());
         country.setFont(Theme.FONT_SMALL);
         country.setForeground(Theme.TEXT_MUTED);
 
-        JLabel prog = new JLabel(u.getProgram());
-        prog.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
-        prog.setForeground(Theme.PRIMARY);
+        JLabel prog = new JLabel("<html><span style='color:#E37712; font-weight:600; font-size:11px;'>" + u.getProgram() + "</span></html>");
 
         p.add(name);
-        p.add(Box.createVerticalStrut(2));
+        p.add(Box.createVerticalStrut(3));
         p.add(country);
         p.add(Box.createVerticalStrut(2));
         p.add(prog);
@@ -226,12 +226,13 @@ public class UniTableComponent extends JPanel {
     }
 
     private JPanel createHeaderLabelCell(String text) {
-        JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 6));
+        JPanel p = new JPanel(new BorderLayout());
         p.setOpaque(false);
+        p.setBorder(BorderFactory.createEmptyBorder(0, 4, 0, 4));
         JLabel l = new JLabel(text);
         l.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 13));
         l.setForeground(Theme.TEXT_SECONDARY);
-        p.add(l);
+        p.add(l, BorderLayout.WEST);
         return p;
     }
 
@@ -245,12 +246,11 @@ public class UniTableComponent extends JPanel {
         ));
 
         // Label cell
-        JPanel lCell = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 4));
+        JPanel lCell = new JPanel(new BorderLayout());
         lCell.setOpaque(false);
-        JLabel l = new JLabel(label);
-        l.setFont(Theme.FONT_BODY);
-        l.setForeground(Theme.TEXT_SECONDARY);
-        lCell.add(l);
+        lCell.setBorder(BorderFactory.createEmptyBorder(2, 4, 2, 4));
+        JLabel l = new JLabel("<html><span style='color:#475569; font-weight:600; font-size:11px;'>" + label + "</span></html>");
+        lCell.add(l, BorderLayout.CENTER);
         row.add(lCell);
 
         // Values
@@ -258,13 +258,12 @@ public class UniTableComponent extends JPanel {
             String val = getter.apply(u);
             if (val == null || val.isBlank()) val = "Check official site";
 
-            JPanel vCell = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 4));
+            JPanel vCell = new JPanel(new BorderLayout());
             vCell.setOpaque(false);
+            vCell.setBorder(BorderFactory.createEmptyBorder(2, 4, 2, 4));
 
-            JLabel v = new JLabel(val);
-            v.setFont(Theme.FONT_BODY);
-            v.setForeground(Theme.TEXT);
-            vCell.add(v);
+            JLabel v = new JLabel("<html><span style='color:#1E293B; font-size:11px; line-height:1.3;'>" + val + "</span></html>");
+            vCell.add(v, BorderLayout.CENTER);
             row.add(vCell);
         }
 

@@ -76,6 +76,7 @@ public class ChatSidebar extends JPanel {
         // Header: Brand & Serif App Name
         JPanel brandRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         brandRow.setOpaque(false);
+        brandRow.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JLabel brandIcon = new JLabel(Icons.spark(18, Theme.PRIMARY));
 
@@ -98,6 +99,7 @@ public class ChatSidebar extends JPanel {
         searchField.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, Icons.search(14, Theme.TEXT_MUTED));
         searchField.putClientProperty(FlatClientProperties.STYLE, "arc: 8; margin: 4,8,4,8;");
         searchField.setFont(Theme.FONT_SMALL);
+        searchField.setAlignmentX(Component.LEFT_ALIGNMENT);
         searchField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 32));
         searchField.getDocument().addDocumentListener(new DocumentListener() {
             @Override public void insertUpdate(DocumentEvent e) { renderSessionList(); }
@@ -122,6 +124,7 @@ public class ChatSidebar extends JPanel {
         JLabel recentsLabel = new JLabel("Recents");
         recentsLabel.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
         recentsLabel.setForeground(Theme.TEXT_MUTED);
+        recentsLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         topSection.add(recentsLabel);
 
         add(topSection, BorderLayout.NORTH);
@@ -150,10 +153,10 @@ public class ChatSidebar extends JPanel {
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 // Draw small orange plus circle on left
                 g2.setColor(Theme.PRIMARY);
-                g2.fillOval(12, 8, 18, 18);
+                g2.fillOval(12, 9, 18, 18);
                 g2.setColor(Color.WHITE);
                 g2.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 13));
-                g2.drawString("+", 17, 21);
+                g2.drawString("+", 17, 22);
                 g2.dispose();
             }
         };
@@ -161,13 +164,16 @@ public class ChatSidebar extends JPanel {
         btn.setForeground(Theme.TEXT);
         btn.setBackground(Color.WHITE);
         btn.putClientProperty(FlatClientProperties.STYLE, "arc: 8; background: #FFFFFF;");
-        btn.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), Color.decode("#E2E8F0"), 1, 8));
+        btn.setBorder(BorderFactory.createCompoundBorder(
+                new FlatLineBorder(new Insets(1, 1, 1, 1), Color.decode("#E2E8F0"), 1, 8),
+                BorderFactory.createEmptyBorder(0, 38, 0, 12)
+        ));
         btn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
         btn.setPreferredSize(new Dimension(232, 36));
         btn.setFocusPainted(false);
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btn.setBorder(BorderFactory.createEmptyBorder(0, 36, 0, 0));
         btn.setHorizontalAlignment(JButton.LEFT);
+        btn.setAlignmentX(Component.LEFT_ALIGNMENT);
         btn.addActionListener(e -> {
             if (onNewChat != null) onNewChat.run();
         });
@@ -180,7 +186,7 @@ public class ChatSidebar extends JPanel {
         bottom.setOpaque(false);
         bottom.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createMatteBorder(1, 0, 0, 0, Color.decode("#E6E6E6")),
-                BorderFactory.createEmptyBorder(10, 14, 10, 14)
+                BorderFactory.createEmptyBorder(12, 16, 12, 16)
         ));
 
         // 1. My Profile Button
@@ -195,28 +201,9 @@ public class ChatSidebar extends JPanel {
             new ApiKeyDialog(owner).setVisible(true);
         });
 
-        // 3. Free plan indicator
-        JPanel planRow = new JPanel(new BorderLayout());
-        planRow.setOpaque(false);
-        planRow.setBorder(BorderFactory.createEmptyBorder(6, 4, 2, 4));
-
-        JLabel planLabel = new JLabel("Free plan");
-        planLabel.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 12));
-        planLabel.setForeground(Theme.TEXT_MUTED);
-
-        JLabel upgradeLink = new JLabel("Upgrade");
-        upgradeLink.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 12));
-        upgradeLink.setForeground(Color.decode("#1757AC"));
-        upgradeLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-        planRow.add(planLabel, BorderLayout.WEST);
-        planRow.add(upgradeLink, BorderLayout.EAST);
-
         bottom.add(profileBtn);
         bottom.add(Box.createVerticalStrut(4));
         bottom.add(settingsBtn);
-        bottom.add(Box.createVerticalStrut(6));
-        bottom.add(planRow);
 
         return bottom;
     }
@@ -233,8 +220,12 @@ public class ChatSidebar extends JPanel {
         btn.setContentAreaFilled(false);
         btn.setFocusPainted(false);
         btn.setHorizontalAlignment(JButton.LEFT);
+        btn.setHorizontalTextPosition(JButton.RIGHT);
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btn.setAlignmentX(Component.LEFT_ALIGNMENT);
         btn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 28));
+        btn.setMargin(new Insets(2, 0, 2, 0));
+        btn.setBorder(BorderFactory.createEmptyBorder(2, 0, 2, 0));
         btn.addActionListener(al);
         return btn;
     }
@@ -280,6 +271,7 @@ public class ChatSidebar extends JPanel {
         JLabel cat = new JLabel(title);
         cat.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 10));
         cat.setForeground(Theme.TEXT_MUTED);
+        cat.setAlignmentX(Component.LEFT_ALIGNMENT);
         cat.setBorder(BorderFactory.createEmptyBorder(10, 16, 4, 16));
         chatListContainer.add(cat);
 
@@ -293,6 +285,7 @@ public class ChatSidebar extends JPanel {
         boolean isSelected = s.getId().equals(currentSelectedId);
         item.setBackground(isSelected ? Color.decode("#EBECEF") : Color.decode("#FAFAFA"));
         item.setMaximumSize(new Dimension(Integer.MAX_VALUE, 32));
+        item.setAlignmentX(Component.LEFT_ALIGNMENT);
         item.setBorder(BorderFactory.createEmptyBorder(6, 16, 6, 12));
         item.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
