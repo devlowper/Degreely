@@ -68,7 +68,6 @@ public class Navbar extends JPanel {
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
                 BorderFactory.createEmptyBorder(2, 8, 2, 8)
         ));
-        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
 
         brandPanel.add(logoIcon);
         brandPanel.add(brandName);
@@ -100,8 +99,8 @@ public class Navbar extends JPanel {
         askAiBtn.setBackground(Theme.PRIMARY);
         askAiBtn.setFocusPainted(false);
         askAiBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        askAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         askAiBtn.setBorder(BorderFactory.createEmptyBorder(7, 16, 7, 16));
-        askAiBtn.putClientProperty(FlatClientProperties.STYLE, "arc: 16");
         askAiBtn.addActionListener(e -> setActiveTab(TAB_AI));
 
         rightPanel.add(liveCountLabel);
@@ -117,8 +116,8 @@ public class Navbar extends JPanel {
         btn.setFocusPainted(false);
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn.setIconTextGap(8);
+        btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         btn.setBorder(BorderFactory.createEmptyBorder(6, 14, 6, 14));
-        btn.putClientProperty(FlatClientProperties.STYLE, "arc: 10");
         btn.addActionListener(e -> setActiveTab(tabKey));
         return btn;
     }

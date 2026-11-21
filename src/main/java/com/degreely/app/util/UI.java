@@ -31,15 +31,7 @@ public final class UI {
         btn.setFocusPainted(false);
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn.setMargin(new Insets(Theme.BUTTON_PAD_Y, Theme.BUTTON_PAD_X, Theme.BUTTON_PAD_Y, Theme.BUTTON_PAD_X));
-
-        btn.putClientProperty(FlatClientProperties.STYLE,
-                "arc: " + Theme.RADIUS + ";" +
-                "background: #E37712;" +
-                "hoverBackground: #C2410C;" +
-                "foreground: #FFFFFF;" +
-                "borderWidth: 0;" +
-                "focusWidth: 0;" +
-                "innerFocusWidth: 0;");
+        btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         return btn;
     }
 
@@ -54,17 +46,8 @@ public final class UI {
         btn.setFocusPainted(false);
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn.setMargin(new Insets(Theme.BUTTON_PAD_Y, Theme.BUTTON_PAD_X, Theme.BUTTON_PAD_Y, Theme.BUTTON_PAD_X));
-
-        btn.putClientProperty(FlatClientProperties.STYLE,
-                "arc: " + Theme.RADIUS + ";" +
-                "background: #FFFFFF;" +
-                "hoverBackground: #FFF7ED;" +
-                "foreground: #E37712;" +
-                "borderColor: #E2E8F0;" +
-                "hoverBorderColor: #E37712;" +
-                "borderWidth: 1;" +
-                "focusWidth: 0;" +
-                "innerFocusWidth: 0;");
+        btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
+        btn.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, Theme.RADIUS));
         return btn;
     }
 
@@ -74,9 +57,6 @@ public final class UI {
     public static JPanel card() {
         JPanel panel = new JPanel();
         panel.setBackground(Theme.CARD_BG);
-        panel.putClientProperty(FlatClientProperties.STYLE,
-                "arc: " + Theme.RADIUS + ";" +
-                "background: #FFFFFF;");
         panel.setBorder(BorderFactory.createCompoundBorder(
                 new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, Theme.RADIUS),
                 BorderFactory.createEmptyBorder(
@@ -98,7 +78,7 @@ public final class UI {
     public static JPanel badge(String text, javax.swing.Icon icon, Color bg, Color fg) {
         JPanel badge = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 3));
         badge.setBackground(bg);
-        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12;");
+        badge.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), bg, 1, 12));
         JLabel label = new JLabel(text);
         if (icon != null) {
             label.setIcon(icon);

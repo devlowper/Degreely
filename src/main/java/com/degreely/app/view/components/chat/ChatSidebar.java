@@ -164,7 +164,7 @@ public class ChatSidebar extends JPanel {
         btn.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 13));
         btn.setForeground(Theme.TEXT);
         btn.setBackground(Color.WHITE);
-        btn.putClientProperty(FlatClientProperties.STYLE, "arc: 8; background: #FFFFFF;");
+        btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         btn.setBorder(BorderFactory.createCompoundBorder(
                 new FlatLineBorder(new Insets(1, 1, 1, 1), Color.decode("#E2E8F0"), 1, 8),
                 BorderFactory.createEmptyBorder(0, 38, 0, 12)

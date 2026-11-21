@@ -148,7 +148,6 @@ public class HomePage extends JPanel {
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
                 BorderFactory.createEmptyBorder(4, 12, 4, 12)
         ));
-        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 14");
         badgePanel.add(badge);
         leftCol.add(badgePanel);
         leftCol.add(Box.createVerticalStrut(12));
@@ -177,8 +176,8 @@ public class HomePage extends JPanel {
         exploreBtn.setForeground(Color.WHITE);
         exploreBtn.setFocusPainted(false);
         exploreBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        exploreBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         exploreBtn.setBorder(BorderFactory.createEmptyBorder(9, 20, 9, 20));
-        exploreBtn.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
         exploreBtn.addActionListener(e -> scrollToCatalog());
 
         JButton chatAiBtn = new JButton("Chat with Degreely AI ✦", Icons.spark(16, Theme.PRIMARY));
@@ -187,11 +186,11 @@ public class HomePage extends JPanel {
         chatAiBtn.setForeground(Theme.PRIMARY);
         chatAiBtn.setFocusPainted(false);
         chatAiBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        chatAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         chatAiBtn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
                 BorderFactory.createEmptyBorder(8, 18, 8, 18)
         ));
-        chatAiBtn.putClientProperty(FlatClientProperties.STYLE, "arc: 12");
         chatAiBtn.addActionListener(e -> {
             if (onNavigateToAI != null) onNavigateToAI.run();
         });
@@ -525,8 +524,10 @@ public class HomePage extends JPanel {
         rankBadge.setForeground(Theme.AMBER_TEXT);
         rankBadge.setOpaque(true);
         rankBadge.setBackground(Theme.AMBER_BG);
-        rankBadge.setBorder(BorderFactory.createEmptyBorder(3, 8, 3, 8));
-        rankBadge.putClientProperty(FlatClientProperties.STYLE, "arc: 10");
+        rankBadge.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Theme.BORDER, 1, true),
+                BorderFactory.createEmptyBorder(3, 8, 3, 8)
+        ));
         topRow.add(rankBadge, BorderLayout.WEST);
 
         JLabel countryBadge = new JLabel(u.getCountry());
@@ -579,7 +580,6 @@ public class HomePage extends JPanel {
             progTag.setOpaque(true);
             progTag.setBackground(Theme.BACKGROUND);
             progTag.setBorder(BorderFactory.createEmptyBorder(2, 6, 2, 6));
-            progTag.putClientProperty(FlatClientProperties.STYLE, "arc: 6");
             progPanel.add(progTag);
         }
         if (u.getPrograms().size() > 3) {
@@ -599,11 +599,11 @@ public class HomePage extends JPanel {
         askAiBtn.setBackground(Theme.PRIMARY_LIGHT);
         askAiBtn.setFocusPainted(false);
         askAiBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        askAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         askAiBtn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
                 BorderFactory.createEmptyBorder(8, 12, 8, 12)
         ));
-        askAiBtn.putClientProperty(FlatClientProperties.STYLE, "arc: 10");
         askAiBtn.addActionListener(e -> {
             String prompt = "Tell me all about admission requirements, scholarships, deadlines, and cost of attendance for " + u.getName() + " in " + u.getCountry() + ".";
             if (onAskAI != null) {
@@ -624,7 +624,6 @@ public class HomePage extends JPanel {
                 BorderFactory.createLineBorder(Theme.BORDER, 1, true),
                 BorderFactory.createEmptyBorder(4, 8, 4, 8)
         ));
-        p.putClientProperty(FlatClientProperties.STYLE, "arc: 8");
 
         JLabel t = new JLabel(title);
         t.setFont(Theme.FONT_SMALL);
