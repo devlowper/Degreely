@@ -16,6 +16,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -45,7 +46,7 @@ public class UniversityCard extends JPanel {
         putClientProperty(FlatClientProperties.STYLE, "arc: " + Theme.RADIUS + "; background: #FFFFFF;");
         updateBorder();
 
-        // Hover effect: change border to orange on hover
+        // Hover effect: border transitions to primary orange
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -70,7 +71,7 @@ public class UniversityCard extends JPanel {
         nameLabel.setFont(new Font(Theme.FONT_TITLE.getName(), Font.BOLD, 17));
         nameLabel.setForeground(Theme.TEXT);
 
-        JPanel badge = createRankingBadge("#" + university.getRanking() + " World Rank");
+        JPanel badge = createRankingBadge("QS #" + university.getRanking() + " World Rank");
 
         headerPanel.add(nameLabel, BorderLayout.WEST);
         headerPanel.add(badge, BorderLayout.EAST);
@@ -78,7 +79,7 @@ public class UniversityCard extends JPanel {
         // Subtitle: Location (City, Country)
         JLabel locationLabel = new JLabel(university.getCity() + ", " + university.getCountry());
         locationLabel.setFont(Theme.FONT_BODY);
-        locationLabel.setForeground(Theme.TEXT_MUTED);
+        locationLabel.setForeground(Theme.TEXT_SECONDARY);
 
         JPanel topSection = new JPanel();
         topSection.setLayout(new BoxLayout(topSection, BoxLayout.Y_AXIS));
@@ -100,25 +101,25 @@ public class UniversityCard extends JPanel {
         if (hasMaster) programsRow.add(createProgramTag("Master"));
         if (hasPhd) programsRow.add(createProgramTag("PhD"));
 
-        // Bottom Row: Stats & View Details button
-        JPanel bottomRow = new JPanel(new BorderLayout());
+        // Bottom Row: Stats Cluster & "View Details →" Button
+        JPanel bottomRow = new JPanel(new BorderLayout(Theme.SPACING_16, 0));
         bottomRow.setOpaque(false);
 
-        JPanel statsRow = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_16, 0));
+        JPanel statsRow = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 0));
         statsRow.setOpaque(false);
 
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
         currencyFormat.setMaximumFractionDigits(0);
-        String tuitionStr = currencyFormat.format(university.getTuitionPerYear()) + " / yr";
+        String tuitionStr = currencyFormat.format(university.getTuitionPerYear()) + "/yr";
 
-        statsRow.add(createStatItem("Tuition", tuitionStr));
-        statsRow.add(createStatItem("Acceptance", university.getAcceptanceRate() + "%"));
-        statsRow.add(createStatItem("Min IELTS", String.valueOf(university.getMinIelts())));
-        statsRow.add(createStatItem("Min GPA", String.valueOf(university.getMinGpa())));
+        statsRow.add(createStatChip("Tuition", tuitionStr));
+        statsRow.add(createStatChip("Acceptance", university.getAcceptanceRate() + "%"));
+        statsRow.add(createStatChip("Min IELTS", String.valueOf(university.getMinIelts())));
+        statsRow.add(createStatChip("Min GPA", String.valueOf(university.getMinGpa())));
 
-        JButton detailsBtn = UI.outlineButton("View Details");
+        JButton detailsBtn = UI.outlineButton("View Details →");
         detailsBtn.setFont(Theme.FONT_SMALL);
-        detailsBtn.setMargin(new Insets(8, 16, 8, 16));
+        detailsBtn.setMargin(new Insets(6, 14, 6, 14));
         detailsBtn.addActionListener(e -> {
             if (onOpenDetails != null) {
                 onOpenDetails.accept(university);
@@ -149,43 +150,52 @@ public class UniversityCard extends JPanel {
     }
 
     private JPanel createRankingBadge(String text) {
-        JPanel badge = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 4));
-        badge.setBackground(Theme.LIGHT_BLUE_HIGHLIGHT);
-        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #EFF6FF;");
+        JPanel badge = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 4));
+        badge.setBackground(Theme.PRIMARY_LIGHT);
+        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FFF7ED;");
+        badge.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.PRIMARY_BORDER, 1, 12));
+
         JLabel label = new JLabel(text);
-        label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 12));
+        label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
         label.setForeground(Theme.PRIMARY);
         badge.add(label);
         return badge;
     }
 
     private JPanel createProgramTag(String text) {
-        JPanel tag = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 2));
-        tag.setBackground(new Color(243, 244, 246));
-        tag.putClientProperty(FlatClientProperties.STYLE, "arc: 6; background: #F3F4F6;");
+        JPanel tag = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 3));
+        tag.setBackground(Theme.BACKGROUND);
+        tag.putClientProperty(FlatClientProperties.STYLE, "arc: 6; background: #F8FAFC;");
+        tag.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 6));
+
         JLabel label = new JLabel(text);
-        label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
+        label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
         label.setForeground(Theme.TEXT_SECONDARY);
         tag.add(label);
         return tag;
     }
 
-    private JPanel createStatItem(String label, String value) {
-        JPanel item = new JPanel();
-        item.setLayout(new BoxLayout(item, BoxLayout.Y_AXIS));
-        item.setOpaque(false);
+    private JPanel createStatChip(String label, String value) {
+        JPanel chip = new JPanel();
+        chip.setLayout(new BoxLayout(chip, BoxLayout.Y_AXIS));
+        chip.setBackground(Theme.BACKGROUND);
+        chip.putClientProperty(FlatClientProperties.STYLE, "arc: 6; background: #F8FAFC;");
+        chip.setBorder(BorderFactory.createCompoundBorder(
+                new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 6),
+                BorderFactory.createEmptyBorder(4, 10, 4, 10)
+        ));
 
         JLabel lbl = new JLabel(label);
-        lbl.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
+        lbl.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 10));
         lbl.setForeground(Theme.TEXT_MUTED);
 
         JLabel val = new JLabel(value);
-        val.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 13));
+        val.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 12));
         val.setForeground(Theme.TEXT);
 
-        item.add(lbl);
-        item.add(Box.createVerticalStrut(2));
-        item.add(val);
-        return item;
+        chip.add(lbl);
+        chip.add(Box.createVerticalStrut(1));
+        chip.add(val);
+        return chip;
     }
 }

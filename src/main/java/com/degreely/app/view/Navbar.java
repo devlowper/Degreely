@@ -8,9 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -37,27 +39,54 @@ public class Navbar extends JPanel {
         setPreferredSize(new Dimension(1200, 64));
         setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createMatteBorder(0, 0, 1, 0, Theme.BORDER),
-                BorderFactory.createEmptyBorder(0, Theme.SPACING_32, 0, Theme.SPACING_32)
+                BorderFactory.createEmptyBorder(0, Theme.SPACING_24, 0, Theme.SPACING_24)
         ));
 
-        // Left: Logo & Brand Name
-        JLabel logo = new JLabel("Degreely");
-        logo.setFont(new java.awt.Font(Theme.FONT_TITLE.getName(), java.awt.Font.BOLD, 22));
-        logo.setForeground(Theme.PRIMARY);
-        logo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        logo.addMouseListener(new MouseAdapter() {
+        // Left: Stylized Logo & Brand Mark
+        JPanel brandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 16));
+        brandPanel.setOpaque(false);
+        brandPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        brandPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 setActive("Universities");
             }
         });
 
-        JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 18));
-        leftPanel.setOpaque(false);
-        leftPanel.add(logo);
+        // Painted Logo Icon (28x28 rounded orange square with 'D')
+        JPanel logoIcon = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g.create();
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
+
+                g2.setColor(Theme.PRIMARY);
+                g2.fillRoundRect(0, 0, getWidth(), getHeight(), 8, 8);
+
+                g2.setColor(Color.WHITE);
+                g2.setFont(new Font(Theme.FONT_BUTTON.getName(), Font.BOLD, 17));
+                java.awt.FontMetrics fm = g2.getFontMetrics();
+                int x = (getWidth() - fm.stringWidth("D")) / 2;
+                int y = ((getHeight() - fm.getHeight()) / 2) + fm.getAscent();
+                g2.drawString("D", x, y);
+
+                g2.dispose();
+            }
+        };
+        logoIcon.setPreferredSize(new Dimension(30, 30));
+        logoIcon.setOpaque(false);
+
+        JLabel logoText = new JLabel("Degreely");
+        logoText.setFont(new Font(Theme.FONT_TITLE.getName(), Font.BOLD, 20));
+        logoText.setForeground(Theme.TEXT);
+
+        brandPanel.add(logoIcon);
+        brandPanel.add(logoText);
 
         // Center: Navigation Menu Items
-        JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, Theme.SPACING_12, 0));
+        JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, Theme.SPACING_8, 0));
         centerPanel.setOpaque(false);
 
         String[] pages = {"Universities", "Scholarships", "Compare", "Predictor", "Deadlines"};
@@ -69,22 +98,20 @@ public class Navbar extends JPanel {
             centerPanel.add(btn);
         }
 
-        // Right: Clean subtle brand tagline
-        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 22));
+        // Right: Clean Live Status Pill
+        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 18));
         rightPanel.setOpaque(false);
 
-        JLabel tag = new JLabel("Degree & Scholarship Directory");
-        tag.setFont(Theme.FONT_SMALL);
-        tag.setForeground(Theme.TEXT_MUTED);
-        rightPanel.add(tag);
+        JPanel statusPill = UI.badge("● Live Directory", Theme.GREEN_BG, Theme.GREEN_TEXT);
+        statusPill.setToolTipText("20 Top Universities • 80+ Programs Available");
+        rightPanel.add(statusPill);
 
-        add(leftPanel, BorderLayout.WEST);
+        add(brandPanel, BorderLayout.WEST);
         add(centerPanel, BorderLayout.CENTER);
         add(rightPanel, BorderLayout.EAST);
     }
 
     public void setActive(String pageName) {
-        // If "Home" is passed by any legacy link, normalize to "Universities"
         if ("Home".equalsIgnoreCase(pageName)) {
             pageName = "Universities";
         }
@@ -102,7 +129,7 @@ public class Navbar extends JPanel {
     }
 
     /**
-     * Custom navigation button with text hover and bottom active indicator line.
+     * Custom navigation button with quiet text and 3px bottom indicator.
      */
     private static class NavItemButton extends JButton {
         private boolean isActive = false;
@@ -115,7 +142,7 @@ public class Navbar extends JPanel {
             setBorderPainted(false);
             setContentAreaFilled(false);
             setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            setPreferredSize(new Dimension(getPreferredSize().width + 24, 62));
+            setPreferredSize(new Dimension(getPreferredSize().width + 20, 62));
 
             addMouseListener(new MouseAdapter() {
                 @Override
@@ -156,7 +183,7 @@ public class Navbar extends JPanel {
                 g2.setColor(Theme.PRIMARY);
                 int underlineHeight = 3;
                 int y = getHeight() - underlineHeight;
-                int margin = 8;
+                int margin = 10;
                 int width = getWidth() - (margin * 2);
                 g2.fillRoundRect(margin, y, width, underlineHeight, 3, 3);
             }

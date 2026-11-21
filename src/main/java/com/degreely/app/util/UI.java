@@ -1,13 +1,19 @@
 package com.degreely.app.util;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.ui.FlatLineBorder;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 
 public final class UI {
@@ -15,22 +21,21 @@ public final class UI {
     private UI() {}
 
     /**
-     * Creates a filled primary action button with orange theme and hover state.
+     * Creates a filled primary action button with signature orange branding.
      */
     public static JButton primaryButton(String text) {
         JButton btn = new JButton(text);
         btn.setFont(Theme.FONT_BUTTON);
-        btn.setForeground(java.awt.Color.WHITE);
+        btn.setForeground(Color.WHITE);
         btn.setBackground(Theme.PRIMARY);
         btn.setFocusPainted(false);
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn.setMargin(new Insets(Theme.BUTTON_PAD_Y, Theme.BUTTON_PAD_X, Theme.BUTTON_PAD_Y, Theme.BUTTON_PAD_X));
 
-        // FlatLaf client properties for modern styling
         btn.putClientProperty(FlatClientProperties.STYLE,
                 "arc: " + Theme.RADIUS + ";" +
                 "background: #E37712;" +
-                "hoverBackground: #D2500E;" +
+                "hoverBackground: #C2410C;" +
                 "foreground: #FFFFFF;" +
                 "borderWidth: 0;" +
                 "focusWidth: 0;" +
@@ -39,7 +44,7 @@ public final class UI {
     }
 
     /**
-     * Creates an outlined button with light hover highlight.
+     * Creates an outlined button with subtle border and warm hover state.
      */
     public static JButton outlineButton(String text) {
         JButton btn = new JButton(text);
@@ -50,13 +55,12 @@ public final class UI {
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn.setMargin(new Insets(Theme.BUTTON_PAD_Y, Theme.BUTTON_PAD_X, Theme.BUTTON_PAD_Y, Theme.BUTTON_PAD_X));
 
-        // FlatLaf client properties for outlined styling
         btn.putClientProperty(FlatClientProperties.STYLE,
                 "arc: " + Theme.RADIUS + ";" +
                 "background: #FFFFFF;" +
-                "hoverBackground: #EFF6FF;" +
+                "hoverBackground: #FFF7ED;" +
                 "foreground: #E37712;" +
-                "borderColor: #E5E7EB;" +
+                "borderColor: #E2E8F0;" +
                 "hoverBorderColor: #E37712;" +
                 "borderWidth: 1;" +
                 "focusWidth: 0;" +
@@ -65,7 +69,7 @@ public final class UI {
     }
 
     /**
-     * Creates a card surface container with rounded corners, border, and white background.
+     * Creates an elevated card surface with 10px rounded corners and subtle border.
      */
     public static JPanel card() {
         JPanel panel = new JPanel();
@@ -74,14 +78,28 @@ public final class UI {
                 "arc: " + Theme.RADIUS + ";" +
                 "background: #FFFFFF;");
         panel.setBorder(BorderFactory.createCompoundBorder(
-                new com.formdev.flatlaf.ui.FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, Theme.RADIUS),
+                new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, Theme.RADIUS),
                 BorderFactory.createEmptyBorder(
                         Theme.SPACING_16, Theme.SPACING_16, Theme.SPACING_16, Theme.SPACING_16)
         ));
         return panel;
     }
 
-    // Typography labels
+    /**
+     * Creates a compact styled pill badge.
+     */
+    public static JPanel badge(String text, Color bg, Color fg) {
+        JPanel badge = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 3));
+        badge.setBackground(bg);
+        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12;");
+        JLabel label = new JLabel(text);
+        label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
+        label.setForeground(fg);
+        badge.add(label);
+        return badge;
+    }
+
+    // Standard Typography Labels
     public static JLabel titleLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(Theme.FONT_TITLE);

@@ -117,9 +117,17 @@ public class ScholarshipsPage extends JPanel {
         levelCombo.setPreferredSize(new Dimension(140, 36));
         levelCombo.addActionListener(e -> applyFilters());
 
-        dropdownsRow.add(new JLabel("Country:"));
+        JLabel cLbl = new JLabel("Country:");
+        cLbl.setFont(Theme.FONT_SMALL);
+        cLbl.setForeground(Theme.TEXT_SECONDARY);
+
+        JLabel dLbl = new JLabel("Degree:");
+        dLbl.setFont(Theme.FONT_SMALL);
+        dLbl.setForeground(Theme.TEXT_SECONDARY);
+
+        dropdownsRow.add(cLbl);
         dropdownsRow.add(countryCombo);
-        dropdownsRow.add(new JLabel("Degree:"));
+        dropdownsRow.add(dLbl);
         dropdownsRow.add(levelCombo);
 
         filterCard.add(searchField, BorderLayout.CENTER);

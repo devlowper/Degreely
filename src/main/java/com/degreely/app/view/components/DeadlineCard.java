@@ -122,7 +122,7 @@ public class DeadlineCard extends JPanel {
         // Delete Button
         JButton deleteBtn = UI.outlineButton("Delete");
         deleteBtn.setFont(Theme.FONT_SMALL);
-        deleteBtn.setMargin(new Insets(6, 12, 6, 12));
+        deleteBtn.setMargin(new Insets(4, 10, 4, 10));
         deleteBtn.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(this,
                     "Are you sure you want to delete this deadline entry?",
@@ -170,24 +170,24 @@ public class DeadlineCard extends JPanel {
 
         if (days < 0) {
             text = Math.abs(days) + "d overdue";
-            bg = new Color(254, 226, 226); // Red-100
-            fg = new Color(220, 38, 38);   // Red-600
+            bg = Theme.RED_BG;
+            fg = Theme.RED_TEXT;
         } else if (days == 0) {
             text = "Due Today!";
-            bg = new Color(254, 226, 226);
-            fg = new Color(220, 38, 38);
+            bg = Theme.RED_BG;
+            fg = Theme.RED_TEXT;
         } else if (days <= 7) {
             text = days + " days left";
-            bg = new Color(254, 226, 226); // Red
-            fg = new Color(220, 38, 38);
+            bg = Theme.RED_BG;
+            fg = Theme.RED_TEXT;
         } else if (days <= 30) {
             text = days + " days left";
-            bg = new Color(254, 243, 199); // Amber
-            fg = new Color(217, 119, 6);
+            bg = Theme.AMBER_BG;
+            fg = Theme.AMBER_TEXT;
         } else {
             text = days + " days left";
-            bg = new Color(220, 252, 231); // Green
-            fg = new Color(22, 101, 52);
+            bg = Theme.GREEN_BG;
+            fg = Theme.GREEN_TEXT;
         }
 
         badge.setBackground(bg);
@@ -208,14 +208,14 @@ public class DeadlineCard extends JPanel {
         Color fg;
 
         if ("Done".equalsIgnoreCase(status)) {
-            bg = new Color(220, 252, 231); // Green
-            fg = new Color(22, 101, 52);
+            bg = Theme.GREEN_BG;
+            fg = Theme.GREEN_TEXT;
         } else if ("Applied".equalsIgnoreCase(status)) {
-            bg = Theme.LIGHT_BLUE_HIGHLIGHT; // Blue
-            fg = Color.decode("#2563EB");
+            bg = Theme.LIGHT_BLUE_HIGHLIGHT;
+            fg = Theme.BLUE_TEXT;
         } else {
-            bg = new Color(254, 243, 199); // Amber
-            fg = new Color(217, 119, 6);
+            bg = Theme.AMBER_BG;
+            fg = Theme.AMBER_TEXT;
         }
 
         badge.setBackground(bg);

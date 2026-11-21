@@ -89,7 +89,7 @@ public class ScholarshipCard extends JPanel {
         // Subtitle: University & Country
         JLabel uniLabel = new JLabel(scholarship.getUniversity() + "  •  " + scholarship.getCountry());
         uniLabel.setFont(Theme.FONT_BODY);
-        uniLabel.setForeground(Theme.TEXT_MUTED);
+        uniLabel.setForeground(Theme.TEXT_SECONDARY);
 
         JPanel topSection = new JPanel();
         topSection.setLayout(new BoxLayout(topSection, BoxLayout.Y_AXIS));
@@ -98,7 +98,7 @@ public class ScholarshipCard extends JPanel {
         topSection.add(Box.createVerticalStrut(Theme.SPACING_4));
         topSection.add(uniLabel);
 
-        // Bottom Row: Amount (Orange Bold) & Deadline, plus "Apply Link" button
+        // Bottom Row: Funding Amount & Deadline, plus "Apply Online →" button
         JPanel bottomRow = new JPanel(new BorderLayout());
         bottomRow.setOpaque(false);
 
@@ -115,16 +115,16 @@ public class ScholarshipCard extends JPanel {
         String formattedDeadline = formatDeadlineDisplay(scholarship.getDeadline());
         JLabel deadlineLabel = new JLabel("Application Deadline: " + formattedDeadline);
         deadlineLabel.setFont(Theme.FONT_SMALL);
-        deadlineLabel.setForeground(Theme.TEXT_SECONDARY);
+        deadlineLabel.setForeground(Theme.TEXT_MUTED);
 
         amountAndDeadlines.add(amountLabel);
         amountAndDeadlines.add(Box.createVerticalStrut(Theme.SPACING_4));
         amountAndDeadlines.add(deadlineLabel);
 
         // Apply Link Button
-        JButton applyBtn = UI.primaryButton("Apply Link ↗");
+        JButton applyBtn = UI.primaryButton("Apply Online →");
         applyBtn.setFont(Theme.FONT_SMALL);
-        applyBtn.setMargin(new Insets(8, 16, 8, 16));
+        applyBtn.setMargin(new Insets(6, 14, 6, 14));
         applyBtn.addActionListener(e -> openApplyLink());
 
         bottomRow.add(amountAndDeadlines, BorderLayout.WEST);
@@ -151,11 +151,13 @@ public class ScholarshipCard extends JPanel {
 
     private JPanel createClosingSoonBadge(String text) {
         JPanel badge = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 3));
-        badge.setBackground(new Color(254, 226, 226)); // Soft light red
+        badge.setBackground(Theme.RED_BG);
         badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FEE2E2;");
+        badge.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.RED_BORDER, 1, 12));
+
         JLabel label = new JLabel(text);
         label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
-        label.setForeground(new Color(220, 38, 38)); // Vibrant red
+        label.setForeground(Theme.RED_TEXT);
         badge.add(label);
         return badge;
     }
@@ -164,9 +166,11 @@ public class ScholarshipCard extends JPanel {
         JPanel badge = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 3));
         badge.setBackground(Theme.LIGHT_BLUE_HIGHLIGHT);
         badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #EFF6FF;");
+        badge.setBorder(new FlatLineBorder(new Insets(1, 1, 1, 1), Color.decode("#BFDBFE"), 1, 12));
+
         JLabel label = new JLabel(level);
         label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
-        label.setForeground(Theme.PRIMARY);
+        label.setForeground(Theme.BLUE_TEXT);
         badge.add(label);
         return badge;
     }
@@ -201,8 +205,7 @@ public class ScholarshipCard extends JPanel {
 
     private void showLinkDialog(String url) {
         JOptionPane.showMessageDialog(this,
-                "Official Application Portal:\n" + url,
-                scholarship.getName(),
-                JOptionPane.INFORMATION_MESSAGE);
+                "Official Scholarship Application Portal:\n" + url,
+                "Apply Link", JOptionPane.INFORMATION_MESSAGE);
     }
 }

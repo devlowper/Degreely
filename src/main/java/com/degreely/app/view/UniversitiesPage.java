@@ -6,6 +6,7 @@ import com.degreely.app.util.Theme;
 import com.degreely.app.util.UI;
 import com.degreely.app.view.components.UniversityCard;
 import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.ui.FlatLineBorder;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -26,6 +27,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.text.NumberFormat;
 import java.util.List;
@@ -68,7 +70,7 @@ public class UniversitiesPage extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(
                 Theme.SPACING_24, Theme.SPACING_32, Theme.SPACING_24, Theme.SPACING_32));
 
-        // 1. Top Section: Hero Banner (Integrated from Home Page)
+        // 1. Top Section: Hero Showcase Banner
         JPanel heroBanner = createHeroBanner();
         add(heroBanner, BorderLayout.NORTH);
 
@@ -88,16 +90,17 @@ public class UniversitiesPage extends JPanel {
     }
 
     /**
-     * Hero Header Banner merged from Home Page to provide a welcoming, modern entry point.
+     * Hero Header Banner providing a welcoming overview of the global directory.
      */
     private JPanel createHeroBanner() {
         JPanel bannerCard = UI.card();
-        bannerCard.setLayout(new BorderLayout(Theme.SPACING_16, Theme.SPACING_12));
+        bannerCard.setLayout(new BorderLayout(Theme.SPACING_24, 0));
         bannerCard.setBorder(BorderFactory.createCompoundBorder(
                 bannerCard.getBorder(),
-                BorderFactory.createEmptyBorder(Theme.SPACING_4, Theme.SPACING_8, Theme.SPACING_4, Theme.SPACING_8)
+                BorderFactory.createEmptyBorder(Theme.SPACING_8, Theme.SPACING_12, Theme.SPACING_8, Theme.SPACING_12)
         ));
 
+        // Left text column
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
         textPanel.setOpaque(false);
@@ -105,38 +108,49 @@ public class UniversitiesPage extends JPanel {
         JLabel title = UI.titleLabel("Find Your Dream Degree & University Abroad");
         title.setFont(new Font(Theme.FONT_TITLE.getName(), Font.BOLD, 22));
 
-        JLabel subtitle = UI.secondaryLabel("Explore world-class undergraduate and postgraduate programs. Filter by tuition, English requirements, and admission selectivity.");
+        JLabel subtitle = UI.secondaryLabel("Explore 20 world-renowned institutions and 80+ accredited programs across 8 countries. Filter by tuition, IELTS cutoff, and admission selectivity.");
         subtitle.setFont(Theme.FONT_BODY);
 
         textPanel.add(title);
         textPanel.add(Box.createVerticalStrut(Theme.SPACING_4));
         textPanel.add(subtitle);
 
-        // Stat Badges Row
-        JPanel pillsRow = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 0));
-        pillsRow.setOpaque(false);
-        pillsRow.setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_8, 0, 0, 0));
+        // Right Stats Grid (4 compact metric boxes)
+        JPanel statsRow = new JPanel(new FlowLayout(FlowLayout.RIGHT, Theme.SPACING_8, 0));
+        statsRow.setOpaque(false);
 
-        pillsRow.add(createStatPill("20 Top Universities"));
-        pillsRow.add(createStatPill("80+ Degree Programs"));
-        pillsRow.add(createStatPill("Tuition: $0 - $70k/yr"));
-        pillsRow.add(createStatPill("8 Global Destinations"));
-
-        textPanel.add(pillsRow);
+        statsRow.add(createStatMetricBox("20", "Top Universities"));
+        statsRow.add(createStatMetricBox("80+", "Degree Programs"));
+        statsRow.add(createStatMetricBox("$0-$70k", "Annual Tuition"));
+        statsRow.add(createStatMetricBox("8", "Destinations"));
 
         bannerCard.add(textPanel, BorderLayout.CENTER);
+        bannerCard.add(statsRow, BorderLayout.EAST);
         return bannerCard;
     }
 
-    private JPanel createStatPill(String text) {
-        JPanel pill = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 4));
-        pill.setBackground(Theme.LIGHT_BLUE_HIGHLIGHT);
-        pill.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #EFF6FF;");
-        JLabel label = new JLabel(text);
-        label.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
-        label.setForeground(Theme.PRIMARY);
-        pill.add(label);
-        return pill;
+    private JPanel createStatMetricBox(String value, String label) {
+        JPanel box = new JPanel();
+        box.setLayout(new BoxLayout(box, BoxLayout.Y_AXIS));
+        box.setBackground(Theme.BACKGROUND);
+        box.putClientProperty(FlatClientProperties.STYLE, "arc: 8; background: #F8FAFC;");
+        box.setBorder(BorderFactory.createCompoundBorder(
+                new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 8),
+                BorderFactory.createEmptyBorder(6, 12, 6, 12)
+        ));
+
+        JLabel valLabel = new JLabel(value);
+        valLabel.setFont(new Font(Theme.FONT_TITLE.getName(), Font.BOLD, 16));
+        valLabel.setForeground(Theme.PRIMARY);
+
+        JLabel descLabel = new JLabel(label);
+        descLabel.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
+        descLabel.setForeground(Theme.TEXT_SECONDARY);
+
+        box.add(valLabel);
+        box.add(Box.createVerticalStrut(1));
+        box.add(descLabel);
+        return box;
     }
 
     private JPanel createFilterSidebar() {
@@ -144,10 +158,25 @@ public class UniversitiesPage extends JPanel {
         card.setPreferredSize(new Dimension(290, 520));
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
 
-        // Sidebar Title
+        // Sidebar Header
+        JPanel headerRow = new JPanel(new BorderLayout());
+        headerRow.setOpaque(false);
+
         JLabel title = UI.sectionLabel("Filters");
-        title.setFont(new Font(Theme.FONT_SECTION.getName(), Font.BOLD, 17));
-        card.add(title);
+        title.setFont(new Font(Theme.FONT_SECTION.getName(), Font.BOLD, 16));
+
+        JButton quickReset = new JButton("Reset all");
+        quickReset.setFont(Theme.FONT_SMALL);
+        quickReset.setForeground(Theme.PRIMARY);
+        quickReset.setBorderPainted(false);
+        quickReset.setContentAreaFilled(false);
+        quickReset.setFocusPainted(false);
+        quickReset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quickReset.addActionListener(e -> resetFilters());
+
+        headerRow.add(title, BorderLayout.WEST);
+        headerRow.add(quickReset, BorderLayout.EAST);
+        card.add(headerRow);
         card.add(Box.createVerticalStrut(Theme.SPACING_12));
 
         // Country Filter
@@ -222,7 +251,7 @@ public class UniversitiesPage extends JPanel {
         JPanel btnRow = new JPanel(new FlowLayout(FlowLayout.CENTER, Theme.SPACING_8, 0));
         btnRow.setOpaque(false);
 
-        JButton applyBtn = UI.primaryButton("Apply");
+        JButton applyBtn = UI.primaryButton("Apply Filters");
         applyBtn.setFont(Theme.FONT_SMALL);
         applyBtn.setMargin(new Insets(6, 16, 6, 16));
         applyBtn.addActionListener(e -> applyFilters());
@@ -249,7 +278,7 @@ public class UniversitiesPage extends JPanel {
         topBar.setOpaque(false);
 
         // Search text field
-        searchField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Search universities, degree programs, cities...");
+        searchField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Search universities, degree programs, cities, or countries...");
         searchField.putClientProperty(FlatClientProperties.STYLE, "arc: 8; margin: 8,12,8,12;");
         searchField.setFont(Theme.FONT_BODY);
         searchField.getDocument().addDocumentListener(new DocumentListener() {

@@ -154,6 +154,14 @@ public class ComparePage extends JPanel {
                 BorderFactory.createEmptyBorder(Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32, Theme.SPACING_32)
         ));
 
+        JLabel badge = new JLabel("COMPARE");
+        badge.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
+        badge.setForeground(Theme.PRIMARY);
+        badge.putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FFF7ED;");
+        badge.setOpaque(true);
+        badge.setBorder(BorderFactory.createEmptyBorder(4, 12, 4, 12));
+        badge.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JLabel title = UI.sectionLabel("No Universities to Compare Yet");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -168,7 +176,8 @@ public class ComparePage extends JPanel {
             }
         });
 
-        emptyCard.add(Box.createVerticalStrut(Theme.SPACING_16));
+        emptyCard.add(badge);
+        emptyCard.add(Box.createVerticalStrut(Theme.SPACING_12));
         emptyCard.add(title);
         emptyCard.add(Box.createVerticalStrut(Theme.SPACING_8));
         emptyCard.add(desc);
