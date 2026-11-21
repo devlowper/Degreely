@@ -68,7 +68,7 @@ public class ProfileDialog extends JDialog {
         mainPanel.add(titleRow);
         mainPanel.add(Box.createVerticalStrut(Theme.SPACING_4));
 
-        JLabel desc = UI.secondaryLabel("Night Owl AI uses your profile silently to personalize admission recommendations.");
+        JLabel desc = UI.secondaryLabel("Degreely AI uses your profile silently to personalize admission recommendations.");
         mainPanel.add(desc);
         mainPanel.add(Box.createVerticalStrut(Theme.SPACING_16));
 

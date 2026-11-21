@@ -37,7 +37,7 @@ public class GeminiService {
     private String selectedModel = "gemini-2.5-flash";
 
     private static final String SYSTEM_PROMPT =
-            "You are Night Owl, an expert study-abroad counselor for students from Bangladesh and South Asia. " +
+            "You are Degreely, an expert study-abroad counselor for students from Bangladesh and South Asia. " +
             "Help with universities, admissions, costs, deadlines, scholarships, visas, exams (IELTS/TOEFL/GRE/GMAT), and SOP reviews. " +
             "For any comparison or university lookup, output the uni-table JSON block described below. " +
             "Never fabricate deadlines, fees, or requirements; if unsure, say so and cite where to verify. " +

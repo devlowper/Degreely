@@ -16,7 +16,7 @@ public class Main {
 
         // Test Data Layer loading
         System.out.println("==================================================");
-        System.out.println("       Night Owl - Study Abroad AI Counselor      ");
+        System.out.println("       Degreely - Study Abroad AI Counselor       ");
         System.out.println("==================================================");
         UniversityService service = UniversityService.getInstance();
         List<University> universities = service.getAll();

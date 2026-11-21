@@ -79,7 +79,7 @@ public class ChatSidebar extends JPanel {
 
         JLabel brandIcon = new JLabel(Icons.spark(18, Theme.PRIMARY));
 
-        JLabel appName = new JLabel("Night Owl");
+        JLabel appName = new JLabel("Degreely");
         appName.setFont(new Font(Font.SERIF, Font.BOLD, 19));
         appName.setForeground(Theme.TEXT);
 

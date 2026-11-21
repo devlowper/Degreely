@@ -1,7 +1,7 @@
-# 🦉 Night Owl Study Abroad — AI Counselor Desktop Application
+# 🦉 Degreely — AI Study Abroad Counselor Desktop Application
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Night%20Owl-AI%20Counselor-orange?style=for-the-badge&logo=openai&logoColor=white" alt="Night Owl AI" />
+  <img src="https://img.shields.io/badge/Degreely-AI%20Counselor-orange?style=for-the-badge&logo=openai&logoColor=white" alt="Degreely AI" />
   <img src="https://img.shields.io/badge/Gemini%20API-gemini--2.5--flash-blue?style=for-the-badge" alt="Gemini" />
   <img src="https://img.shields.io/badge/UI-Claude.ai%20Style-D97757?style=for-the-badge" alt="Claude Style" />
   <img src="https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17+" />
@@ -14,16 +14,16 @@
 
 ## 📖 Overview
 
-**Night Owl Study Abroad** is a production-quality AI counselor desktop application built with **Java 17**, **Java Swing**, and **FlatLaf**, featuring an interface inspired by **Claude.ai** (clean, minimal, warm). 
+**Degreely** is a production-quality AI counselor desktop application built with **Java 17**, **Java Swing**, and **FlatLaf**, featuring an interface inspired by **Claude.ai** (clean, minimal, warm). 
 
-Powered by the **Google Gemini API** (`gemini-2.5-flash` by default, with model selection for `gemini-1.5-flash` and `gemini-1.5-pro`), Night Owl is tailored for students (primarily from Bangladesh and South Asia) seeking higher education abroad.
+Powered by the **Google Gemini API** (`gemini-2.5-flash` by default, with model selection for `gemini-1.5-flash` and `gemini-1.5-pro`), Degreely is tailored for students (primarily from Bangladesh and South Asia) seeking higher education abroad.
 
 ### Key Capabilities:
 - **Interactive University Comparison Tables (`uni-table`)**: Automatically parses model output into structured side-by-side comparison tables with attribute groups (Admissions, Costs, Living Expenses, Deadlines, Post-study Work Rights), highlights cheapest tuition and nearest deadlines, and offers **Copy Table** and **Export CSV**.
 - **Multimodal Document Upload (📎)**: Attach SOP drafts, CVs, transcripts, or university brochures (PDF, PNG, JPG, TXT, CSV, DOCX) for constructive admissions review.
 - **Claude-Style Minimal Layout**:
   - 264px left sidebar with serif brand header, orange "New chat" button, instant search (`Ctrl+K`), and categorized history (*Today / Yesterday / Previous 7 days / Older*).
-  - Empty state with warm spark icon, *"Hello, night owl"* serif greeting, and 4 starter prompt cards.
+  - Empty state with warm spark icon, *"Welcome to Degreely"* serif greeting, and 4 starter prompt cards.
   - Centered message column with user bubbles (`#F1F5F9`) and assistant markdown rendering.
   - 24px rounded composer with auto-growing textarea, file chips, and send/stop buttons.
 - **Personalized Student Profile**: Injects the student's CGPA, IELTS score, budget, preferred countries, and intake into the context silently.
@@ -65,11 +65,11 @@ Powered by the **Google Gemini API** (`gemini-2.5-flash` by default, with model 
   - **Pre-requisites**: Minimum GPA, IELTS band, TOEFL score, and required document checklist.
 - **Similar Institutions Sidebar**: Recommends similar universities based on country and ranking proximity.
 
-### 3. ✦ Night Owl AI Study Abroad Counselor (Claude-Style Chatbot)
+### 3. ✦ Degreely AI Study Abroad Counselor (Claude-Style Chatbot)
 - **AI-Powered Admissions Advising**: Focused on students from Bangladesh and South Asia planning to study abroad. Answers questions on university selection, requirements, visas, exams (IELTS/GRE), and SOP reviews.
 - **Claude.ai Look & Feel**:
   - **Left Sidebar (264px)**: Serif app title, orange "New chat" button, chat search (Ctrl+K), "Recents" categorized by *Today / Yesterday / Previous 7 days / Older*, with pin, rename, and delete actions.
-  - **Empty State**: Centered warm spark icon, large serif greeting (*"Hello, night owl"*), and 4 quick starter prompt cards.
+  - **Empty State**: Centered warm spark icon, large serif greeting (*"Welcome to Degreely"*), and 4 quick starter prompt cards.
   - **Message Stream**: Right-aligned user bubbles (`#F1F5F9`) and left-aligned assistant messages with full markdown formatting, "Thinking..." indicator, and Copy / Regenerate actions.
   - **Composer (24px radius)**: Auto-growing input, paperclip file attachment button (PDF, Images, TXT, CSV, DOCX), file chips with remove button, and orange send button.
 - **Dynamic University Comparison Tables (`uni-table`)**:
@@ -160,8 +160,8 @@ Degreely/
         │       │   ├── Program.java              # Degree program entity
         │       │   ├── Scholarship.java          # Scholarship entity
         │       │   ├── ApplicationDeadline.java  # User deadline entity
-        │       │   ├── ChatMessage.java          # Night Owl chat message entity
-        │       │   ├── ChatSession.java          # Night Owl conversation session
+        │       │   ├── ChatMessage.java          # Degreely chat message entity
+        │       │   ├── ChatSession.java          # Degreely conversation session
         │       │   ├── StudentProfile.java       # Academic background profile
         │       │   └── UniTableData.java         # Structured comparison table entity
         │       │
@@ -184,7 +184,7 @@ Degreely/
         │           ├── Navbar.java               # Top navigation bar with active indicator
         │           ├── UniversitiesPage.java     # University catalog with hero banner & filters
         │           ├── UniversityDetailsPage.java# Deep-dive university details with tabs
-        │           ├── ChatPage.java             # Night Owl AI Counselor workspace
+        │           ├── ChatPage.java             # Degreely AI Counselor workspace
         │           ├── ScholarshipsPage.java     # Scholarship catalog & closing alerts
         │           ├── ComparePage.java          # Multi-university comparison table
         │           ├── PredictorPage.java        # Interactive admission calculator
@@ -199,7 +199,7 @@ Degreely/
         │                   ├── ComposerPanel.java        # 24px rounded input with attachment
         │                   ├── MessageBubble.java        # User bubble & assistant markdown
         │                   ├── UniTableComponent.java    # Dynamic comparison table component
-        │                   ├── StarterPromptsPanel.java  # "Hello, night owl" greeting
+        │                   ├── StarterPromptsPanel.java  # "Welcome to Degreely" greeting
         │                   ├── ProfileDialog.java        # Academic profile modal
         │                   └── ApiKeyDialog.java         # Gemini API settings modal
         │

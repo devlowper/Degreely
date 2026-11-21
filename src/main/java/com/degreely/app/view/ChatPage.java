@@ -44,7 +44,6 @@ public class ChatPage extends JPanel {
 
     // Center Chat Components
     private final JLabel headerTitleLabel = new JLabel("New Consultation");
-    private final JLabel modelBadgeLabel = new JLabel("gemini-2.5-flash");
     private final JPanel messagesColumn = new JPanel();
     private final JScrollPane messagesScrollPane = new JScrollPane();
     private ComposerPanel composerPanel;
@@ -105,18 +104,14 @@ public class ChatPage extends JPanel {
                 BorderFactory.createEmptyBorder(0, Theme.SPACING_24, 0, Theme.SPACING_24)
         ));
 
-        // Left: Title + Model Badge
+        // Left: Title
         JPanel left = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 14));
         left.setOpaque(false);
 
         headerTitleLabel.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 14));
         headerTitleLabel.setForeground(Theme.TEXT);
 
-        JPanel badge = UI.badge(geminiService.getSelectedModel(), Theme.PRIMARY_LIGHT, Theme.PRIMARY);
-        badge.setToolTipText("AI Counselor model powering Night Owl");
-
         left.add(headerTitleLabel);
-        left.add(badge);
 
         // Right Actions: Export chat as Markdown
         JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT, Theme.SPACING_8, 12));
@@ -257,7 +252,7 @@ public class ChatPage extends JPanel {
         p.setOpaque(false);
         JLabel spark = new JLabel("✦");
         spark.setForeground(Theme.PRIMARY);
-        JLabel text = UI.mutedLabel("Night Owl is thinking...");
+        JLabel text = UI.mutedLabel("Degreely is thinking...");
         text.setFont(new Font(Theme.FONT_BODY.getName(), Font.ITALIC, 13));
         p.add(spark);
         p.add(text);
@@ -284,9 +279,9 @@ public class ChatPage extends JPanel {
             File f = chooser.getSelectedFile();
             try (FileWriter w = new FileWriter(f)) {
                 w.write("# " + currentSession.getTitle() + "\n\n");
-                w.write("*Exported from Night Owl Study Abroad AI Counselor*\n\n---\n\n");
+                w.write("*Exported from Degreely Study Abroad AI Counselor*\n\n---\n\n");
                 for (ChatMessage m : currentSession.getMessages()) {
-                    w.write("### " + ("user".equals(m.getRole()) ? "Student" : "Night Owl AI") + "\n\n");
+                    w.write("### " + ("user".equals(m.getRole()) ? "Student" : "Degreely AI") + "\n\n");
                     w.write(m.getContent() + "\n\n");
                 }
                 JOptionPane.showMessageDialog(this, "Exported successfully to " + f.getName(), "Saved", JOptionPane.INFORMATION_MESSAGE);

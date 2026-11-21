@@ -128,7 +128,7 @@ public class ComposerPanel extends JPanel {
         add(box);
 
         // Disclaimer at bottom
-        JLabel botDisclaimer = UI.mutedLabel("Night Owl AI can make mistakes. Verify critical deadlines and admission criteria with official universities.");
+        JLabel botDisclaimer = UI.mutedLabel("Degreely AI can make mistakes. Verify critical deadlines and admission criteria with official universities.");
         botDisclaimer.setFont(new Font(Theme.FONT_SMALL.getName(), Font.PLAIN, 11));
         botDisclaimer.setAlignmentX(CENTER_ALIGNMENT);
         add(Box.createVerticalStrut(6));

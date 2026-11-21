@@ -89,7 +89,7 @@ public class Navbar extends JPanel {
         JPanel centerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, Theme.SPACING_8, 0));
         centerPanel.setOpaque(false);
 
-        String[] pages = {"Universities", "Scholarships", "Night Owl AI", "Compare", "Predictor", "Deadlines"};
+        String[] pages = {"Universities", "Scholarships", "Degreely AI", "Compare", "Predictor", "Deadlines"};
         for (String page : pages) {
             NavItemButton btn = new NavItemButton(page);
             btn.setActive(page.equals("Universities"));

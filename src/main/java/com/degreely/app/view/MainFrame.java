@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
     }
 
     private void initUI() {
-        setTitle("Night Owl — Study Abroad AI Counselor");
+        setTitle("Degreely — Study Abroad AI Counselor");
         setSize(1240, 780);
         setMinimumSize(new Dimension(960, 640));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,7 +23,7 @@ public class MainFrame extends JFrame {
         getContentPane().setBackground(Theme.CARD_BG);
         setLayout(new BorderLayout());
 
-        // Dedicated Night Owl AI Study Abroad Chatbot Workspace
+        // Dedicated Degreely AI Study Abroad Chatbot Workspace
         chatPage = new ChatPage();
         add(chatPage, BorderLayout.CENTER);
     }

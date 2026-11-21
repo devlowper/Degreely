@@ -61,7 +61,7 @@ public class ApiKeyDialog extends JDialog {
         content.add(titleRow);
         content.add(Box.createVerticalStrut(Theme.SPACING_4));
 
-        JLabel desc = UI.secondaryLabel("Enter your Gemini API key to power Night Owl AI Counselor.");
+        JLabel desc = UI.secondaryLabel("Enter your Gemini API key to power Degreely AI Counselor.");
         content.add(desc);
         content.add(Box.createVerticalStrut(Theme.SPACING_16));
 

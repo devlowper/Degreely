@@ -62,8 +62,8 @@ public class StarterPromptsPanel extends JPanel {
         add(sparkIcon);
         add(Box.createVerticalStrut(Theme.SPACING_12));
 
-        // 2. Greeting Title ("Hello, night owl") in Serif font
-        JLabel greeting = new JLabel("Hello, night owl");
+        // 2. Greeting Title in Serif font
+        JLabel greeting = new JLabel("Welcome to Degreely");
         greeting.setFont(new Font(Font.SERIF, Font.PLAIN, 32));
         greeting.setForeground(Theme.TEXT);
         greeting.setAlignmentX(CENTER_ALIGNMENT);
