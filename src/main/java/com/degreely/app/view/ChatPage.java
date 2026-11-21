@@ -22,20 +22,24 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.Scrollable;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -77,21 +81,18 @@ public class ChatPage extends JPanel {
         JPanel topBar = createTopBar();
         mainArea.add(topBar, BorderLayout.NORTH);
 
-        // Messages Center Column (max-width around 780px centered)
+        // Messages Column: 100% dynamic height so complete tables and conversations are fully visible
         messagesColumn.setLayout(new BoxLayout(messagesColumn, BoxLayout.Y_AXIS));
         messagesColumn.setOpaque(false);
-        messagesColumn.setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_16, Theme.SPACING_32, Theme.SPACING_16, Theme.SPACING_32));
+        messagesColumn.setBorder(BorderFactory.createEmptyBorder(Theme.SPACING_16, Theme.SPACING_24, 60, Theme.SPACING_24));
+        messagesColumn.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JPanel centerWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        centerWrapper.setOpaque(false);
-        messagesColumn.setMaximumSize(new Dimension(860, Integer.MAX_VALUE));
-        messagesColumn.setPreferredSize(new Dimension(860, 400));
-        centerWrapper.add(messagesColumn);
-
-        messagesScrollPane.setViewportView(centerWrapper);
+        ScrollableChatWrapper scrollWrapper = new ScrollableChatWrapper(messagesColumn);
+        messagesScrollPane.setViewportView(scrollWrapper);
         messagesScrollPane.setBorder(BorderFactory.createEmptyBorder());
         messagesScrollPane.getViewport().setBackground(Color.WHITE);
-        messagesScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        messagesScrollPane.getVerticalScrollBar().setUnitIncrement(20);
+        messagesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         mainArea.add(messagesScrollPane, BorderLayout.CENTER);
 
@@ -405,6 +406,43 @@ public class ChatPage extends JPanel {
             storageService.saveSession(currentSession);
             sidebar.renderSessionList();
             renderMessages();
+        }
+    }
+
+    /**
+     * Custom scrollable panel for the chat messages ensuring dynamic height expansion
+     * and proper viewport width matching so tables and long messages are never cut off.
+     */
+    private static class ScrollableChatWrapper extends JPanel implements Scrollable {
+        public ScrollableChatWrapper(JComponent content) {
+            super(new BorderLayout());
+            setOpaque(false);
+            add(content, BorderLayout.NORTH);
+        }
+
+        @Override
+        public Dimension getPreferredScrollableViewportSize() {
+            return getPreferredSize();
+        }
+
+        @Override
+        public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
+            return 20;
+        }
+
+        @Override
+        public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
+            return 80;
+        }
+
+        @Override
+        public boolean getScrollableTracksViewportWidth() {
+            return true;
+        }
+
+        @Override
+        public boolean getScrollableTracksViewportHeight() {
+            return false;
         }
     }
 }

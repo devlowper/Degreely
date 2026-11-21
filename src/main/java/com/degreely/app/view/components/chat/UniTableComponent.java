@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -50,8 +51,9 @@ public class UniTableComponent extends JPanel {
 
     private void initUI() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBackground(Theme.CARD_BG);
-        putClientProperty(FlatClientProperties.STYLE, "arc: 12; background: #FFFFFF;");
+        setBackground(Color.WHITE);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
+        setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
         setBorder(BorderFactory.createCompoundBorder(
                 new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 12),
                 BorderFactory.createEmptyBorder(Theme.SPACING_16, Theme.SPACING_16, Theme.SPACING_16, Theme.SPACING_16)
@@ -68,6 +70,7 @@ public class UniTableComponent extends JPanel {
         // 1. Top Bar: Title & Action Buttons
         JPanel topBar = new JPanel(new BorderLayout());
         topBar.setOpaque(false);
+        topBar.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 0));
         titlePanel.setOpaque(false);
@@ -111,10 +114,13 @@ public class UniTableComponent extends JPanel {
         JPanel tableGrid = new JPanel();
         tableGrid.setLayout(new BoxLayout(tableGrid, BoxLayout.Y_AXIS));
         tableGrid.setOpaque(false);
+        tableGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         // Header Row: University Names
         JPanel headerRow = new JPanel(new GridLayout(1, colCount + 1, Theme.SPACING_12, 0));
         headerRow.setOpaque(false);
+        headerRow.setAlignmentX(Component.LEFT_ALIGNMENT);
+        headerRow.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
         headerRow.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createMatteBorder(0, 0, 2, 0, Theme.PRIMARY),
                 BorderFactory.createEmptyBorder(0, 0, Theme.SPACING_8, 0)
@@ -158,6 +164,7 @@ public class UniTableComponent extends JPanel {
         JPanel footerPanel = new JPanel();
         footerPanel.setLayout(new BoxLayout(footerPanel, BoxLayout.Y_AXIS));
         footerPanel.setOpaque(false);
+        footerPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         footerPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Theme.BORDER));
 
         JPanel linksPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 6));
@@ -196,7 +203,8 @@ public class UniTableComponent extends JPanel {
     private JPanel createGroupHeader(String text) {
         JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 4));
         p.setBackground(Theme.BACKGROUND);
-        p.putClientProperty(FlatClientProperties.STYLE, "arc: 4; background: #F8FAFC;");
+        p.setAlignmentX(Component.LEFT_ALIGNMENT);
+        p.setMaximumSize(new Dimension(Integer.MAX_VALUE, 26));
         JLabel l = new JLabel(text);
         l.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 10));
         l.setForeground(Theme.TEXT_MUTED);
@@ -240,6 +248,8 @@ public class UniTableComponent extends JPanel {
         int colCount = unis.size();
         JPanel row = new JPanel(new GridLayout(1, colCount + 1, Theme.SPACING_12, 0));
         row.setOpaque(false);
+        row.setAlignmentX(Component.LEFT_ALIGNMENT);
+        row.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
         row.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createMatteBorder(0, 0, 1, 0, Theme.BORDER),
                 BorderFactory.createEmptyBorder(Theme.SPACING_8, 0, Theme.SPACING_8, 0)
@@ -249,7 +259,7 @@ public class UniTableComponent extends JPanel {
         JPanel lCell = new JPanel(new BorderLayout());
         lCell.setOpaque(false);
         lCell.setBorder(BorderFactory.createEmptyBorder(2, 4, 2, 4));
-        JLabel l = new JLabel("<html><span style='color:#475569; font-weight:600; font-size:11px;'>" + label + "</span></html>");
+        JLabel l = new JLabel("<html><div style='color:#475569; font-weight:600; font-size:11px;'>" + label + "</div></html>");
         lCell.add(l, BorderLayout.CENTER);
         row.add(lCell);
 
@@ -262,7 +272,7 @@ public class UniTableComponent extends JPanel {
             vCell.setOpaque(false);
             vCell.setBorder(BorderFactory.createEmptyBorder(2, 4, 2, 4));
 
-            JLabel v = new JLabel("<html><span style='color:#1E293B; font-size:11px; line-height:1.3;'>" + val + "</span></html>");
+            JLabel v = new JLabel("<html><div style='color:#1E293B; font-size:11px; line-height:1.3;'>" + val + "</div></html>");
             vCell.add(v, BorderLayout.CENTER);
             row.add(vCell);
         }
