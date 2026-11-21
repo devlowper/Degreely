@@ -5,6 +5,7 @@ import com.degreely.app.util.Theme;
 import com.formdev.flatlaf.FlatClientProperties;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ import java.util.function.Consumer;
 
 /**
  * Clean, minimal top navigation bar matching the Claude aesthetic.
- * Contains brand identity on the left and Home / Degreely AI navigation tabs.
+ * Left-aligned brand logo and navigation tabs (Home & Degreely AI).
  */
 public class Navbar extends JPanel {
 
@@ -40,13 +41,17 @@ public class Navbar extends JPanel {
                 BorderFactory.createMatteBorder(0, 0, 1, 0, Theme.BORDER),
                 BorderFactory.createEmptyBorder(6, 24, 6, 24)
         ));
-        setPreferredSize(new Dimension(1000, 52));
+        setPreferredSize(new Dimension(1000, 50));
 
-        // 1. Left: Brand Logo & Title
-        JPanel brandPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 4));
-        brandPanel.setOpaque(false);
-        brandPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        brandPanel.addMouseListener(new MouseAdapter() {
+        // Group Brand Logo + Navigation Tabs together on the Left
+        JPanel leftGroup = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 3));
+        leftGroup.setOpaque(false);
+
+        // Brand Logo & Name
+        JPanel brand = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        brand.setOpaque(false);
+        brand.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        brand.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 setActiveTab(TAB_HOME);
@@ -58,26 +63,20 @@ public class Navbar extends JPanel {
         brandName.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 18));
         brandName.setForeground(Theme.TEXT);
 
-        brandPanel.add(logoIcon);
-        brandPanel.add(brandName);
-        add(brandPanel, BorderLayout.WEST);
+        brand.add(logoIcon);
+        brand.add(brandName);
+        leftGroup.add(brand);
 
-        // 2. Center: Navigation Tabs (Home, Degreely AI)
-        JPanel navTabsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 4));
-        navTabsPanel.setOpaque(false);
+        leftGroup.add(Box.createHorizontalStrut(16));
 
+        // Navigation Tabs (Home, Degreely AI)
         homeButton = createNavButton("Home", Icons.home(15, Theme.TEXT_SECONDARY), TAB_HOME);
         aiButton = createNavButton("Degreely AI", Icons.spark(15, Theme.PRIMARY), TAB_AI);
 
-        navTabsPanel.add(homeButton);
-        navTabsPanel.add(aiButton);
-        add(navTabsPanel, BorderLayout.CENTER);
+        leftGroup.add(homeButton);
+        leftGroup.add(aiButton);
 
-        // 3. Right: Clean spacer to keep layout balanced
-        JPanel rightSpacer = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-        rightSpacer.setOpaque(false);
-        rightSpacer.setPreferredSize(new Dimension(120, 32));
-        add(rightSpacer, BorderLayout.EAST);
+        add(leftGroup, BorderLayout.WEST);
 
         updateTabStyles();
     }
@@ -89,7 +88,7 @@ public class Navbar extends JPanel {
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn.setIconTextGap(8);
         btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
-        btn.setBorder(BorderFactory.createEmptyBorder(6, 16, 6, 16));
+        btn.setBorder(BorderFactory.createEmptyBorder(6, 14, 6, 14));
         btn.addActionListener(e -> setActiveTab(tabKey));
         return btn;
     }
@@ -128,7 +127,7 @@ public class Navbar extends JPanel {
         btn.setFont(new Font(Theme.FONT_BODY.getFamily(), Font.BOLD, 14));
         btn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(5, 15, 5, 15)
+                BorderFactory.createEmptyBorder(5, 13, 5, 13)
         ));
     }
 
@@ -137,6 +136,6 @@ public class Navbar extends JPanel {
         btn.setBackground(Color.WHITE);
         btn.setForeground(Theme.TEXT_SECONDARY);
         btn.setFont(new Font(Theme.FONT_BODY.getFamily(), Font.PLAIN, 14));
-        btn.setBorder(BorderFactory.createEmptyBorder(6, 16, 6, 16));
+        btn.setBorder(BorderFactory.createEmptyBorder(6, 14, 6, 14));
     }
 }

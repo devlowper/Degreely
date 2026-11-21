@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -38,9 +39,9 @@ import java.util.Locale;
 import java.util.function.Consumer;
 
 /**
- * Modern Home Page displaying:
- * 1. Contemporary Hero section with text on the left, high-res 3D illustration on the right, quick metrics, and CTAs.
- * 2. Full-height University Discovery catalog with seamless dynamic scrolling (no clipping or overlapping at bottom).
+ * Minimal, clean Home Page designed in the Claude aesthetic:
+ * 1. Warm, breathable Hero section with centered title, subtitle, CTAs, and quiet metrics.
+ * 2. Uncluttered University Discovery catalog with 1-by-1 cards stacked vertically, zero horizontal scrolling.
  */
 public class HomePage extends JPanel {
 
@@ -67,22 +68,22 @@ public class HomePage extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Theme.BACKGROUND);
 
-        // Content panel stacked vertically with generous bottom padding so the last cards never get cut off
+        // Content Panel with clean side and bottom margins
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setOpaque(false);
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(24, 32, 60, 32));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(36, 40, 60, 40));
 
-        // 1. Hero Section: Left Text + Right Image
+        // 1. Minimal Hero Section
         JPanel heroSection = createHeroSection();
         contentPanel.add(heroSection);
-        contentPanel.add(Box.createVerticalStrut(Theme.SPACING_32));
+        contentPanel.add(Box.createVerticalStrut(36));
 
         // 2. University Discovery Catalog Section
         catalogSection = createCatalogSection();
         contentPanel.add(catalogSection);
 
-        // BorderLayout.NORTH inside scroll container allows contentPanel to size its height dynamically
+        // Wrapper ensures content panel expands naturally in height and prevents horizontal scrolling
         JPanel scrollContentWrapper = new JPanel(new BorderLayout());
         scrollContentWrapper.setOpaque(false);
         scrollContentWrapper.add(contentPanel, BorderLayout.NORTH);
@@ -100,85 +101,59 @@ public class HomePage extends JPanel {
     }
 
     /**
-     * Creates contemporary Hero section with centered headline, subtitle, CTAs, and quick stats.
+     * Minimal, clean Hero section with centered typography and quiet metrics.
      */
     private JPanel createHeroSection() {
-        JPanel hero = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2 = (Graphics2D) g.create();
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setColor(Color.WHITE);
-                g2.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 16, 16);
-                g2.setColor(Theme.BORDER);
-                g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 16, 16);
-                g2.dispose();
-            }
-        };
+        JPanel hero = new JPanel();
         hero.setLayout(new BoxLayout(hero, BoxLayout.Y_AXIS));
         hero.setOpaque(false);
-        hero.setBorder(BorderFactory.createEmptyBorder(40, 48, 36, 48));
         hero.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // 1. Centered Category Badge
-        JPanel badgePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        badgePanel.setOpaque(false);
-        badgePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JLabel badge = new JLabel("🎓 Global Higher Education Portal • 2026 Admissions");
-        badge.setFont(Theme.FONT_SMALL);
-        badge.setForeground(Theme.PRIMARY);
-        badge.setOpaque(true);
-        badge.setBackground(Theme.PRIMARY_LIGHT);
-        badge.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(5, 14, 5, 14)
-        ));
-        badgePanel.add(badge);
-        hero.add(badgePanel);
-        hero.add(Box.createVerticalStrut(14));
-
-        // 2. Centered Main Headline
-        JLabel headline = new JLabel("<html><div style='text-align: center;'>Find Your Dream University &amp; Program Worldwide</div></html>");
-        headline.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 28));
+        // Headline
+        JLabel headline = new JLabel("Find Your Dream University");
+        headline.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 30));
         headline.setForeground(Theme.TEXT);
+        headline.setHorizontalAlignment(SwingConstants.CENTER);
         headline.setAlignmentX(Component.CENTER_ALIGNMENT);
         hero.add(headline);
-        hero.add(Box.createVerticalStrut(12));
+        hero.add(Box.createVerticalStrut(10));
 
-        // 3. Centered Subtitle
-        JLabel subtitle = new JLabel("<html><div style='text-align: center; max-width: 740px;'>Compare QS rankings, verified tuition costs, IELTS cutoffs, and living expenses across top universities in the US, UK, Canada, Germany, and more. 24/7 AI-powered admission counseling.</div></html>");
+        // Subtitle
+        JLabel subtitle = new JLabel("<html><div style='text-align: center; max-width: 680px;'>"
+                + "Verified admissions data, tuition costs, and IELTS cutoffs for top global universities. 24/7 AI-powered counseling."
+                + "</div></html>");
         subtitle.setFont(Theme.FONT_BODY_LARGE);
         subtitle.setForeground(Theme.TEXT_SECONDARY);
+        subtitle.setHorizontalAlignment(SwingConstants.CENTER);
         subtitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         hero.add(subtitle);
-        hero.add(Box.createVerticalStrut(24));
+        hero.add(Box.createVerticalStrut(22));
 
-        // 4. Centered Action Buttons Row
-        JPanel ctaRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 14, 0));
+        // Action Buttons Row
+        JPanel ctaRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 0));
         ctaRow.setOpaque(false);
         ctaRow.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton exploreBtn = new JButton("Explore 20 Universities ↓");
+        JButton exploreBtn = new JButton("Explore Universities ↓");
         exploreBtn.setFont(Theme.FONT_BUTTON);
         exploreBtn.setBackground(Theme.PRIMARY);
         exploreBtn.setForeground(Color.WHITE);
         exploreBtn.setFocusPainted(false);
         exploreBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         exploreBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
-        exploreBtn.setBorder(BorderFactory.createEmptyBorder(10, 22, 10, 22));
+        exploreBtn.setBorder(BorderFactory.createEmptyBorder(9, 20, 9, 20));
         exploreBtn.addActionListener(e -> scrollToCatalog());
 
-        JButton chatAiBtn = new JButton("Chat with Degreely AI ✦", Icons.spark(15, Theme.PRIMARY));
+        JButton chatAiBtn = new JButton("Chat with Degreely AI ✦", Icons.spark(14, Theme.PRIMARY));
         chatAiBtn.setFont(Theme.FONT_BUTTON);
-        chatAiBtn.setBackground(Theme.PRIMARY_LIGHT);
+        chatAiBtn.setBackground(Color.WHITE);
         chatAiBtn.setForeground(Theme.PRIMARY);
         chatAiBtn.setFocusPainted(false);
         chatAiBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         chatAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         chatAiBtn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(9, 20, 9, 20)
+                BorderFactory.createEmptyBorder(8, 18, 8, 18)
         ));
         chatAiBtn.addActionListener(e -> {
             if (onNavigateToAI != null) onNavigateToAI.run();
@@ -187,10 +162,10 @@ public class HomePage extends JPanel {
         ctaRow.add(exploreBtn);
         ctaRow.add(chatAiBtn);
         hero.add(ctaRow);
-        hero.add(Box.createVerticalStrut(26));
+        hero.add(Box.createVerticalStrut(20));
 
-        // 5. Centered Stats Strip
-        JPanel statsRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 36, 0));
+        // Minimal Stats Strip (Clean dot-separated metrics)
+        JPanel statsRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 28, 0));
         statsRow.setOpaque(false);
         statsRow.setAlignmentX(Component.CENTER_ALIGNMENT);
         statsRow.add(createStatItem("20", "Top Universities"));
@@ -203,29 +178,24 @@ public class HomePage extends JPanel {
     }
 
     private JPanel createStatItem(String value, String label) {
-        JPanel p = new JPanel();
-        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+        JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 0));
         p.setOpaque(false);
-        p.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel valLbl = new JLabel(value);
-        valLbl.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 18));
+        valLbl.setFont(new Font(Theme.FONT_BODY.getFamily(), Font.BOLD, 14));
         valLbl.setForeground(Theme.PRIMARY);
-        valLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel lbl = new JLabel(label);
         lbl.setFont(Theme.FONT_SMALL);
         lbl.setForeground(Theme.TEXT_MUTED);
-        lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         p.add(valLbl);
-        p.add(Box.createVerticalStrut(2));
         p.add(lbl);
         return p;
     }
 
     /**
-     * Creates University Discovery section with filters, search bar, and university cards.
+     * University Discovery section with unified header, filter bar, and 1-by-1 cards.
      */
     private JPanel createCatalogSection() {
         JPanel section = new JPanel();
@@ -233,28 +203,28 @@ public class HomePage extends JPanel {
         section.setOpaque(false);
         section.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // Section Title & Subtitle
+        // Header: Title on Left, Count on Right
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setOpaque(false);
 
-        JPanel titles = new JPanel();
-        titles.setLayout(new BoxLayout(titles, BoxLayout.Y_AXIS));
-        titles.setOpaque(false);
+        JPanel titleBlock = new JPanel();
+        titleBlock.setLayout(new BoxLayout(titleBlock, BoxLayout.Y_AXIS));
+        titleBlock.setOpaque(false);
 
         JLabel secTitle = new JLabel("Explore Universities & Programs");
-        secTitle.setFont(Theme.FONT_TITLE);
+        secTitle.setFont(new Font(Theme.FONT_TITLE.getFamily(), Font.BOLD, 20));
         secTitle.setForeground(Theme.TEXT);
 
-        JLabel secSub = new JLabel("Filter by country, degree level, or tuition fees. Click 'Ask AI Counselor' for personalized guidance.");
+        JLabel secSub = new JLabel("Filter by country, level, or tuition fees. Click 'Ask AI Counselor' for deep insights.");
         secSub.setFont(Theme.FONT_BODY);
-        secSub.setForeground(Theme.TEXT_SECONDARY);
+        secSub.setForeground(Theme.TEXT_MUTED);
 
-        titles.add(secTitle);
-        titles.add(Box.createVerticalStrut(4));
-        titles.add(secSub);
-        headerPanel.add(titles, BorderLayout.WEST);
+        titleBlock.add(secTitle);
+        titleBlock.add(Box.createVerticalStrut(2));
+        titleBlock.add(secSub);
+        headerPanel.add(titleBlock, BorderLayout.WEST);
 
-        resultsCountLabel = new JLabel("Showing 20 of 20 Universities");
+        resultsCountLabel = new JLabel("Showing 20 Universities");
         resultsCountLabel.setFont(Theme.FONT_SMALL);
         resultsCountLabel.setForeground(Theme.TEXT_MUTED);
         headerPanel.add(resultsCountLabel, BorderLayout.EAST);
@@ -262,13 +232,13 @@ public class HomePage extends JPanel {
         section.add(headerPanel);
         section.add(Box.createVerticalStrut(Theme.SPACING_16));
 
-        // Filter Bar (White card with search and dropdowns)
+        // Filter Bar (Clean single-row card)
         JPanel filterBar = createFilterBar();
         section.add(filterBar);
-        section.add(Box.createVerticalStrut(Theme.SPACING_24));
+        section.add(Box.createVerticalStrut(Theme.SPACING_16));
 
-        // University Cards Stack (1 by 1 downwards, no side scroll)
-        universitiesGrid = new JPanel(new GridLayout(0, 1, 0, 16));
+        // University Cards Stack (1 by 1 downwards)
+        universitiesGrid = new JPanel(new GridLayout(0, 1, 0, 14));
         universitiesGrid.setOpaque(false);
         universitiesGrid.setAlignmentX(Component.LEFT_ALIGNMENT);
         section.add(universitiesGrid);
@@ -277,21 +247,21 @@ public class HomePage extends JPanel {
     }
 
     private JPanel createFilterBar() {
-        JPanel bar = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 10)) {
+        JPanel bar = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 8)) {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(Color.WHITE);
-                g2.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 12, 12);
+                g2.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 10, 10);
                 g2.setColor(Theme.BORDER);
-                g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 12, 12);
+                g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 10, 10);
                 g2.dispose();
             }
         };
         bar.setOpaque(false);
-        bar.setBorder(BorderFactory.createEmptyBorder(6, 12, 6, 12));
+        bar.setBorder(BorderFactory.createEmptyBorder(4, 10, 4, 10));
         bar.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         // Search Input
@@ -299,7 +269,7 @@ public class HomePage extends JPanel {
         searchField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Search universities, cities, majors...");
         searchField.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, Icons.search(14, Theme.TEXT_MUTED));
         searchField.setFont(Theme.FONT_BODY);
-        searchField.setPreferredSize(new Dimension(240, 36));
+        searchField.setPreferredSize(new Dimension(240, 34));
         searchField.getDocument().addDocumentListener(new DocumentListener() {
             @Override public void insertUpdate(DocumentEvent e) { refreshUniversityList(); }
             @Override public void removeUpdate(DocumentEvent e) { refreshUniversityList(); }
@@ -328,7 +298,7 @@ public class HomePage extends JPanel {
         tuitionCombo = new JComboBox<>(new String[]{
                 "Any Tuition", "Tuition-Free (< $2k)", "Under $35,000/yr", "Under $60,000/yr"
         });
-        styleComboBox(tuitionCombo, 150);
+        styleComboBox(tuitionCombo, 145);
         tuitionCombo.addActionListener(e -> refreshUniversityList());
         bar.add(tuitionCombo);
 
@@ -341,7 +311,7 @@ public class HomePage extends JPanel {
         resetBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         resetBtn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.BORDER, 1, true),
-                BorderFactory.createEmptyBorder(6, 12, 6, 12)
+                BorderFactory.createEmptyBorder(5, 12, 5, 12)
         ));
         resetBtn.addActionListener(e -> {
             searchField.setText("");
@@ -361,7 +331,7 @@ public class HomePage extends JPanel {
         compareBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         compareBtn.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(6, 14, 6, 14)
+                BorderFactory.createEmptyBorder(5, 12, 5, 12)
         ));
         compareBtn.addActionListener(e -> {
             Frame frame = (Frame) SwingUtilities.getWindowAncestor(this);
@@ -384,7 +354,7 @@ public class HomePage extends JPanel {
 
     private void styleComboBox(JComboBox<String> combo, int width) {
         combo.setFont(Theme.FONT_BODY);
-        combo.setPreferredSize(new Dimension(width, 36));
+        combo.setPreferredSize(new Dimension(width, 34));
         combo.setBackground(Color.WHITE);
         combo.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
@@ -428,28 +398,39 @@ public class HomePage extends JPanel {
     }
 
     /**
-     * Creates a card for a university displaying ranking, location, tuition, cutoffs, programs, and CTA.
+     * Minimal, clean university card structured with:
+     * - Top: Rank badge + Name + Location on Left, Tuition & AI CTA on Right.
+     * - Bottom: 4 Key Metrics + Program tags.
      */
     private JPanel createUniversityCard(University u) {
-        JPanel card = new JPanel(new BorderLayout(0, 10)) {
+        JPanel card = new JPanel(new BorderLayout(0, 12)) {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(Color.WHITE);
-                g2.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 14, 14);
+                g2.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 12, 12);
                 g2.setColor(Theme.BORDER);
-                g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 14, 14);
+                g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 12, 12);
                 g2.dispose();
             }
         };
         card.setOpaque(false);
-        card.setBorder(BorderFactory.createEmptyBorder(18, 20, 18, 20));
+        card.setBorder(BorderFactory.createEmptyBorder(16, 20, 16, 20));
 
-        // Top Row: Rank pill + Country
-        JPanel topRow = new JPanel(new BorderLayout());
-        topRow.setOpaque(false);
+        // 1. Top Section: Name and Info on Left, Tuition & CTA on Right
+        JPanel topSection = new JPanel(new BorderLayout(16, 0));
+        topSection.setOpaque(false);
+
+        // Left Block: Rank Pill, University Name, City
+        JPanel leftBlock = new JPanel();
+        leftBlock.setLayout(new BoxLayout(leftBlock, BoxLayout.Y_AXIS));
+        leftBlock.setOpaque(false);
+
+        JPanel rankRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        rankRow.setOpaque(false);
+        rankRow.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JLabel rankBadge = new JLabel("#" + u.getRanking() + " QS World Rank");
         rankBadge.setFont(Theme.FONT_SMALL);
@@ -458,58 +439,85 @@ public class HomePage extends JPanel {
         rankBadge.setBackground(Theme.AMBER_BG);
         rankBadge.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Theme.BORDER, 1, true),
-                BorderFactory.createEmptyBorder(3, 8, 3, 8)
+                BorderFactory.createEmptyBorder(2, 6, 2, 6)
         ));
-        topRow.add(rankBadge, BorderLayout.WEST);
 
-        JLabel countryBadge = new JLabel(u.getCountry());
-        countryBadge.setFont(Theme.FONT_SMALL);
-        countryBadge.setForeground(Theme.TEXT_SECONDARY);
-        topRow.add(countryBadge, BorderLayout.EAST);
+        JLabel countryLabel = new JLabel(u.getCountry());
+        countryLabel.setFont(Theme.FONT_SMALL);
+        countryLabel.setForeground(Theme.TEXT_MUTED);
 
-        // Center Area: Name, City, Metrics, Programs
-        JPanel center = new JPanel();
-        center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
-        center.setOpaque(false);
+        rankRow.add(rankBadge);
+        rankRow.add(countryLabel);
+        leftBlock.add(rankRow);
+        leftBlock.add(Box.createVerticalStrut(4));
 
-        JLabel nameLabel = new JLabel("<html><b>" + u.getName() + "</b></html>");
-        nameLabel.setFont(new Font(Theme.FONT_SECTION.getFamily(), Font.BOLD, 15));
+        JLabel nameLabel = new JLabel(u.getName());
+        nameLabel.setFont(new Font(Theme.FONT_HERO.getFamily(), Font.BOLD, 16));
         nameLabel.setForeground(Theme.TEXT);
+        nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftBlock.add(nameLabel);
+        leftBlock.add(Box.createVerticalStrut(2));
 
         JLabel locationLabel = new JLabel(u.getCity() + ", " + u.getCountry());
         locationLabel.setFont(Theme.FONT_SMALL);
         locationLabel.setForeground(Theme.TEXT_MUTED);
+        locationLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftBlock.add(locationLabel);
 
-        center.add(topRow);
-        center.add(Box.createVerticalStrut(8));
-        center.add(nameLabel);
-        center.add(Box.createVerticalStrut(2));
-        center.add(locationLabel);
-        center.add(Box.createVerticalStrut(12));
+        topSection.add(leftBlock, BorderLayout.CENTER);
 
-        // Metrics Row (4 metrics side-by-side in 1 by 1 view)
-        JPanel metricsPanel = new JPanel(new GridLayout(1, 4, 12, 0));
-        metricsPanel.setOpaque(false);
+        // Right Block: Annual Tuition + Ask AI Counselor Button
+        JPanel rightBlock = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 4));
+        rightBlock.setOpaque(false);
 
         String tuitionStr = u.getTuitionPerYear() == 0 ? "Tuition-Free ($0)" : "$" + NumberFormat.getNumberInstance(Locale.US).format((int) u.getTuitionPerYear()) + " / yr";
-        metricsPanel.add(createMetricPill("Tuition", tuitionStr, u.getTuitionPerYear() == 0 ? Theme.GREEN_TEXT : Theme.TEXT));
-        metricsPanel.add(createMetricPill("Min GPA", u.getMinGpa() + " / 4.0", Theme.TEXT));
-        metricsPanel.add(createMetricPill("Min IELTS", u.getMinIelts() + " Band", Theme.TEXT));
-        metricsPanel.add(createMetricPill("Acceptance", u.getAcceptanceRate() + "%", Theme.TEXT));
+        JLabel tuitionLabel = new JLabel(tuitionStr);
+        tuitionLabel.setFont(new Font(Theme.FONT_BODY.getFamily(), Font.BOLD, 14));
+        tuitionLabel.setForeground(u.getTuitionPerYear() == 0 ? Theme.GREEN_TEXT : Theme.TEXT);
 
-        center.add(metricsPanel);
-        center.add(Box.createVerticalStrut(10));
+        JButton askAiBtn = new JButton("Ask AI Counselor ✦", Icons.spark(13, Theme.PRIMARY));
+        askAiBtn.setFont(Theme.FONT_BUTTON);
+        askAiBtn.setForeground(Theme.PRIMARY);
+        askAiBtn.setBackground(Theme.PRIMARY_LIGHT);
+        askAiBtn.setFocusPainted(false);
+        askAiBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        askAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
+        askAiBtn.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
+                BorderFactory.createEmptyBorder(6, 14, 6, 14)
+        ));
+        askAiBtn.addActionListener(e -> {
+            String prompt = "Tell me all about admission requirements, scholarships, deadlines, and cost of attendance for " + u.getName() + " in " + u.getCountry() + ".";
+            if (onAskAI != null) {
+                onAskAI.accept(prompt);
+            }
+        });
 
-        card.add(center, BorderLayout.CENTER);
+        rightBlock.add(tuitionLabel);
+        rightBlock.add(askAiBtn);
+        topSection.add(rightBlock, BorderLayout.EAST);
 
-        // Bottom Row: Program Tags on Left, Ask AI Button on Right
-        JPanel bottomRow = new JPanel(new BorderLayout(16, 0));
-        bottomRow.setOpaque(false);
+        card.add(topSection, BorderLayout.NORTH);
 
-        // Programs Preview Pills
-        JPanel progPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 2));
+        // 2. Bottom Section: Metrics Strip & Program Tags
+        JPanel bottomSection = new JPanel(new BorderLayout(16, 0));
+        bottomSection.setOpaque(false);
+        bottomSection.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createMatteBorder(1, 0, 0, 0, Theme.BORDER),
+                BorderFactory.createEmptyBorder(8, 0, 0, 0)
+        ));
+
+        // Key Metrics Row
+        JPanel metricsRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 16, 0));
+        metricsRow.setOpaque(false);
+        metricsRow.add(createMetricTag("Min GPA", u.getMinGpa() + " / 4.0"));
+        metricsRow.add(createMetricTag("Min IELTS", u.getMinIelts() + " Band"));
+        metricsRow.add(createMetricTag("Acceptance", u.getAcceptanceRate() + "%"));
+
+        // Programs Preview Tags
+        JPanel progPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 6, 0));
         progPanel.setOpaque(false);
-        int maxPrograms = Math.min(4, u.getPrograms().size());
+        int maxPrograms = Math.min(3, u.getPrograms().size());
         for (int i = 0; i < maxPrograms; i++) {
             Program p = u.getPrograms().get(i);
             JLabel progTag = new JLabel(p.getName() + " (" + p.getLevel() + ")");
@@ -520,64 +528,42 @@ public class HomePage extends JPanel {
             progTag.setBorder(BorderFactory.createEmptyBorder(2, 6, 2, 6));
             progPanel.add(progTag);
         }
-        if (u.getPrograms().size() > 4) {
-            JLabel moreTag = new JLabel("+" + (u.getPrograms().size() - 4) + " more");
+        if (u.getPrograms().size() > 3) {
+            JLabel moreTag = new JLabel("+" + (u.getPrograms().size() - 3) + " more");
             moreTag.setFont(Theme.FONT_SMALL);
             moreTag.setForeground(Theme.TEXT_MUTED);
             progPanel.add(moreTag);
         }
-        bottomRow.add(progPanel, BorderLayout.CENTER);
 
-        JButton askAiBtn = new JButton("Ask AI Counselor ✦", Icons.spark(14, Theme.PRIMARY));
-        askAiBtn.setFont(Theme.FONT_BUTTON);
-        askAiBtn.setForeground(Theme.PRIMARY);
-        askAiBtn.setBackground(Theme.PRIMARY_LIGHT);
-        askAiBtn.setFocusPainted(false);
-        askAiBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        askAiBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
-        askAiBtn.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Theme.PRIMARY_BORDER, 1, true),
-                BorderFactory.createEmptyBorder(7, 16, 7, 16)
-        ));
-        askAiBtn.addActionListener(e -> {
-            String prompt = "Tell me all about admission requirements, scholarships, deadlines, and cost of attendance for " + u.getName() + " in " + u.getCountry() + ".";
-            if (onAskAI != null) {
-                onAskAI.accept(prompt);
-            }
-        });
-        bottomRow.add(askAiBtn, BorderLayout.EAST);
+        bottomSection.add(metricsRow, BorderLayout.WEST);
+        bottomSection.add(progPanel, BorderLayout.EAST);
 
-        card.add(bottomRow, BorderLayout.SOUTH);
+        card.add(bottomSection, BorderLayout.CENTER);
 
         return card;
     }
 
-    private JPanel createMetricPill(String title, String val, Color valColor) {
-        JPanel p = new JPanel(new BorderLayout());
-        p.setOpaque(true);
-        p.setBackground(Theme.BACKGROUND);
-        p.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Theme.BORDER, 1, true),
-                BorderFactory.createEmptyBorder(4, 8, 4, 8)
-        ));
+    private JPanel createMetricTag(String label, String value) {
+        JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
+        p.setOpaque(false);
 
-        JLabel t = new JLabel(title);
-        t.setFont(Theme.FONT_SMALL);
-        t.setForeground(Theme.TEXT_MUTED);
+        JLabel l = new JLabel(label + ":");
+        l.setFont(Theme.FONT_SMALL);
+        l.setForeground(Theme.TEXT_MUTED);
 
-        JLabel v = new JLabel(val);
+        JLabel v = new JLabel(value);
         v.setFont(new Font(Theme.FONT_BODY.getFamily(), Font.BOLD, 12));
-        v.setForeground(valColor);
+        v.setForeground(Theme.TEXT);
 
-        p.add(t, BorderLayout.WEST);
-        p.add(v, BorderLayout.EAST);
+        p.add(l);
+        p.add(v);
         return p;
     }
 
     private void scrollToCatalog() {
         if (catalogSection != null && scrollPane != null) {
             SwingUtilities.invokeLater(() -> {
-                scrollPane.getVerticalScrollBar().setValue(catalogSection.getY() - 20);
+                scrollPane.getVerticalScrollBar().setValue(catalogSection.getY() - 16);
             });
         }
     }
