@@ -3,134 +3,183 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17+" />
   <img src="https://img.shields.io/badge/UI-Java%20Swing%20%2B%20FlatLaf-blue?style=for-the-badge" alt="FlatLaf" />
-  <img src="https://img.shields.io/badge/JSON%20Parser-Google%20Gson-red?style=for-the-badge" alt="Gson" />
-  <img src="https://img.shields.io/badge/Build-Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" alt="Maven" />
+  <img src="https://img.shields.io/badge/JSON%20Parser-Google%20Gson%202.11.0-red?style=for-the-badge" alt="Gson" />
+  <img src="https://img.shields.io/badge/Build-Maven%20Wrapper-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" alt="Maven" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=for-the-badge" alt="Platform" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
 </p>
 
 ---
 
-## 📌 Overview
-
-**Degreely** is a modern, responsive desktop application built with **Java Swing** and styled with the elegant **FlatLaf** Look and Feel. Designed for students seeking higher education abroad, Degreely simplifies researching global universities, comparing degree programs, discovering prestigious scholarships, predicting admission probabilities, and managing application deadlines in one unified workspace.
-
-No external database server is required — the platform runs completely self-contained using fast local JSON serialization powered by **Google Gson**.
+## 📌 Table of Contents
+- [Overview](#-overview)
+- [Key Highlights](#-key-highlights)
+- [System Architecture](#-system-architecture)
+- [Core Modules & Features](#-core-modules--features)
+  - [1. University Search & Discovery](#1--university-search--discovery)
+  - [2. Comprehensive University Details](#2--comprehensive-university-details)
+  - [3. Worldwide Scholarships & Funding](#3--worldwide-scholarships--funding)
+  - [4. Side-by-Side University Comparison](#4--side-by-side-university-comparison)
+  - [5. Intelligent Admission Predictor](#5--intelligent-admission-predictor)
+  - [6. Application Deadline Tracker](#6--application-deadline-tracker)
+  - [7. Dark / Light Mode Theme Switching](#7--dark--light-mode-theme-switching)
+- [Design System & Tokens](#-design-system--tokens)
+- [Project Structure](#-project-structure)
+- [Quick Start Guide](#-quick-start-guide)
+  - [Prerequisites](#prerequisites)
+  - [Running with Maven Wrapper](#running-with-maven-wrapper-recommended)
+  - [Running with Global Maven](#running-with-global-maven)
+  - [Building an Executable JAR](#building-an-executable-jar)
+- [Troubleshooting & Tips](#-troubleshooting--tips)
+- [Contributing](#-contributing)
+- [Author & License](#-author--license)
 
 ---
 
-## ✨ Features & Modules
+## 📖 Overview
 
-### 1. 🏛️ University Search & Filter
-- Browse **20 top universities** across the US, UK, Canada, Germany, Switzerland, Singapore, Australia, and Japan.
-- **80+ authentic degree programs** (Bachelor, Master, PhD) with durations and credit requirements.
-- **Dynamic Multi-Criteria Filter Sidebar**:
-  - Filter by **Country** (United States, United Kingdom, Canada, Germany, etc.).
-  - Filter by **Degree Level** (*Bachelor*, *Master*, *PhD*).
-  - **Max Annual Tuition Slider** with live price label (from \$0 up to \$70,000/yr).
-  - **Minimum IELTS requirement** cutoff filter.
-- **Non-blocking Search**: Powered by `SwingWorker` concurrency so typing or dragging sliders never freezes the UI.
-- **Visual Feedback**: Hover animations with smooth border transitions to brand orange (`#E37712`).
+**Degreely** is a modern, high-performance desktop application built with **Java 17**, **Java Swing**, and the **FlatLaf** modern Look and Feel. Designed for aspiring international students, Degreely simplifies researching global universities, comparing degree programs, discovering prestigious scholarships, predicting admission probabilities, and tracking application deadlines in one unified workspace.
 
-### 2. 📖 University Details Page
-- Dedicated full-page view integrated with `CardLayout`.
-- Underlined tabbed navigation with orange indicator:
-  - **About**: Comprehensive institution overview, world ranking, global prestige, and degree catalog.
-  - **Costs**: Tuition fees, country-specific estimated annual living expenses, and total budget estimation.
-  - **Admissions**: Acceptance rates, Fall/Spring intake deadlines, application fees, and selectivity.
-  - **Pre-requisites**: GPA requirement, IELTS score & TOEFL equivalents, and essential application document checklist.
-- **Similar Universities Sidebar**: Smart algorithmic recommendations matching country and closest world rank.
+No external database server (like MySQL or PostgreSQL) is required. The platform is completely lightweight and portable, utilizing bundled JSON datasets and local JSON serialization via **Google Gson**.
 
-### 3. 💰 Global Scholarships & Financial Aid
-- 10 prestigious funding options (*Gates Cambridge*, *Rhodes*, *Knight-Hennessy*, *Fulbright*, *DAAD*, *ETH ESOP*, *Vanier*, etc.).
-- **Smart Deadline Detection**: Automatically displays a vibrant red **`Closing soon (Xd left)`** badge if the application deadline is within 30 days.
-- Direct **"Apply Link ↗"** button that opens official portals in the default web browser.
+---
 
-### 4. ⚖️ Side-by-Side University Compare
-- Compare up to **3 universities side-by-side** simultaneously managed by a thread-safe `CompareManager` singleton.
-- **Intelligent Best-Value Green Highlighting**:
-  - Automatically identifies and highlights the best metric in pastel green (`#DCFCE7`) with a `★ Best` badge (e.g., lowest ranking #1, lowest tuition cost, highest acceptance rate, most accessible GPA and IELTS requirements).
-- One-click **Remove** button per column and quick dropdown selector.
+## ⚡ Key Highlights
 
-### 5. 🎯 Admission Chance Predictor
-- Predicts personalized admission chances (0% to 100%) based on:
-  - Cumulative GPA (0.0 to 4.0)
-  - IELTS English Band Score (5.5 to 9.0)
-  - Degree Level (Bachelor, Master, PhD)
-  - Institutional selectivity & acceptance rates
-- **Dynamic Visual Output**:
-  - Large percentage display.
-  - Smooth rounded colored progress bar:
-    - 🔴 **Red (< 40%)**: *Reach / Challenging Match*
-    - 🟠 **Orange (40% - 70%)**: *Competitive / Target Match*
-    - 🟢 **Green (> 70%)**: *Strong / Safe Match*
-  - Contextual one-line actionable advice explaining strengths and improvement areas.
+- **Zero Database Setup**: Plug-and-play. All university and scholarship data are loaded from classpath JSON resources, while personal application deadlines are saved locally.
+- **Modern FlatLaf UI**: Styled with clean 8px rounded corners, subtle 1px borders, smooth hover interactions, and cohesive typography.
+- **Non-Blocking Concurrency**: Data filtering and search run on background threads using `SwingWorker`, ensuring a fluid 60 FPS experience with no UI freezing.
+- **Smart Admission Predictor**: Multi-variable mathematical model that computes real admission probabilities based on GPA, IELTS, and degree selectivity.
+- **Dynamic Theme Switcher**: Instant switching between `FlatLightLaf` and `FlatDarkLaf` with zero restart required.
+- **Built-in Maven Wrapper**: Includes `mvnw` and `mvnw.cmd` configured with automatic `JAVA_HOME` detection for a frictionless first run.
+
+---
+
+## 🏛️ Core Modules & Features
+
+### 1. 🏛️ University Search & Discovery
+- **Catalog**: Features **20 world-leading universities** (MIT, Stanford, Oxford, Cambridge, ETH Zurich, NUS, TUM, University of Tokyo, etc.) across 8 countries.
+- **80+ Academic Programs**: Real Bachelor's, Master's, and PhD offerings with credit requirements and program durations.
+- **Interactive Filter Sidebar**:
+  - **Country Dropdown**: US, UK, Canada, Germany, Switzerland, Singapore, Australia, Japan.
+  - **Degree Level**: Filter by *Bachelor*, *Master*, or *PhD*.
+  - **Max Annual Tuition Slider**: Live range from \$0 to \$70,000/year with instant value badge.
+  - **Minimum IELTS Cutoff**: Instant filtering by English proficiency score.
+  - **Live Search Field**: Real-time filtering by university name, city, or country.
+- **Card UI**: Clean white cards with world ranking pills, key metrics, and hover border highlights in signature orange (`#E37712`).
+
+### 2. 📖 Comprehensive University Details
+- **Dedicated Page Navigation**: Integrated into the parent `CardLayout` with a "← Back to Universities" header.
+- **Underlined Orange Tab Navigation**:
+  - **About**: Global overview, history, world rankings, and complete degree program catalog.
+  - **Costs**: Tuition fees, estimated annual living expenses per city, and total annual budget calculation.
+  - **Admissions**: Acceptance rates, Fall & Spring application deadlines, application fees, and selectivity tier.
+  - **Pre-requisites**: Minimum GPA, IELTS band, TOEFL score, and required document checklist.
+- **Similar Institutions Sidebar**: Recommends similar universities based on country and ranking proximity.
+
+### 3. 💰 Worldwide Scholarships & Funding
+- **Prestigious Aid Opportunities**: Includes Fulbright, Rhodes, Gates Cambridge, Knight-Hennessy, DAAD, ETH Zurich Excellence, Vanier CGS, and MEXT.
+- **Smart Deadline Detection**: Displays a prominent red **`Closing soon (Xd left)`** badge for deadlines falling within 30 days.
+- **One-Click Application**: "Apply Link ↗" opens official scholarship portals directly in the user's default browser.
+- **Keyword & Country Search**: Filter funding opportunities by host country, study level, or scholarship title.
+
+### 4. ⚖️ Side-by-Side University Comparison
+- **Matrix View**: Compare up to **3 universities simultaneously**.
+- **Singleton State Management**: Powered by `CompareManager` with listener callbacks to update the view when selections change.
+- **Automated Best-Value Green Highlighting**:
+  - Automatically identifies and highlights the best metric in soft pastel green (`#DCFCE7`) with a `★ Best` badge (e.g., best world rank, lowest annual tuition, highest acceptance rate, lowest GPA cutoff).
+- **Interactive Controls**: Add universities from any card or details page; remove individual columns with one click.
+
+### 5. 🎯 Intelligent Admission Predictor
+- **Predictive Algorithm**: Evaluates applicant profile against institutional criteria using `PredictorService`:
+  - GPA Delta vs. university requirement.
+  - IELTS English Band Delta.
+  - Degree level rigor multiplier (PhD > Master > Bachelor).
+  - Institution baseline acceptance rate.
+- **Visual Results**:
+  - Prominent percentage score (0% to 100%).
+  - Rounded color-coded progress bar:
+    - 🔴 **< 40% (Reach)**: High selectivity / requires profile strengthening.
+    - 🟠 **40% – 70% (Target)**: Competitive candidate with solid alignment.
+    - 🟢 **> 70% (Strong Match)**: High probability profile.
+  - Tailored actionable advice explaining strengths and actionable steps.
 
 ### 6. 📅 Application Deadline Tracker
-- Add and manage personal university applications.
-- **Chronological Sorting**: Nearest upcoming deadlines automatically sort to the top.
-- **Live Days Left Counter**: Displays days remaining, "Due Today!", or overdue status.
-- **Status Lifecycle**: Toggle application status between *Pending* 🟡, *Applied* 🔵, and *Done* 🟢.
-- **Local Persistence**: Saved automatically to `~/.degreely/deadlines.json`.
+- **Personalized Tracker**: Add upcoming university applications with program name, target university, and deadline date.
+- **Chronological Ordering**: Closest deadlines automatically float to the top of the queue.
+- **Days Left Countdown**: Real-time counter showing exact days remaining, "Due Today!", or overdue status.
+- **Status Lifecycle**: Track progress across three stages:
+  - 🟡 *Pending*
+  - 🔵 *Applied*
+  - 🟢 *Done*
+- **Persistent Storage**: Automatically serialized to JSON at `~/.degreely/deadlines.json` across app restarts.
 
-### 7. 🌙 Dark Mode / Light Mode Switcher
-- One-click theme toggle in the top navigation bar powered by FlatLaf (`FlatLightLaf` ⟷ `FlatDarkLaf`).
+### 7. 🌙 Dark / Light Mode Theme Switching
+- Top navigation bar includes a toggle button to switch between FlatLaf light and dark themes seamlessly at runtime:
+  - `FlatLightLaf.setup()` ⟷ `FlatDarkLaf.setup()`
+  - `FlatLaf.updateUI()` smoothly re-renders the entire component tree.
 
 ---
 
-## 🎨 Design Tokens & Guidelines
+## 🎨 Design System & Tokens
+
+Degreely implements a consistent, accessible design palette:
 
 | Token | Hex / Value | Description |
 |---|---|---|
-| **Primary** | `#E37712` | Degreely signature orange |
-| **Primary Hover** | `#D2500E` | Button / link hover state |
-| **Text Primary** | `#2B3340` | High-contrast body & header text |
-| **Text Secondary**| `#697386` | Subtitles and meta text |
-| **Text Muted** | `#8C93A1` | Tertiary labels & placeholders |
-| **Background** | `#FCFCFC` | Application canvas |
-| **Card Surface** | `#FFFFFF` | Elevated card container |
-| **Border** | `#E5E7EB` | Subtle 1px dividers |
-| **Highlight Blue**| `#EFF6FF` | Soft blue badges and information alerts |
+| **Primary** | `#E37712` | Signature Degreely Warm Orange |
+| **Primary Hover** | `#D2500E` | Button and interactive hover state |
+| **Text Primary** | `#2B3340` | Deep slate for body and titles |
+| **Text Secondary**| `#697386` | Medium slate for subtitles and metadata |
+| **Text Muted** | `#8C93A1` | Subtle grey for captions and placeholders |
+| **Background** | `#FCFCFC` | Application main workspace canvas |
+| **Card Surface** | `#FFFFFF` | Clean white elevated cards |
+| **Border** | `#E5E7EB` | Subtle 1px dividing borders |
+| **Highlight Blue**| `#EFF6FF` | Soft blue badges and info alerts |
 | **Highlight Green**| `#DCFCE7` | Winning comparison metric highlight |
-| **Highlight Red** | `#FEE2E2` | Closing soon & reach probability warning |
-| **Corner Radius** | `8px` | Cards, buttons, and input fields |
-| **Typography** | `Inter` / `Segoe UI` | Clean sans-serif hierarchy |
+| **Highlight Red** | `#FEE2E2` | Closing soon alert & reach warnings |
+| **Corner Radius** | `8px` | Modern rounded corners across all components |
+| **Typography** | `Inter`, `Segoe UI` | Clean sans-serif font stack |
 
 ---
 
-## 🏗️ Architecture & Project Structure
-
-Degreely follows clean **Model-View-Controller (MVC)** principles:
+## 🏗️ Project Structure
 
 ```
 Degreely/
 ├── pom.xml                               # Maven project configuration
-├── README.md                             # Documentation
-├── mvnw / mvnw.cmd                       # Self-contained Maven wrapper
+├── README.md                             # Project documentation
+├── mvnw / mvnw.cmd                       # Maven Wrapper executables
+├── .mvn/wrapper/                         # Maven Wrapper jar and properties
 └── src/
     └── main/
         ├── java/
         │   └── com/degreely/app/
-        │       ├── Main.java             # Entry point & Look-and-Feel initializer
-        │       ├── model/
+        │       ├── Main.java             # Entry point, Look-and-Feel initializer
+        │       │
+        │       ├── model/                # Data transfer objects
         │       │   ├── University.java           # University entity
         │       │   ├── Program.java              # Degree program entity
         │       │   ├── Scholarship.java          # Scholarship entity
         │       │   └── ApplicationDeadline.java  # User deadline entity
-        │       ├── controller/
-        │       │   ├── UniversityService.java    # University filtering & search logic
-        │       │   ├── CompareManager.java       # Singleton comparison state manager
+        │       │
+        │       ├── controller/           # Business logic & services
+        │       │   ├── UniversityService.java    # Search, sorting & filtering logic
+        │       │   ├── CompareManager.java       # Singleton comparison state
         │       │   ├── PredictorService.java     # Admission scoring algorithm
-        │       │   └── DeadlineService.java      # Local JSON persistence & deadline manager
-        │       ├── util/
-        │       │   ├── Theme.java                # Global design tokens & fonts
+        │       │   └── DeadlineService.java      # Local JSON file persistence
+        │       │
+        │       ├── util/                 # Reusable helpers & design tokens
+        │       │   ├── Theme.java                # Color palette, spacing & fonts
         │       │   ├── UI.java                   # Standardized FlatLaf component factory
-        │       │   └── JsonLoader.java           # Resource JSON parser using Gson
-        │       └── view/
-        │           ├── MainFrame.java            # Main window & CardLayout controller
+        │       │   └── JsonLoader.java           # Resource JSON parser with Gson
+        │       │
+        │       └── view/                 # UI pages & components
+        │           ├── MainFrame.java            # Main window & CardLayout host
         │           ├── Navbar.java               # Top navigation bar with dark mode toggle
-        │           ├── HomePage.java             # Welcome landing hero
-        │           ├── UniversitiesPage.java     # University catalog with live filters
-        │           ├── UniversityDetailsPage.java# Deep-dive university inspection
+        │           ├── HomePage.java             # Welcome landing screen
+        │           ├── UniversitiesPage.java     # University catalog with filter sidebar
+        │           ├── UniversityDetailsPage.java# Deep-dive university details with tabs
         │           ├── ScholarshipsPage.java     # Scholarship catalog & closing alerts
         │           ├── ComparePage.java          # Multi-university comparison table
         │           ├── PredictorPage.java        # Interactive admission calculator
@@ -140,33 +189,46 @@ Degreely/
         │               ├── UniversityDetailsDialog.java
         │               ├── ScholarshipCard.java
         │               └── DeadlineCard.java
+        │
         └── resources/
             └── data/
-                ├── universities.json     # 20 Universities & 80+ degree programs
-                └── scholarships.json     # 10 Worldwide scholarships
+                ├── universities.json     # 20 Universities & 80+ programs dataset
+                └── scholarships.json     # 10 International scholarships dataset
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start Guide
 
 ### Prerequisites
 - **Java Development Kit (JDK) 17 or higher** installed.
+  - Verify your installation:
+    ```bash
+    java -version
+    ```
 
-### Run Directly via Maven Wrapper (Recommended)
-No local Maven installation needed. The included wrapper handles everything:
+### Running with Maven Wrapper (Recommended)
+You do not need to install Maven manually. The repository includes a patched wrapper that automatically detects your Java 17+ installation:
 
+**On Windows (PowerShell / Command Prompt):**
 ```powershell
-# In PowerShell or Command Prompt
 .\mvnw.cmd compile exec:java
 ```
 
-### Run using Global Maven (if installed)
+**On macOS / Linux:**
+```bash
+chmod +x ./mvnw
+./mvnw compile exec:java
+```
+
+### Running with Global Maven
+If you already have Maven in your system `PATH`:
 ```bash
 mvn compile exec:java
 ```
 
-### Build a Production Executable JAR
+### Building an Executable JAR
+To generate a standalone distributable JAR file:
 ```powershell
 .\mvnw.cmd clean package
 java -jar target/degreely-1.0.0-SNAPSHOT.jar
@@ -174,8 +236,36 @@ java -jar target/degreely-1.0.0-SNAPSHOT.jar
 
 ---
 
-## 👨‍💻 Author & Repository
+## 💡 Troubleshooting & Tips
 
+- **`JAVA_HOME` not recognized**:
+  - `mvnw.cmd` includes fallback logic to find installed JDKs. If needed, manually set `JAVA_HOME`:
+    ```powershell
+    $env:JAVA_HOME = "C:\Program Files\Java\jdk-26.0.2.1"   # Example path
+    ```
+- **PowerShell Execution Policy Warning**:
+  - If PowerShell blocks scripts:
+    ```powershell
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    ```
+- **High-DPI / 4K Displays**:
+  - FlatLaf automatically scales Swing UI components to match Windows OS scaling (125%, 150%, 200%) with crisp fonts and borders.
+
+---
+
+## 🤝 Contributing
+
+Contributions, feature suggestions, and bug reports are welcome!
+1. Fork the Project: `https://github.com/devlowper/Degreely`
+2. Create your Feature Branch: `git checkout -b feature/NewFeature`
+3. Commit your Changes: `git commit -m 'feat: Add NewFeature'`
+4. Push to the Branch: `git push origin feature/NewFeature`
+5. Open a Pull Request
+
+---
+
+## 👨‍💻 Author & License
+
+- **Developer**: MD RAKIB HOSSEN ([@devlowper](https://github.com/devlowper))
 - **Repository**: [https://github.com/devlowper/Degreely](https://github.com/devlowper/Degreely)
-- **Author**: MD RAKIB HOSSEN ([@devlowper](https://github.com/devlowper))
-- **License**: MIT License
+- **License**: Released under the [MIT License](LICENSE).
