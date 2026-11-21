@@ -107,6 +107,17 @@ public class ChatSidebar extends JPanel {
         topSection.add(searchField);
         topSection.add(Box.createVerticalStrut(12));
 
+        // Ctrl+K keyboard shortcut to focus search
+        getInputMap(WHEN_IN_FOCUSED_WINDOW).put(
+                javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_DOWN_MASK), "focusSearch");
+        getActionMap().put("focusSearch", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                searchField.requestFocusInWindow();
+                searchField.selectAll();
+            }
+        });
+
         // "Recents" Section Label
         JLabel recentsLabel = new JLabel("Recents");
         recentsLabel.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));

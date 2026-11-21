@@ -1,46 +1,33 @@
-# 🎓 Degreely — One-Stop Degree & Scholarship Search Platform
+# 🦉 Night Owl Study Abroad — AI Counselor Desktop Application
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Night%20Owl-AI%20Counselor-orange?style=for-the-badge&logo=openai&logoColor=white" alt="Night Owl AI" />
+  <img src="https://img.shields.io/badge/Gemini%20API-gemini--2.5--flash-blue?style=for-the-badge" alt="Gemini" />
+  <img src="https://img.shields.io/badge/UI-Claude.ai%20Style-D97757?style=for-the-badge" alt="Claude Style" />
   <img src="https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17+" />
   <img src="https://img.shields.io/badge/UI-Java%20Swing%20%2B%20FlatLaf-blue?style=for-the-badge" alt="FlatLaf" />
-  <img src="https://img.shields.io/badge/JSON%20Parser-Google%20Gson%202.11.0-red?style=for-the-badge" alt="Gson" />
   <img src="https://img.shields.io/badge/Build-Maven%20Wrapper-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" alt="Maven" />
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=for-the-badge" alt="Platform" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
 </p>
 
 ---
 
-## 📌 Table of Contents
-- [Overview](#-overview)
-- [Key Highlights](#-key-highlights)
-- [System Architecture](#-system-architecture)
-- [Core Modules & Features](#-core-modules--features)
-  - [1. University Discovery & Search Hub](#1--university-discovery--search-hub)
-  - [2. Comprehensive University Details](#2--comprehensive-university-details)
-  - [3. ✦ Night Owl AI Study Abroad Counselor](#3--night-owl-ai-study-abroad-counselor)
-  - [4. Worldwide Scholarships & Funding](#4--worldwide-scholarships--funding)
-  - [5. Side-by-Side University Comparison](#5--side-by-side-university-comparison)
-  - [6. Intelligent Admission Predictor](#6--intelligent-admission-predictor)
-  - [7. Application Deadline Tracker](#7--application-deadline-tracker)
-- [Design System & Tokens](#-design-system--tokens)
-- [Project Structure](#-project-structure)
-- [Quick Start Guide](#-quick-start-guide)
-  - [Prerequisites](#prerequisites)
-  - [Running with Maven Wrapper](#running-with-maven-wrapper-recommended)
-  - [Running with Global Maven](#running-with-global-maven)
-  - [Building an Executable JAR](#building-an-executable-jar)
-- [Troubleshooting & Tips](#-troubleshooting--tips)
-- [Contributing](#-contributing)
-- [Author & License](#-author--license)
-
----
-
 ## 📖 Overview
 
-**Degreely** is a modern, high-performance desktop application built with **Java 17**, **Java Swing**, and the **FlatLaf** modern Look and Feel. Designed for aspiring international students, Degreely simplifies researching global universities, comparing degree programs, discovering prestigious scholarships, predicting admission probabilities, and tracking application deadlines in one unified workspace.
+**Night Owl Study Abroad** is a production-quality AI counselor desktop application built with **Java 17**, **Java Swing**, and **FlatLaf**, featuring an interface inspired by **Claude.ai** (clean, minimal, warm). 
 
-No external database server (like MySQL or PostgreSQL) is required. The platform is completely lightweight and portable, utilizing bundled JSON datasets and local JSON serialization via **Google Gson**.
+Powered by the **Google Gemini API** (`gemini-2.5-flash` by default, with model selection for `gemini-1.5-flash` and `gemini-1.5-pro`), Night Owl is tailored for students (primarily from Bangladesh and South Asia) seeking higher education abroad.
+
+### Key Capabilities:
+- **Interactive University Comparison Tables (`uni-table`)**: Automatically parses model output into structured side-by-side comparison tables with attribute groups (Admissions, Costs, Living Expenses, Deadlines, Post-study Work Rights), highlights cheapest tuition and nearest deadlines, and offers **Copy Table** and **Export CSV**.
+- **Multimodal Document Upload (📎)**: Attach SOP drafts, CVs, transcripts, or university brochures (PDF, PNG, JPG, TXT, CSV, DOCX) for constructive admissions review.
+- **Claude-Style Minimal Layout**:
+  - 264px left sidebar with serif brand header, orange "New chat" button, instant search (`Ctrl+K`), and categorized history (*Today / Yesterday / Previous 7 days / Older*).
+  - Empty state with warm spark icon, *"Hello, night owl"* serif greeting, and 4 starter prompt cards.
+  - Centered message column with user bubbles (`#F1F5F9`) and assistant markdown rendering.
+  - 24px rounded composer with auto-growing textarea, file chips, and send/stop buttons.
+- **Personalized Student Profile**: Injects the student's CGPA, IELTS score, budget, preferred countries, and intake into the context silently.
+- **Persistent Local History**: Conversations saved automatically to `~/.degreely/chats.json` with Markdown export.
 
 ---
 
