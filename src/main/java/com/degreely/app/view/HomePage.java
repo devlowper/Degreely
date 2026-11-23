@@ -6,6 +6,7 @@ import com.degreely.app.model.University;
 import com.degreely.app.util.Icons;
 import com.degreely.app.util.Theme;
 import com.degreely.app.view.components.chat.CompareDialog;
+import com.degreely.app.view.components.chat.CompareDialog.OnCompareSubmit;
 import com.formdev.flatlaf.FlatClientProperties;
 
 import javax.swing.BorderFactory;
@@ -52,7 +53,7 @@ public class HomePage extends JPanel {
     private final UniversityService uniService = UniversityService.getInstance();
     private final Consumer<String> onAskAI;
     private final Runnable onNavigateToAI;
-    private final CompareDialog.OnCompareSubmit onCompare;
+    private final OnCompareSubmit onCompare;
 
     private JTextField searchField;
     private JComboBox<String> countryCombo;
@@ -70,7 +71,7 @@ public class HomePage extends JPanel {
         this(onAskAI, onNavigateToAI, null);
     }
 
-    public HomePage(Consumer<String> onAskAI, Runnable onNavigateToAI, CompareDialog.OnCompareSubmit onCompare) {
+    public HomePage(Consumer<String> onAskAI, Runnable onNavigateToAI, OnCompareSubmit onCompare) {
         this.onAskAI = onAskAI;
         this.onNavigateToAI = onNavigateToAI;
         this.onCompare = onCompare;

@@ -100,7 +100,7 @@ public class ChatStorageService {
     }
 
     public synchronized List<ChatSession> searchSessions(String query) {
-        if (query == null || query.isBlank()) {
+        if (query == null || query.trim().isEmpty()) {
             return getAllSessions();
         }
         String q = query.toLowerCase().trim();
