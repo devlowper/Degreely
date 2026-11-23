@@ -154,8 +154,12 @@ public class MessageBubble extends JPanel {
             copyBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             copyBtn.addActionListener(e -> {
                 Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(message.getContent()), null);
-                copyBtn.setText("Copied ✓");
-                javax.swing.Timer t = new javax.swing.Timer(2000, evt -> copyBtn.setText("Copy"));
+                copyBtn.setIcon(Icons.check(13, new Color(16, 185, 129)));
+                copyBtn.setText("Copied");
+                javax.swing.Timer t = new javax.swing.Timer(2000, evt -> {
+                    copyBtn.setIcon(Icons.copy(13, Theme.TEXT_MUTED));
+                    copyBtn.setText("Copy");
+                });
                 t.setRepeats(false);
                 t.start();
             });

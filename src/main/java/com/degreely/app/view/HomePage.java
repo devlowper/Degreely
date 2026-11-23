@@ -137,7 +137,9 @@ public class HomePage extends JPanel {
         ctaRow.setOpaque(false);
         ctaRow.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton exploreBtn = new JButton("Explore " + uniService.getAll().size() + "+ Universities ↓");
+        JButton exploreBtn = new JButton("Explore " + uniService.getAll().size() + "+ Universities", Icons.arrowDown(14, Color.WHITE));
+        exploreBtn.setIconTextGap(8);
+        exploreBtn.setHorizontalTextPosition(SwingConstants.LEFT);
         exploreBtn.setFont(Theme.FONT_BUTTON);
         exploreBtn.setBackground(Theme.PRIMARY);
         exploreBtn.setForeground(Color.WHITE);
@@ -147,7 +149,8 @@ public class HomePage extends JPanel {
         exploreBtn.setBorder(BorderFactory.createEmptyBorder(9, 20, 9, 20));
         exploreBtn.addActionListener(e -> scrollToCatalog());
 
-        JButton chatAiBtn = new JButton("Chat with Degreely AI ✦", Icons.spark(14, Theme.PRIMARY));
+        JButton chatAiBtn = new JButton("Chat with Degreely AI", Icons.spark(14, Theme.PRIMARY));
+        chatAiBtn.setIconTextGap(8);
         chatAiBtn.setFont(Theme.FONT_BUTTON);
         chatAiBtn.setBackground(Color.WHITE);
         chatAiBtn.setForeground(Theme.PRIMARY);
@@ -403,7 +406,9 @@ public class HomePage extends JPanel {
             loadMorePanel.setOpaque(false);
             loadMorePanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-            JButton loadMoreBtn = new JButton("Load More Universities (" + (list.size() - countToShow) + " remaining) ↓");
+            JButton loadMoreBtn = new JButton("Load More Universities (" + (list.size() - countToShow) + " remaining)", Icons.arrowDown(14, Theme.PRIMARY));
+            loadMoreBtn.setIconTextGap(8);
+            loadMoreBtn.setHorizontalTextPosition(SwingConstants.LEFT);
             loadMoreBtn.setFont(Theme.FONT_BUTTON);
             loadMoreBtn.setForeground(Theme.PRIMARY);
             loadMoreBtn.setBackground(Color.WHITE);
@@ -493,7 +498,8 @@ public class HomePage extends JPanel {
         tuitionLabel.setFont(new Font(Theme.FONT_BODY.getFamily(), Font.BOLD, 13));
         tuitionLabel.setForeground(u.getTuitionPerYear() == 0 ? Theme.GREEN_TEXT : Theme.TEXT);
 
-        JButton askAiBtn = new JButton("Ask AI Counselor ✦", Icons.spark(12, Theme.PRIMARY));
+        JButton askAiBtn = new JButton("Ask AI Counselor", Icons.spark(13, Theme.PRIMARY));
+        askAiBtn.setIconTextGap(6);
         askAiBtn.setFont(Theme.FONT_BUTTON);
         askAiBtn.setForeground(Theme.PRIMARY);
         askAiBtn.setBackground(Theme.PRIMARY_LIGHT);

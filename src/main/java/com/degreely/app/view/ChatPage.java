@@ -296,8 +296,7 @@ public class ChatPage extends JPanel {
     private JPanel createThinkingIndicator() {
         JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, Theme.SPACING_8, 6));
         p.setOpaque(false);
-        JLabel spark = new JLabel("✦");
-        spark.setForeground(Theme.PRIMARY);
+        JLabel spark = new JLabel(Icons.spark(14, Theme.PRIMARY));
         JLabel text = UI.mutedLabel("Degreely is analyzing requirements & drafting guidance...");
         text.setFont(new Font(Theme.FONT_BODY.getName(), Font.ITALIC, 13));
         p.add(spark);

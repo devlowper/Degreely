@@ -153,19 +153,15 @@ public class ComposerPanel extends JPanel {
     }
 
     private JButton createSendButton() {
-        JButton btn = new JButton() {
+        JButton btn = new JButton(Icons.send(14, Color.WHITE)) {
             @Override
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setColor(Theme.PRIMARY);
                 g2.fillOval(0, 0, getWidth(), getHeight());
-
-                // Draw up arrow ↑
-                g2.setColor(Color.WHITE);
-                g2.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
-                g2.drawString("↑", 11, 21);
                 g2.dispose();
+                super.paintComponent(g);
             }
         };
         btn.setPreferredSize(new Dimension(32, 32));
@@ -180,6 +176,8 @@ public class ComposerPanel extends JPanel {
 
     private JButton createStopButton() {
         JButton btn = UI.outlineButton("Stop");
+        btn.setIcon(Icons.stop(11, Theme.PRIMARY));
+        btn.setIconTextGap(6);
         btn.setFont(new Font(Theme.FONT_SMALL.getName(), Font.BOLD, 11));
         btn.setMargin(new Insets(4, 10, 4, 10));
         btn.addActionListener(e -> {

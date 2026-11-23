@@ -162,28 +162,16 @@ public class ChatSidebar extends JPanel {
     }
 
     private JButton createNewChatButton() {
-        JButton btn = new JButton("New chat") {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2 = (Graphics2D) g.create();
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                // Draw small orange plus circle on left
-                g2.setColor(Theme.PRIMARY);
-                g2.fillOval(12, 9, 18, 18);
-                g2.setColor(Color.WHITE);
-                g2.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 13));
-                g2.drawString("+", 17, 22);
-                g2.dispose();
-            }
-        };
+        JButton btn = new JButton("New chat");
+        btn.setIcon(Icons.plusCircle(18, Theme.PRIMARY, Color.WHITE));
+        btn.setIconTextGap(10);
         btn.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 13));
         btn.setForeground(Theme.TEXT);
         btn.setBackground(Color.WHITE);
         btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
         btn.setBorder(BorderFactory.createCompoundBorder(
                 new FlatLineBorder(new Insets(1, 1, 1, 1), Color.decode("#E2E8F0"), 1, 8),
-                BorderFactory.createEmptyBorder(0, 38, 0, 12)
+                BorderFactory.createEmptyBorder(0, 12, 0, 12)
         ));
         btn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
         btn.setPreferredSize(new Dimension(232, 36));
@@ -376,9 +364,8 @@ public class ChatSidebar extends JPanel {
         item.add(l, BorderLayout.CENTER);
 
         // Three dots action button
-        JLabel dots = new JLabel("···");
-        dots.setFont(new Font(Font.MONOSPACED, Font.BOLD, 13));
-        dots.setForeground(Theme.TEXT_MUTED);
+        JLabel dots = new JLabel(Icons.moreHorizontal(14, Theme.TEXT_MUTED));
+        dots.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dots.setVisible(false);
         item.add(dots, BorderLayout.EAST);
 
