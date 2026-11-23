@@ -3,10 +3,8 @@ package com.degreely.app.controller;
 import com.degreely.app.model.ChatMessage;
 import com.degreely.app.model.ChatSession;
 import com.degreely.app.model.StudentProfile;
-import com.degreely.app.model.UniTableData;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -37,40 +35,47 @@ public class GeminiService {
     private String selectedModel = "gemini-2.5-flash";
 
     private static final String SYSTEM_PROMPT =
-            "You are Degreely, an expert study-abroad counselor for students from Bangladesh and South Asia. " +
-            "Help with universities, admissions, costs, deadlines, scholarships, visas, exams (IELTS/TOEFL/GRE/GMAT), and SOP reviews. " +
-            "For any comparison or university lookup, output the uni-table JSON block described below. " +
-            "Never fabricate deadlines, fees, or requirements; if unsure, say so and cite where to verify. " +
-            "Mention the academic intake year for all figures. Be concise, structured, friendly, and encouraging. " +
-            "Match the user's language: if they write English, answer in English; if Bangla (বাংলা), answer in Bangla; if Banglish, answer in Banglish. " +
-            "You are not a lawyer; for visa/legal decisions advise confirming with official embassy sources.\n\n" +
-            "TABLE SPECIFICATION:\n" +
-            "Whenever the user asks to compare universities, programs, or countries, or asks about specific university requirements, " +
-            "reply with a short intro sentence plus a structured JSON block inside a fenced code block tagged ```uni-table or ```json with this exact structure:\n" +
+            "You are Degreely, an elite, highly knowledgeable AI Study-Abroad Counselor specialized in higher education admissions worldwide (US, UK, Canada, Germany, Australia, Europe, Asia) for ambitious students from Bangladesh and South Asia.\n\n" +
+            "CRITICAL RESPONSE STYLE GUIDELINES (CHATGPT-STYLE IN-DEPTH PRESENTATION):\n" +
+            "1. IN-DEPTH, DETAILED & COMPREHENSIVE: Provide thorough, deeply researched, multi-faceted answers like ChatGPT / Claude. Never give lazy, one-line, or bare-bones template replies. Address the student's inquiry with extensive context, realistic nuance, and complete explanations.\n" +
+            "2. STRUCTURED FORMATTING: Use clean, professional Markdown with clear section headers (###), bold emphasis, organized bullet points, and numbered action steps.\n" +
+            "3. ESSENTIAL COUNSELING DIMENSIONS: When advising on universities, majors, or study destinations, thoroughly cover:\n" +
+            "   - Academic Requirements & Cutoffs: Minimum GPA, degree prerequisites, rigorous cutoffs, grading scale equivalencies.\n" +
+            "   - English Proficiency & Standardized Tests: IELTS, TOEFL, Duolingo bands, GRE/GMAT requirements, waivers.\n" +
+            "   - Tuition Fees & Real Financial Cost: Exact annual tuition, comprehensive living expenses (rent, utilities, groceries, transport), health insurance, visa deposits.\n" +
+            "   - Scholarships & Funding: Merit scholarships, need-based aid, university fellowships, external scholarships (DAAD, Fulbright, Chevening, Commonwealth), and on-campus work eligibility.\n" +
+            "   - Application Deadlines & Intakes: Fall/Winter/Spring deadlines, priority rounds, document requirements (SOP, LORs, CV, transcripts).\n" +
+            "   - Post-Study Work Visas & Career Pathways: Post-graduation work permit (OPT/STEM OPT, UK Graduate Route, Canada PGWP, Germany 18-month visa), local tech & corporate job market prospects.\n" +
+            "   - Strategic Counselor Advice: Concrete recommendations tailored to maximize the student's admission chances.\n" +
+            "4. LANGUAGE FLEXIBILITY: If the student writes in English, reply in articulate, natural English. If in Bengali (বাংলা), reply in natural Bengali. If in Banglish, reply accordingly.\n" +
+            "5. COMPARISONS & TABLES: When comparing universities or programs, write an in-depth analytical breakdown comparing strengths, campus culture, ROI, and requirements. Then, at the very end of your detailed reply, append a structured JSON block inside a ```uni-table fenced block so Degreely can render an interactive comparison table beneath your detailed advice.\n\n" +
+            "TABLE SPECIFICATION (Append at the end of comparison responses):\n" +
+            "```uni-table\n" +
             "{\n" +
-            "  \"title\": \"MSc Computer Science: Germany vs Canada\",\n" +
+            "  \"title\": \"Comparison Title\",\n" +
             "  \"currency\": \"USD\",\n" +
             "  \"universities\": [\n" +
             "    {\n" +
-            "      \"name\": \"Technical University of Munich\",\n" +
-            "      \"country\": \"Germany\",\n" +
-            "      \"program\": \"MSc Computer Science\",\n" +
-            "      \"tuition_per_year\": \"$0 - $3,500\",\n" +
-            "      \"living_cost_per_month\": \"$1,000 - $1,300\",\n" +
-            "      \"min_gpa\": \"3.2 / 4.0\",\n" +
-            "      \"english_requirement\": \"IELTS 6.5 / TOEFL 88\",\n" +
-            "      \"other_tests\": \"GRE optional\",\n" +
+            "      \"name\": \"University Name\",\n" +
+            "      \"country\": \"Country\",\n" +
+            "      \"program\": \"Program Name\",\n" +
+            "      \"tuition_per_year\": \"$XX,XXX / yr\",\n" +
+            "      \"living_cost_per_month\": \"$X,XXX / mo\",\n" +
+            "      \"min_gpa\": \"X.X / 4.0\",\n" +
+            "      \"english_requirement\": \"IELTS X.X / TOEFL XX\",\n" +
+            "      \"other_tests\": \"GRE/GMAT info\",\n" +
             "      \"documents\": [\"Transcripts\", \"CV\", \"SOP\", \"2 LORs\"],\n" +
-            "      \"application_deadline\": \"May 31\",\n" +
-            "      \"intake\": \"Winter\",\n" +
-            "      \"application_fee\": \"$0\",\n" +
-            "      \"scholarships\": \"DAAD Scholarship\",\n" +
-            "      \"work_rights\": \"18-month Job Seeking Visa\",\n" +
-            "      \"source_url\": \"https://www.tum.de\"\n" +
+            "      \"application_deadline\": \"Month Day\",\n" +
+            "      \"intake\": \"Intake term\",\n" +
+            "      \"application_fee\": \"$XX\",\n" +
+            "      \"scholarships\": \"Scholarship names\",\n" +
+            "      \"work_rights\": \"Post-study visa details\",\n" +
+            "      \"source_url\": \"https://...\"\n" +
             "    }\n" +
             "  ],\n" +
-            "  \"notes\": \"Verify exact deadlines on official portal\"\n" +
-            "}\n";
+            "  \"notes\": \"Verify exact requirements on official university portal\"\n" +
+            "}\n" +
+            "```\n";
 
     private GeminiService() {
         this.httpClient = HttpClient.newBuilder()
@@ -125,7 +130,7 @@ public class GeminiService {
     public ChatMessage sendMessage(ChatSession session, String userPrompt, List<File> attachedFiles) throws Exception {
         String key = getApiKey();
         if (key.isBlank()) {
-            throw new IllegalStateException("Gemini API Key is not set. Please enter your API key in Settings (Gear icon) or set the GEMINI_API_KEY environment variable.");
+            throw new IllegalStateException("Gemini API Key is not set. Please enter your API key in Gemini Settings or set the GEMINI_API_KEY environment variable.");
         }
 
         // 1. Build Payload
@@ -201,10 +206,10 @@ public class GeminiService {
 
         root.add("contents", contents);
 
-        // Generation Config
+        // Generation Config with generous token limit for deep, ChatGPT-style detailed answers
         JsonObject genConfig = new JsonObject();
         genConfig.addProperty("temperature", 0.7);
-        genConfig.addProperty("maxOutputTokens", 2048);
+        genConfig.addProperty("maxOutputTokens", 4096);
         root.add("generationConfig", genConfig);
 
         String jsonPayload = gson.toJson(root);
@@ -257,7 +262,7 @@ public class GeminiService {
     public String generateChatTitle(String userPrompt) {
         try {
             String key = getApiKey();
-            if (key.isBlank()) return "Study Abroad Inquiry";
+            if (key.isBlank()) return "Study Abroad Consultation";
 
             JsonObject root = new JsonObject();
             JsonArray contents = new JsonArray();
@@ -265,7 +270,7 @@ public class GeminiService {
             turn.addProperty("role", "user");
             JsonArray parts = new JsonArray();
             JsonObject p = new JsonObject();
-            p.addProperty("text", "Summarize this user query into a 4 to 6 word chat title without punctuation: \"" + userPrompt + "\"");
+            p.addProperty("text", "Summarize this user query into a concise 4 to 6 word chat title without quotation marks: \"" + userPrompt + "\"");
             parts.add(p);
             turn.add("parts", parts);
             contents.add(turn);
@@ -293,33 +298,24 @@ public class GeminiService {
                 return title;
             }
         } catch (Exception ignored) {}
-        return "Study Abroad Inquiry";
+        return "Study Abroad Consultation";
     }
 
     public String extractUniTableJson(String text) {
         if (text == null) return null;
-        // 1. Search for ```uni-table ... ``` or ```json ... ``` with "universities"
-        Pattern pattern = Pattern.compile("```(?:uni-table|json)?\\s*(\\{[\\s\\S]*?\"universities\"[\\s\\S]*?\\})\\s*```", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(text);
-        if (matcher.find()) {
-            return matcher.group(1).trim();
+
+        // Pattern 1: tagged with ```uni-table
+        Pattern pUniTable = Pattern.compile("```(?:uni-table)\\s*([\\s\\S]*?)```", Pattern.CASE_INSENSITIVE);
+        Matcher m1 = pUniTable.matcher(text);
+        if (m1.find()) {
+            return m1.group(1).trim();
         }
 
-        // 2. Fallback: Search for bare JSON object containing "universities"
-        int idx = text.indexOf("\"universities\"");
-        if (idx != -1) {
-            int start = text.lastIndexOf('{', idx);
-            if (start != -1) {
-                int end = text.lastIndexOf('}');
-                if (end > start) {
-                    try {
-                        String candidate = text.substring(start, end + 1).trim();
-                        // Validate JSON
-                        JsonParser.parseString(candidate);
-                        return candidate;
-                    } catch (Exception ignored) {}
-                }
-            }
+        // Pattern 2: tagged with ```json that contains "universities" array
+        Pattern pJson = Pattern.compile("```(?:json)?\\s*(\\{[\\s\\S]*?\"universities\"[\\s\\S]*?\\})\\s*```", Pattern.CASE_INSENSITIVE);
+        Matcher m2 = pJson.matcher(text);
+        if (m2.find()) {
+            return m2.group(1).trim();
         }
 
         return null;
@@ -327,34 +323,35 @@ public class GeminiService {
 
     private String parseErrorMessage(String body, int statusCode) {
         try {
-            JsonObject obj = JsonParser.parseString(body).getAsJsonObject();
-            if (obj.has("error")) {
-                JsonObject err = obj.getAsJsonObject("error");
-                String message = err.get("message").getAsString();
-                return "Gemini API Error (" + statusCode + "): " + message;
+            JsonObject json = JsonParser.parseString(body).getAsJsonObject();
+            if (json.has("error")) {
+                JsonObject err = json.getAsJsonObject("error");
+                String msg = err.get("message").getAsString();
+                return "Gemini API Error (" + statusCode + "): " + msg;
             }
         } catch (Exception ignored) {}
-        if (statusCode == 400) return "Bad request or invalid model (" + selectedModel + "). Check your prompt or model name.";
-        if (statusCode == 401 || statusCode == 403) return "Invalid or unauthorized API Key. Please verify your Gemini API Key in Settings.";
-        if (statusCode == 429) return "Quota or rate limit reached. Please wait a minute or use a different API key.";
-        return "Gemini API request failed with status code " + statusCode;
+        return "Gemini API returned HTTP status " + statusCode;
     }
 
     private void loadConfig() {
         if (!configFile.exists()) return;
         try (Reader reader = new FileReader(configFile)) {
-            JsonObject obj = JsonParser.parseString(reader.toString()).getAsJsonObject();
-            if (obj.has("apiKey")) this.apiKey = obj.get("apiKey").getAsString();
-            if (obj.has("model")) this.selectedModel = obj.get("model").getAsString();
+            JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
+            if (json.has("apiKey")) {
+                this.apiKey = json.get("apiKey").getAsString();
+            }
+            if (json.has("model")) {
+                this.selectedModel = json.get("model").getAsString();
+            }
         } catch (Exception ignored) {}
     }
 
     private void saveConfig() {
         try (Writer writer = new FileWriter(configFile)) {
-            JsonObject obj = new JsonObject();
-            obj.addProperty("apiKey", this.apiKey);
-            obj.addProperty("model", this.selectedModel);
-            gson.toJson(obj, writer);
+            JsonObject json = new JsonObject();
+            json.addProperty("apiKey", apiKey);
+            json.addProperty("model", selectedModel);
+            gson.toJson(json, writer);
         } catch (Exception ignored) {}
     }
 }

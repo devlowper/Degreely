@@ -1,6 +1,8 @@
 package com.degreely.app.view;
 
+import com.degreely.app.model.ChatSession;
 import com.degreely.app.util.Theme;
+import com.degreely.app.view.components.chat.ChatSidebar;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,9 +10,19 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 
+/**
+ * Main application window designed as a modern, unified SaaS platform:
+ * - Persistent left sidebar with chat history and direct navigation.
+ * - "Home / Universities" section located directly above the Settings & Profile section.
+ * - Dynamic central canvas with smooth switching between University Catalog (Home) and AI Counselor Chat.
+ * - Top navbar removed for a clean, distraction-free modern interface.
+ */
 public class MainFrame extends JFrame {
 
-    private Navbar navbar;
+    public static final String VIEW_HOME = "HOME";
+    public static final String VIEW_CHAT = "CHAT";
+
+    private ChatSidebar sidebar;
     private JPanel cardContainer;
     private CardLayout cardLayout;
 
@@ -30,46 +42,61 @@ public class MainFrame extends JFrame {
         getContentPane().setBackground(Theme.CARD_BG);
         setLayout(new BorderLayout());
 
-        // 1. Top Navbar
-        navbar = new Navbar(this::navigateToTab);
-        add(navbar, BorderLayout.NORTH);
+        // 1. Unified SaaS Left Sidebar (Persistent across Home and AI Counselor)
+        sidebar = new ChatSidebar(
+                this::handleSelectSession,
+                this::handleNewChat,
+                this::handleNavigateHome
+        );
+        add(sidebar, BorderLayout.WEST);
 
-        // 2. Card Container for Home and Degreely AI
+        // 2. Central Canvas with CardLayout (Home vs Degreely AI Chat)
         cardLayout = new CardLayout();
         cardContainer = new JPanel(cardLayout);
 
-        // Degreely AI Chat Page
         chatPage = new ChatPage();
+        chatPage.setSidebar(sidebar);
 
-        // Home Page with Hero section and University Catalog
         homePage = new HomePage(
                 this::handleAskAIFromHome,
-                () -> navigateToTab(Navbar.TAB_AI)
+                this::handleNavigateToAI
         );
 
-        cardContainer.add(homePage, Navbar.TAB_HOME);
-        cardContainer.add(chatPage, Navbar.TAB_AI);
+        cardContainer.add(homePage, VIEW_HOME);
+        cardContainer.add(chatPage, VIEW_CHAT);
 
         add(cardContainer, BorderLayout.CENTER);
 
-        // Start on HOME tab
-        cardLayout.show(cardContainer, Navbar.TAB_HOME);
+        // Start on Home view
+        sidebar.setActiveView("HOME");
+        cardLayout.show(cardContainer, VIEW_HOME);
     }
 
-    public void navigateToTab(String tabKey) {
-        if (Navbar.TAB_HOME.equals(tabKey)) {
-            cardLayout.show(cardContainer, Navbar.TAB_HOME);
-            navbar.selectTabWithoutNotification(Navbar.TAB_HOME);
-        } else if (Navbar.TAB_AI.equals(tabKey)) {
-            cardLayout.show(cardContainer, Navbar.TAB_AI);
-            navbar.selectTabWithoutNotification(Navbar.TAB_AI);
-        }
+    private void handleNavigateHome() {
+        sidebar.setActiveView("HOME");
+        cardLayout.show(cardContainer, VIEW_HOME);
+    }
+
+    private void handleNavigateToAI() {
+        sidebar.setActiveView("CHAT");
+        cardLayout.show(cardContainer, VIEW_CHAT);
+    }
+
+    private void handleNewChat() {
+        sidebar.setActiveView("CHAT");
+        cardLayout.show(cardContainer, VIEW_CHAT);
+        chatPage.startNewChat();
+    }
+
+    private void handleSelectSession(ChatSession session) {
+        sidebar.setActiveView("CHAT");
+        cardLayout.show(cardContainer, VIEW_CHAT);
+        chatPage.loadSession(session);
     }
 
     private void handleAskAIFromHome(String prompt) {
-        // Switch view to AI Chat tab
-        navigateToTab(Navbar.TAB_AI);
-        // Dispatch prompt to counselor
+        sidebar.setActiveView("CHAT");
+        cardLayout.show(cardContainer, VIEW_CHAT);
         chatPage.askQuestion(prompt);
     }
 }

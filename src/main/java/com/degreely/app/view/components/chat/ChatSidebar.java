@@ -45,19 +45,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Modern SaaS Left Sidebar:
+ * - Brand at top
+ * - "New chat" button (+ icon)
+ * - Search chats input (Ctrl+K)
+ * - Recents chat history list
+ * - Bottom section: "Home / Explore Universities" placed RIGHT ABOVE the Settings & Profile section
+ */
 public class ChatSidebar extends JPanel {
 
     private final ChatStorageService storageService = ChatStorageService.getInstance();
     private final Consumer<ChatSession> onSelectSession;
     private final Runnable onNewChat;
+    private final Runnable onNavigateHome;
 
     private final JTextField searchField = new JTextField();
     private final JPanel chatListContainer = new JPanel();
     private String currentSelectedId = null;
+    private String activeView = "HOME"; // "HOME" or "CHAT"
+    private JButton homeNavBtn;
 
     public ChatSidebar(Consumer<ChatSession> onSelectSession, Runnable onNewChat) {
+        this(onSelectSession, onNewChat, null);
+    }
+
+    public ChatSidebar(Consumer<ChatSession> onSelectSession, Runnable onNewChat, Runnable onNavigateHome) {
         this.onSelectSession = onSelectSession;
         this.onNewChat = onNewChat;
+        this.onNavigateHome = onNavigateHome;
         initUI();
         renderSessionList();
     }
@@ -140,7 +156,7 @@ public class ChatSidebar extends JPanel {
         scrollPane.getVerticalScrollBar().setUnitIncrement(14);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Bottom: Profile, Settings, and Free Plan
+        // Bottom: Home Section RIGHT ABOVE Profile and Settings
         JPanel bottomSection = createBottomSection();
         add(bottomSection, BorderLayout.SOUTH);
     }
@@ -176,6 +192,7 @@ public class ChatSidebar extends JPanel {
         btn.setHorizontalAlignment(JButton.LEFT);
         btn.setAlignmentX(Component.LEFT_ALIGNMENT);
         btn.addActionListener(e -> {
+            setActiveView("CHAT");
             if (onNewChat != null) onNewChat.run();
         });
         return btn;
@@ -187,16 +204,42 @@ public class ChatSidebar extends JPanel {
         bottom.setOpaque(false);
         bottom.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createMatteBorder(1, 0, 0, 0, Color.decode("#E6E6E6")),
-                BorderFactory.createEmptyBorder(12, 16, 12, 16)
+                BorderFactory.createEmptyBorder(10, 14, 12, 14)
         ));
 
-        // 1. My Profile Button
+        // 1. Home / Universities Navigation Button (Placed directly ABOVE Settings)
+        homeNavBtn = new JButton("Home / Universities");
+        homeNavBtn.setIcon(Icons.home(15, Theme.PRIMARY));
+        homeNavBtn.setIconTextGap(8);
+        homeNavBtn.setFont(new Font(Theme.FONT_BODY.getName(), Font.BOLD, 12));
+        homeNavBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        homeNavBtn.setAlignmentX(Component.LEFT_ALIGNMENT);
+        homeNavBtn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 32));
+        homeNavBtn.setHorizontalAlignment(JButton.LEFT);
+        homeNavBtn.setFocusPainted(false);
+        homeNavBtn.addActionListener(e -> {
+            setActiveView("HOME");
+            if (onNavigateHome != null) onNavigateHome.run();
+        });
+        updateHomeBtnStyle();
+        bottom.add(homeNavBtn);
+        bottom.add(Box.createVerticalStrut(8));
+
+        // Subtle divider separating Home from Settings & Profile
+        JPanel div = new JPanel();
+        div.setBackground(Color.decode("#EBECEF"));
+        div.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1));
+        div.setPreferredSize(new Dimension(200, 1));
+        div.setAlignmentX(Component.LEFT_ALIGNMENT);
+        bottom.add(div);
+        bottom.add(Box.createVerticalStrut(8));
+
+        // 2. Settings Section: Student Profile & Gemini Settings
         JButton profileBtn = createSidebarActionBtn("My Student Profile", Icons.user(15, Theme.TEXT_SECONDARY), e -> {
             Frame owner = (Frame) SwingUtilities.getWindowAncestor(this);
             new ProfileDialog(owner).setVisible(true);
         });
 
-        // 2. API Key / Settings Button
         JButton settingsBtn = createSidebarActionBtn("Gemini Settings", Icons.settings(15, Theme.TEXT_SECONDARY), e -> {
             Frame owner = (Frame) SwingUtilities.getWindowAncestor(this);
             new ApiKeyDialog(owner).setVisible(true);
@@ -207,6 +250,36 @@ public class ChatSidebar extends JPanel {
         bottom.add(settingsBtn);
 
         return bottom;
+    }
+
+    private void updateHomeBtnStyle() {
+        if (homeNavBtn == null) return;
+        boolean isHome = "HOME".equals(activeView);
+        if (isHome) {
+            homeNavBtn.setForeground(Theme.PRIMARY);
+            homeNavBtn.setIcon(Icons.home(15, Theme.PRIMARY));
+            homeNavBtn.setBackground(Theme.PRIMARY_LIGHT);
+            homeNavBtn.setContentAreaFilled(true);
+            homeNavBtn.setBorder(BorderFactory.createCompoundBorder(
+                    new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.PRIMARY_BORDER, 1, 6),
+                    BorderFactory.createEmptyBorder(5, 10, 5, 10)
+            ));
+        } else {
+            homeNavBtn.setForeground(Theme.TEXT_SECONDARY);
+            homeNavBtn.setIcon(Icons.home(15, Theme.TEXT_SECONDARY));
+            homeNavBtn.setBackground(Color.decode("#FAFAFA"));
+            homeNavBtn.setContentAreaFilled(false);
+            homeNavBtn.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        }
+    }
+
+    public void setActiveView(String view) {
+        this.activeView = view;
+        if ("HOME".equals(view)) {
+            this.currentSelectedId = null;
+        }
+        updateHomeBtnStyle();
+        chatListContainer.repaint();
     }
 
     private JButton createSidebarActionBtn(String text, javax.swing.Icon icon, java.awt.event.ActionListener al) {
@@ -283,7 +356,7 @@ public class ChatSidebar extends JPanel {
 
     private JPanel createChatItem(ChatSession s) {
         JPanel item = new JPanel(new BorderLayout(4, 0));
-        boolean isSelected = s.getId().equals(currentSelectedId);
+        boolean isSelected = "CHAT".equals(activeView) && s.getId().equals(currentSelectedId);
         item.setBackground(isSelected ? Color.decode("#EBECEF") : Color.decode("#FAFAFA"));
         item.setMaximumSize(new Dimension(Integer.MAX_VALUE, 32));
         item.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -298,34 +371,51 @@ public class ChatSidebar extends JPanel {
         }
         l.setIconTextGap(8);
         l.setFont(new Font(Theme.FONT_BODY.getName(), isSelected ? Font.BOLD : Font.PLAIN, 12));
-        l.setForeground(Theme.TEXT);
+        l.setForeground(isSelected ? Theme.TEXT : Theme.TEXT_SECONDARY);
 
         item.add(l, BorderLayout.CENTER);
 
-        // Click to open session
+        // Three dots action button
+        JLabel dots = new JLabel("···");
+        dots.setFont(new Font(Font.MONOSPACED, Font.BOLD, 13));
+        dots.setForeground(Theme.TEXT_MUTED);
+        dots.setVisible(false);
+        item.add(dots, BorderLayout.EAST);
+
+        // Hover effect
         item.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                if (SwingUtilities.isRightMouseButton(e)) {
-                    showContextMenu(e, s);
-                } else {
-                    currentSelectedId = s.getId();
-                    renderSessionList();
-                    if (onSelectSession != null) onSelectSession.accept(s);
-                }
-            }
-
-            @Override
             public void mouseEntered(MouseEvent e) {
-                if (!s.getId().equals(currentSelectedId)) {
-                    item.setBackground(Color.decode("#F0F0F0"));
+                if (!("CHAT".equals(activeView) && s.getId().equals(currentSelectedId))) {
+                    item.setBackground(Color.decode("#F1F2F4"));
                 }
+                dots.setVisible(true);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                if (!s.getId().equals(currentSelectedId)) {
+                if (!("CHAT".equals(activeView) && s.getId().equals(currentSelectedId))) {
                     item.setBackground(Color.decode("#FAFAFA"));
+                }
+                dots.setVisible(false);
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    setActiveView("CHAT");
+                    selectSession(s.getId());
+                    if (onSelectSession != null) onSelectSession.accept(s);
+                }
+            }
+        });
+
+        // Context menu on dots click
+        dots.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    showItemMenu(dots, s);
                 }
             }
         });
@@ -333,48 +423,54 @@ public class ChatSidebar extends JPanel {
         return item;
     }
 
-    private void showContextMenu(MouseEvent e, ChatSession s) {
+    private void showItemMenu(Component invoker, ChatSession s) {
         JPopupMenu menu = new JPopupMenu();
 
-        JMenuItem pinItem = new JMenuItem(s.isPinned() ? "Unpin chat" : "Pin chat");
-        pinItem.setIcon(Icons.pin(14, Theme.PRIMARY));
-        pinItem.addActionListener(evt -> {
-            storageService.togglePin(s.getId());
+        JMenuItem pin = new JMenuItem(s.isPinned() ? "Unpin chat" : "Pin chat");
+        pin.addActionListener(e -> {
+            s.setPinned(!s.isPinned());
+            storageService.saveSession(s);
             renderSessionList();
         });
 
-        JMenuItem renameItem = new JMenuItem("Rename chat");
-        renameItem.setIcon(Icons.pen(14, Theme.TEXT_SECONDARY));
-        renameItem.addActionListener(evt -> {
+        JMenuItem rename = new JMenuItem("Rename");
+        rename.addActionListener(e -> {
             String newTitle = JOptionPane.showInputDialog(this, "Enter new chat title:", s.getTitle());
             if (newTitle != null && !newTitle.isBlank()) {
-                storageService.renameSession(s.getId(), newTitle.trim());
+                s.setTitle(newTitle.trim());
+                storageService.saveSession(s);
                 renderSessionList();
             }
         });
 
-        JMenuItem deleteItem = new JMenuItem("Delete chat");
-        deleteItem.setIcon(Icons.trash(14, Color.decode("#DC2626")));
-        deleteItem.addActionListener(evt -> {
-            int ret = JOptionPane.showConfirmDialog(this, "Delete \"" + s.getTitle() + "\"?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
-            if (ret == JOptionPane.YES_OPTION) {
+        JMenuItem del = new JMenuItem("Delete");
+        del.setForeground(Color.RED);
+        del.addActionListener(e -> {
+            int confirm = JOptionPane.showConfirmDialog(this,
+                    "Delete \"" + s.getTitle() + "\"?", "Delete Chat",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (confirm == JOptionPane.YES_OPTION) {
                 storageService.deleteSession(s.getId());
-                renderSessionList();
-                if (s.getId().equals(currentSelectedId) && onNewChat != null) {
-                    onNewChat.run();
+                if (s.getId().equals(currentSelectedId)) {
+                    currentSelectedId = null;
+                    if (onNewChat != null) onNewChat.run();
                 }
+                renderSessionList();
             }
         });
 
-        menu.add(pinItem);
-        menu.add(renameItem);
+        menu.add(pin);
+        menu.add(rename);
         menu.addSeparator();
-        menu.add(deleteItem);
-        menu.show(e.getComponent(), e.getX(), e.getY());
+        menu.add(del);
+
+        menu.show(invoker, 0, invoker.getHeight());
     }
 
-    public void setSelectedSessionId(String id) {
+    public void selectSession(String id) {
         this.currentSelectedId = id;
+        this.activeView = "CHAT";
+        updateHomeBtnStyle();
         renderSessionList();
     }
 }
