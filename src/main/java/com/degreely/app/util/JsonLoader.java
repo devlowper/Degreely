@@ -1,6 +1,5 @@
 package com.degreely.app.util;
 
-import com.degreely.app.model.Scholarship;
 import com.degreely.app.model.University;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -19,17 +18,10 @@ public final class JsonLoader {
     private JsonLoader() {}
 
     /**
-     * Loads list of Universities from resources/data/universities.json
+     * Loads verified list of Universities from resources/data/universities.json
      */
     public static List<University> loadUniversities() {
         return loadListFromResource("data/universities.json", new TypeToken<List<University>>() {}.getType());
-    }
-
-    /**
-     * Loads list of Scholarships from resources/data/scholarships.json
-     */
-    public static List<Scholarship> loadScholarships() {
-        return loadListFromResource("data/scholarships.json", new TypeToken<List<Scholarship>>() {}.getType());
     }
 
     private static <T> List<T> loadListFromResource(String resourcePath, Type type) {

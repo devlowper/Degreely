@@ -1,7 +1,6 @@
 package com.degreely.app.view.components.chat;
 
 import com.degreely.app.controller.ChatStorageService;
-import com.degreely.app.controller.GeminiService;
 import com.degreely.app.model.ChatSession;
 import com.degreely.app.util.Icons;
 import com.degreely.app.util.Theme;
@@ -31,10 +30,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Insets;
-import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.Instant;

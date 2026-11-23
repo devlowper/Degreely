@@ -52,6 +52,7 @@ public class HomePage extends JPanel {
     private final UniversityService uniService = UniversityService.getInstance();
     private final Consumer<String> onAskAI;
     private final Runnable onNavigateToAI;
+    private final CompareDialog.OnCompareSubmit onCompare;
 
     private JTextField searchField;
     private JComboBox<String> countryCombo;
@@ -66,8 +67,13 @@ public class HomePage extends JPanel {
     private static final int PAGE_STEP = 30;
 
     public HomePage(Consumer<String> onAskAI, Runnable onNavigateToAI) {
+        this(onAskAI, onNavigateToAI, null);
+    }
+
+    public HomePage(Consumer<String> onAskAI, Runnable onNavigateToAI, CompareDialog.OnCompareSubmit onCompare) {
         this.onAskAI = onAskAI;
         this.onNavigateToAI = onNavigateToAI;
+        this.onCompare = onCompare;
         initUI();
     }
 
@@ -352,14 +358,18 @@ public class HomePage extends JPanel {
         compareBtn.addActionListener(e -> {
             Frame frame = (Frame) SwingUtilities.getWindowAncestor(this);
             CompareDialog dialog = new CompareDialog(frame, (selectedUnis, program, degree) -> {
-                StringBuilder names = new StringBuilder();
-                for (int i = 0; i < selectedUnis.size(); i++) {
-                    if (i == selectedUnis.size() - 1 && i > 0) names.append(" and ");
-                    else if (i > 0) names.append(", ");
-                    names.append(selectedUnis.get(i).getName());
+                if (onCompare != null) {
+                    onCompare.onSubmit(selectedUnis, program, degree);
+                } else if (onAskAI != null) {
+                    StringBuilder names = new StringBuilder();
+                    for (int i = 0; i < selectedUnis.size(); i++) {
+                        if (i == selectedUnis.size() - 1 && i > 0) names.append(" and ");
+                        else if (i > 0) names.append(", ");
+                        names.append(selectedUnis.get(i).getName());
+                    }
+                    String prompt = "Please compare " + names + " side-by-side for " + degree + " in " + program + " in a detailed comparison table.";
+                    onAskAI.accept(prompt);
                 }
-                String prompt = "Please compare " + names + " side-by-side for " + degree + " in " + program + " in a detailed comparison table.";
-                if (onAskAI != null) onAskAI.accept(prompt);
             });
             dialog.setVisible(true);
         });

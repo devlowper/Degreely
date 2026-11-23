@@ -21,7 +21,6 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -211,6 +210,13 @@ public class ChatPage extends JPanel {
 
         // Auto-generate title if this is the first user message
         boolean isFirst = (currentSession.getMessages().size() == 1);
+        if (isFirst) {
+            String autoTitle = generateSmartTitle(prompt);
+            currentSession.setTitle(autoTitle);
+            headerTitleLabel.setText(autoTitle);
+            storageService.saveSession(currentSession);
+            if (sidebar != null) sidebar.renderSessionList();
+        }
 
         renderMessages();
         composerPanel.setGenerating(true);
@@ -229,11 +235,13 @@ public class ChatPage extends JPanel {
                 protected ChatMessage doInBackground() throws Exception {
                     if (isFirst) {
                         String title = geminiService.generateChatTitle(prompt);
-                        currentSession.setTitle(title);
-                        SwingUtilities.invokeLater(() -> {
-                            headerTitleLabel.setText(title);
-                            if (sidebar != null) sidebar.renderSessionList();
-                        });
+                        if (title != null && !title.isBlank() && !title.equals("New Consultation")) {
+                            currentSession.setTitle(title);
+                            SwingUtilities.invokeLater(() -> {
+                                headerTitleLabel.setText(title);
+                                if (sidebar != null) sidebar.renderSessionList();
+                            });
+                        }
                     }
                     return geminiService.sendMessage(currentSession, prompt, files);
                 }
@@ -241,7 +249,10 @@ public class ChatPage extends JPanel {
                 @Override
                 protected void done() {
                     composerPanel.setGenerating(false);
-                    if (isCancelled()) return;
+                    if (isCancelled()) {
+                        renderMessages();
+                        return;
+                    }
                     try {
                         ChatMessage assistantReply = get();
                         currentSession.addMessage(assistantReply);
@@ -338,11 +349,11 @@ public class ChatPage extends JPanel {
 
     public void openCompareDialog() {
         Frame owner = (Frame) SwingUtilities.getWindowAncestor(this);
-        CompareDialog dialog = new CompareDialog(owner, this::handleCompareUniversities);
+        CompareDialog dialog = new CompareDialog(owner, this::compareUniversities);
         dialog.setVisible(true);
     }
 
-    private void handleCompareUniversities(List<University> selectedUnis, String program, String degree) {
+    public void compareUniversities(List<University> selectedUnis, String program, String degree) {
         if (selectedUnis == null || selectedUnis.size() < 2) return;
 
         StringBuilder names = new StringBuilder();
@@ -358,15 +369,17 @@ public class ChatPage extends JPanel {
         UniTableData tableData = uniService.buildComparisonTable(selectedUnis, program, degree);
         String tableJson = new Gson().toJson(tableData);
 
-        if (currentSession == null) {
-            currentSession = new ChatSession("Compare: " + selectedUnis.get(0).getName() + " vs " + selectedUnis.get(1).getName());
+        String compTitle = "Compare: " + selectedUnis.get(0).getName() + " vs " + selectedUnis.get(1).getName();
+        if (currentSession == null || currentSession.getMessages().isEmpty()) {
+            currentSession = new ChatSession(compTitle);
+            headerTitleLabel.setText(compTitle);
         }
 
         // 1. Add user message
         ChatMessage userMsg = new ChatMessage("user", userPrompt);
         currentSession.addMessage(userMsg);
 
-        // 2. Generate rich, ChatGPT-style in-depth comparison analysis
+        // 2. Generate concise, high-impact comparative counselor summary
         String inDepthAnalysis = buildDetailedComparisonAnalysis(selectedUnis, program, degree);
 
         if (geminiService.hasApiKey()) {
@@ -514,12 +527,28 @@ public class ChatPage extends JPanel {
         return "Post-study work rights and employment visa options";
     }
 
+    private String generateSmartTitle(String prompt) {
+        if (prompt == null || prompt.isBlank()) return "New Consultation";
+        String clean = prompt.replaceAll("[#*`\n\r]", " ").trim();
+        if (clean.toLowerCase().startsWith("please compare ")) {
+            clean = clean.substring(15).trim();
+        }
+        if (clean.length() > 32) {
+            int lastSpace = clean.substring(0, 32).lastIndexOf(' ');
+            if (lastSpace > 12) {
+                return clean.substring(0, lastSpace) + "...";
+            }
+            return clean.substring(0, 32) + "...";
+        }
+        return clean;
+    }
+
     /**
      * Custom scrollable panel for the chat messages ensuring dynamic height expansion
      * and proper viewport width matching so tables and long messages are never cut off.
      */
     private static class ScrollableChatWrapper extends JPanel implements Scrollable {
-        public ScrollableChatWrapper(JComponent content) {
+        public ScrollableChatWrapper(Component content) {
             super(new BorderLayout());
             setOpaque(false);
             add(content, BorderLayout.NORTH);

@@ -1,6 +1,7 @@
 package com.degreely.app.view;
 
 import com.degreely.app.model.ChatSession;
+import com.degreely.app.model.University;
 import com.degreely.app.util.Theme;
 import com.degreely.app.view.components.chat.ChatSidebar;
 
@@ -9,6 +10,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.util.List;
 
 /**
  * Main application window designed as a modern, unified SaaS platform:
@@ -59,7 +61,8 @@ public class MainFrame extends JFrame {
 
         homePage = new HomePage(
                 this::handleAskAIFromHome,
-                this::handleNavigateToAI
+                this::handleNavigateToAI,
+                this::handleCompareFromHome
         );
 
         cardContainer.add(homePage, VIEW_HOME);
@@ -98,5 +101,11 @@ public class MainFrame extends JFrame {
         sidebar.setActiveView("CHAT");
         cardLayout.show(cardContainer, VIEW_CHAT);
         chatPage.askQuestion(prompt);
+    }
+
+    private void handleCompareFromHome(List<University> selectedUnis, String program, String degree) {
+        sidebar.setActiveView("CHAT");
+        cardLayout.show(cardContainer, VIEW_CHAT);
+        chatPage.compareUniversities(selectedUnis, program, degree);
     }
 }

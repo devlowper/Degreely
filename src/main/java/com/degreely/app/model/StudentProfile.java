@@ -1,8 +1,5 @@
 package com.degreely.app.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class StudentProfile {
     private String currentDegree = "Bachelor";
     private double cgpa = 3.65;

@@ -1,7 +1,6 @@
 package com.degreely.app.controller;
 
 import com.degreely.app.model.Program;
-import com.degreely.app.model.Scholarship;
 import com.degreely.app.model.University;
 import com.degreely.app.model.UniTableData;
 import com.degreely.app.util.JsonLoader;
@@ -15,11 +14,9 @@ public class UniversityService {
 
     private static UniversityService instance;
     private final List<University> universities;
-    private final List<Scholarship> scholarships;
 
     public UniversityService() {
         this.universities = JsonLoader.loadUniversities();
-        this.scholarships = JsonLoader.loadScholarships();
     }
 
     public static synchronized UniversityService getInstance() {
@@ -34,13 +31,6 @@ public class UniversityService {
      */
     public List<University> getAll() {
         return Collections.unmodifiableList(universities);
-    }
-
-    /**
-     * Returns an unmodifiable list of all scholarships.
-     */
-    public List<Scholarship> getAllScholarships() {
-        return Collections.unmodifiableList(scholarships);
     }
 
     /**
@@ -121,60 +111,6 @@ public class UniversityService {
                 })
                 .limit(limit)
                 .collect(Collectors.toList());
-    }
-
-    /**
-     * Filter scholarships by keyword, country, and level.
-     */
-    public List<Scholarship> filterScholarships(String keyword, String country, String level) {
-        final String kw = (keyword != null) ? keyword.trim().toLowerCase() : "";
-        final String targetCountry = (country != null) ? country.trim() : "";
-        final String targetLevel = (level != null) ? level.trim() : "";
-
-        return scholarships.stream().filter(s -> {
-            // Country filter
-            if (!targetCountry.isEmpty() && !targetCountry.equalsIgnoreCase("All") && !targetCountry.equalsIgnoreCase("All Countries")) {
-                if (!s.getCountry().equalsIgnoreCase(targetCountry)) {
-                    return false;
-                }
-            }
-
-            // Level filter
-            if (!targetLevel.isEmpty() && !targetLevel.equalsIgnoreCase("All") && !targetLevel.equalsIgnoreCase("All Levels")) {
-                if (!s.getLevel().equalsIgnoreCase(targetLevel) && !s.getLevel().equalsIgnoreCase("All")) {
-                    return false;
-                }
-            }
-
-            // Keyword filter
-            if (!kw.isEmpty()) {
-                boolean matchesName = s.getName() != null && s.getName().toLowerCase().contains(kw);
-                boolean matchesUni = s.getUniversity() != null && s.getUniversity().toLowerCase().contains(kw);
-                boolean matchesCountry = s.getCountry() != null && s.getCountry().toLowerCase().contains(kw);
-                boolean matchesAmount = s.getAmount() != null && s.getAmount().toLowerCase().contains(kw);
-
-                if (!matchesName && !matchesUni && !matchesCountry && !matchesAmount) {
-                    return false;
-                }
-            }
-
-            return true;
-        }).collect(Collectors.toList());
-    }
-
-    /**
-     * Get unique country names for scholarship filter.
-     */
-    public List<String> getScholarshipCountries() {
-        List<String> list = new ArrayList<>();
-        list.add("All Countries");
-        scholarships.stream()
-                .map(Scholarship::getCountry)
-                .filter(c -> c != null && !c.isBlank())
-                .distinct()
-                .sorted()
-                .forEach(list::add);
-        return list;
     }
 
     /**
