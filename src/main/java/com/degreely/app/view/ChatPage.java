@@ -384,7 +384,7 @@ public class ChatPage extends JPanel {
                 @Override
                 protected ChatMessage doInBackground() throws Exception {
                     String promptWithDirective = userPrompt + 
-                            "\n\nTABLE DIRECTIVE: Provide a detailed, in-depth multi-section ChatGPT-style counseling evaluation covering academic profile, tuition, living costs, scholarships, and post-study work permits. Then append the side-by-side comparison inside a ```uni-table fenced JSON block at the bottom.";
+                            "\n\nTABLE DIRECTIVE: Provide a concise 2-paragraph comparative summary highlighting key differences in cost, requirements, and visa pathways, then append the side-by-side comparison inside a ```uni-table fenced JSON block at the bottom.";
                     ChatMessage reply = geminiService.sendMessage(currentSession, promptWithDirective, null);
                     if (reply.getUniTableJson() == null || reply.getUniTableJson().isBlank()) {
                         reply.setUniTableJson(tableJson);
@@ -426,57 +426,36 @@ public class ChatPage extends JPanel {
     }
 
     /**
-     * Generates a comprehensive, ChatGPT-style multi-section comparative analysis.
+     * Generates a concise, high-impact comparative counselor summary.
      */
     private String buildDetailedComparisonAnalysis(List<University> unis, String program, String degree) {
         StringBuilder sb = new StringBuilder();
-        sb.append("### Comprehensive Institutional Analysis: ").append(degree).append(" in ").append(program).append("\n\n");
-        sb.append("Choosing between top-tier global institutions requires balancing academic rigor, financial investment, career ROI, and immigration pathways. Here is your detailed counselor assessment:\n\n");
+        sb.append("### Comparative Assessment: ").append(degree).append(" in ").append(program).append("\n\n");
 
-        sb.append("#### 1. 🏛️ Academic Prestige & Faculty Research\n");
+        sb.append("When evaluating **");
+        for (int i = 0; i < unis.size(); i++) {
+            if (i > 0 && i == unis.size() - 1) sb.append(" and ");
+            else if (i > 0) sb.append(", ");
+            sb.append(unis.get(i).getName());
+        }
+        sb.append("**, the primary trade-offs center on academic selectivity, annual tuition costs, and post-study employment visas:\n\n");
+
         for (University u : unis) {
-            sb.append("- **").append(u.getName()).append("** (QS World Rank #").append(u.getRanking()).append(", ").append(u.getCountry()).append("): ")
-              .append("Celebrated for world-class research infrastructure and distinguished alumni networks. ")
-              .append("The department offers high-impact electives, cutting-edge labs, and close corporate partnerships.\n");
+            String tuition = u.getTuitionPerYear() == 0 ? "Tuition-Free ($0 / yr)" : "$" + String.format("%,.0f", u.getTuitionPerYear()) + " / yr";
+            sb.append("- **").append(u.getName()).append("** (QS #").append(u.getRanking()).append(", ").append(u.getCountry()).append("): ")
+              .append("Tuition **").append(tuition).append("**, Min GPA **").append(String.format("%.1f", u.getMinGpa())).append(" / 4.0**, IELTS **")
+              .append(u.getMinIelts()).append("**. Post-study visa: *").append(getCountryWorkRights(u.getCountry())).append("*.\n");
         }
         sb.append("\n");
 
-        sb.append("#### 2. 🎯 Admission Thresholds & Competitiveness\n");
-        for (University u : unis) {
-            sb.append("- **").append(u.getName()).append("**: Requires a minimum GPA of **").append(String.format("%.2f", u.getMinGpa())).append(" / 4.0** ")
-              .append("and an English proficiency score of **IELTS ").append(u.getMinIelts()).append("+** (or equivalent TOEFL). ")
-              .append("The acceptance rate stands around **").append(u.getAcceptanceRate()).append("%**, making holistic profile preparation (SOP, LORs, and relevant projects) essential.\n");
-        }
-        sb.append("\n");
-
-        sb.append("#### 3. 💰 Financial Commitment & Cost of Living\n");
-        for (University u : unis) {
-            String tStr = u.getTuitionPerYear() == 0 ? "Tuition-Free ($0 / year for international students)" : "$" + String.format("%,.0f", u.getTuitionPerYear()) + " / year";
-            sb.append("- **").append(u.getName()).append("**: Annual tuition is **").append(tStr).append("**. ")
-              .append("Estimated living expenses in ").append(u.getCity()).append(", ").append(u.getCountry())
-              .append(" typically range between **$1,100 to $1,800 / month** covering student housing, groceries, health insurance, and local transit.\n");
-        }
-        sb.append("\n");
-
-        sb.append("#### 4. 💼 Post-Study Work Rights & Industry Prospects\n");
-        for (University u : unis) {
-            String workRights = getCountryWorkRights(u.getCountry());
-            sb.append("- **").append(u.getName()).append(" (").append(u.getCountry()).append(")**: Graduates qualify for **")
-              .append(workRights).append("**, providing a strong pathway to transition into multinational tech and finance sectors.\n");
-        }
-        sb.append("\n");
-
-        sb.append("#### 5. 🚀 Strategic Counselor Recommendation\n");
-        sb.append("- **For High ROI & Minimal Debt:** European institutions (such as Germany/Switzerland) offer world-class degrees with near-zero tuition fees, significantly minimizing financial risk.\n");
-        sb.append("- **For Rapid Industry Scaling & High Starting Salaries:** US and UK universities lead in starting compensations ($110k+ in tech in the US) and deep venture capital ecosystems.\n");
-        sb.append("- **Action Plan:** Prepare your Statement of Purpose (SOP) emphasizing technical leadership, finalize academic recommendation letters, and submit within the priority round.\n\n");
-        sb.append("Examine the detailed interactive comparison table below for specific metric-by-metric figures:");
+        sb.append("**Strategic Takeaway:** If aiming for minimal debt and European industry access, public institutions offer unbeatable ROI. If targeting US/UK top-tier career ecosystems and venture networks, private US/UK programs yield strong starting salaries despite higher tuition.\n\n");
+        sb.append("Review the side-by-side metric comparison table below:");
 
         return sb.toString();
     }
 
     /**
-     * Generates a comprehensive, ChatGPT-style detailed advisory response for university queries.
+     * Generates a concise, scannable counseling response for university queries.
      */
     private ChatMessage buildFallbackCounselingResponse(String prompt) {
         String lower = prompt.toLowerCase();
@@ -485,70 +464,32 @@ public class ChatPage extends JPanel {
         for (University u : uniService.getAll()) {
             if (lower.contains(u.getName().toLowerCase()) || (u.getCity() != null && lower.contains(u.getCity().toLowerCase()))) {
                 StringBuilder sb = new StringBuilder();
-                sb.append("### Expert Counseling Brief: ").append(u.getName()).append(" (").append(u.getCountry()).append(")\n\n");
-                sb.append("Here is a comprehensive breakdown of admissions criteria, academic expectations, expenses, and strategic advice for **").append(u.getName()).append("**:\n\n");
+                sb.append("### ").append(u.getName()).append(" (").append(u.getCountry()).append(")\n\n");
 
-                sb.append("#### 1. 🏛️ Institution Profile & Standing\n");
-                sb.append("**").append(u.getName()).append("** is globally ranked **#").append(u.getRanking()).append("** in the QS World University Rankings. ")
-                  .append("Located in **").append(u.getCity()).append(", ").append(u.getCountry()).append("**, it is celebrated as an elite academic hub with extensive research funding, internationally renowned faculty, and exceptional employer reputation.\n\n");
-
-                sb.append("#### 2. 🎯 Academic Cutoffs & Admission Requirements\n");
-                sb.append("- **Minimum GPA Requirement:** ").append(String.format("%.2f", u.getMinGpa())).append(" / 4.0 (or equivalent First Class / Division).\n");
-                sb.append("- **English Language Testing:** Minimum IELTS score of **").append(u.getMinIelts()).append(" Band** or TOEFL iBT **").append((int)(u.getMinIelts() * 12 + 10)).append("+**.\n");
-                sb.append("- **Standardized Tests:** ").append(u.getRanking() <= 10 ? "GRE / GMAT scores are strongly recommended for STEM & Business programs." : "GRE / GMAT is optional or waived for most departments.").append("\n");
-                sb.append("- **Acceptance Rate:** Approximately **").append(u.getAcceptanceRate()).append("%**, requiring a standout portfolio of academic coursework and research achievements.\n\n");
-
-                sb.append("#### 3. 💰 Tuition Fees & Cost of Attendance\n");
-                String tuitionStr = u.getTuitionPerYear() == 0 ? "Tuition-Free ($0 / year for international students)" : "$" + String.format("%,.0f", u.getTuitionPerYear()) + " / year";
-                sb.append("- **Annual Tuition:** **").append(tuitionStr).append("**\n");
-                sb.append("- **Living Expenses:** Estimated between **$1,100 to $1,800 per month** covering accommodation, meal plans, health insurance, and local transport.\n");
-                sb.append("- **Financial Proof:** When applying for a student visa, you must demonstrate liquid funds covering 1 year of tuition plus living costs.\n\n");
-
-                sb.append("#### 4. 🎓 Scholarships & Financial Aid\n");
-                sb.append("- **Institutional Fellowships:** Merit-based awards, Graduate Teaching Assistantships (TA), and Research Assistantships (RA) providing partial to full tuition waivers plus monthly stipends.\n");
-                sb.append("- **External Scholarships:** Eligible for prestigious international funding (e.g. Fulbright, DAAD, Commonwealth, Chevening depending on destination country).\n\n");
-
-                sb.append("#### 5. 💼 Post-Study Work Visas & Career Pathways\n");
-                sb.append("International graduates are eligible for **").append(getCountryWorkRights(u.getCountry())).append("**. ")
-                  .append("Graduates enjoy excellent placement rates across leading technology companies, top-tier consulting firms, and premier research institutes.\n\n");
-
-                sb.append("#### 6. 🚀 Strategic Application Roadmap\n");
-                sb.append("1. **Statement of Purpose (SOP):** Craft a compelling 2-page essay highlighting your academic motivations, research questions, and long-term career vision.\n");
-                sb.append("2. **Letters of Recommendation (LOR):** Secure 2 to 3 strong letters from professors who can vouch for your technical and intellectual acumen.\n");
-                sb.append("3. **Intake Deadlines:** Target the primary Fall intake (Deadlines typically span December 1 to February 1).\n\n");
+                String tuitionStr = u.getTuitionPerYear() == 0 ? "Tuition-Free ($0 / year)" : "$" + String.format("%,.0f", u.getTuitionPerYear()) + " / year";
+                sb.append("Here is the key admissions and financial breakdown for **").append(u.getName()).append("**:\n\n");
+                sb.append("- **QS World Ranking:** #").append(u.getRanking()).append(" • **Location:** ").append(u.getCity()).append(", ").append(u.getCountry()).append("\n");
+                sb.append("- **Academic Cutoffs:** Min GPA **").append(String.format("%.2f", u.getMinGpa())).append(" / 4.0**, IELTS **").append(u.getMinIelts()).append(" Band**, Acceptance Rate: **~").append(u.getAcceptanceRate()).append("%**\n");
+                sb.append("- **Cost of Attendance:** Tuition **").append(tuitionStr).append("**, Living Expenses **~$1,100–$1,800 / month**\n");
+                sb.append("- **Work Visa & Funding:** ").append(getCountryWorkRights(u.getCountry())).append(". Eligible for merit scholarships and graduate assistantships (RA/TA).\n\n");
+                sb.append("**Counselor Verdict:** Focus your SOP on specific research alignment and secure 2 strong academic recommendations. Apply during priority Fall rounds for maximum scholarship consideration.\n\n");
 
                 if (!geminiService.hasApiKey()) {
-                    sb.append("*(Tip: Connect your free Gemini API key in **Gemini Settings** in the left sidebar to unlock real-time web-connected AI counseling and custom essay reviews.)*");
+                    sb.append("*(Tip: Add your free Gemini API key in **Gemini Settings** to chat live with AI!)*");
                 }
 
                 return new ChatMessage("assistant", sb.toString());
             }
         }
 
-        // Generic deep counseling overview
+        // Generic counseling brief
         StringBuilder sb = new StringBuilder();
-        sb.append("### Study Abroad Guidance & Strategic Overview\n\n");
-        sb.append("Thank you for your inquiry! Preparing an international higher education application requires a systematic, step-by-step approach. Here is what you should focus on:\n\n");
-
-        sb.append("#### 1. 🎯 Profile Evaluation & University Matching\n");
-        sb.append("- **Dream Tier (Reach):** Top 1-20 institutions globally (e.g., MIT, Oxford, Cambridge, ETH Zurich). These require a GPA >= 3.8 and IELTS >= 7.5.\n");
-        sb.append("- **Target Tier:** Top 50-150 institutions where your GPA and test scores strongly match the median accepted class.\n");
-        sb.append("- **Safety Tier:** Well-regarded universities with higher acceptance rates ensuring guaranteed admission.\n\n");
-
-        sb.append("#### 2. 💰 Financial Planning & Low-Cost Destinations\n");
-        sb.append("- **Tuition-Free Options:** Germany and public European universities offer world-class Master's degrees with zero tuition ($0), requiring only living expenses (~€934/month blocked account).\n");
-        sb.append("- **High-Scholarship Markets:** US universities offer Graduate Assistantships (RA/TA) that frequently include 100% tuition coverage and living stipends for STEM applicants.\n\n");
-
-        sb.append("#### 3. 💼 Work Rights & Immigration Benefits\n");
-        sb.append("- **USA:** 3-Year STEM OPT extension for tech/science programs.\n");
-        sb.append("- **UK:** 2-Year Graduate Route post-study work visa.\n");
-        sb.append("- **Canada:** Up to 3-Year Post-Graduation Work Permit (PGWP).\n");
-        sb.append("- **Germany:** 18-Month Job Seeking Visa leading to EU Blue Card.\n\n");
-
-        sb.append("#### 4. 🚀 Recommended Action Steps\n");
-        sb.append("1. Explore the **Home / Universities** section to view verified admission cutoffs and fees for 20+ top institutions.\n");
-        sb.append("2. Use the **Compare Universities** tool to compare programs side-by-side in a detailed interactive table.\n");
-        sb.append("3. Add your free Gemini API key in **Gemini Settings** (in the bottom left sidebar) to enable unrestricted live AI dialogue and personal SOP reviews.\n");
+        sb.append("### Study Abroad Admissions Guidance\n\n");
+        sb.append("Planning your international degree requires balancing academic fit, budget, and post-graduation career goals:\n\n");
+        sb.append("- **Targeting Universities:** Categorize choices into Dream (Reach), Target (Matching profile), and Safety institutions.\n");
+        sb.append("- **Budget & Free Tuition:** Germany and several European nations offer world-class degrees with $0 tuition. US/UK universities offer merit scholarships and assistantships for competitive profiles.\n");
+        sb.append("- **Work Visas:** USA offers 3-year STEM OPT; UK offers 2-year Graduate Route; Canada offers up to 3-year PGWP; Germany offers 18-month job search visa.\n\n");
+        sb.append("**Next Steps:** Explore **Home / Universities** to filter 500+ institutions, or use **Compare Universities** above for side-by-side analysis.\n");
 
         return new ChatMessage("assistant", sb.toString());
     }
