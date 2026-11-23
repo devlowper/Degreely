@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -27,6 +28,12 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.util.function.Consumer;
 
+/**
+ * Message Bubble component:
+ * - User messages: Right-aligned with adaptive width capping & automatic word-wrapping.
+ * - Assistant messages: Left-aligned with avatar, rich markdown formatting, and optional embedded UniTable.
+ * - Enforces positive layout bounds so long prompts never clip or break on the left.
+ */
 public class MessageBubble extends JPanel {
 
     private final ChatMessage message;
@@ -46,8 +53,19 @@ public class MessageBubble extends JPanel {
         boolean isUser = "user".equalsIgnoreCase(message.getRole());
 
         if (isUser) {
-            // User message: Right-aligned light bubble
-            JPanel rightContainer = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+            // User message: Right-aligned light bubble with safety bounds clamp against negative X
+            JPanel rightContainer = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0)) {
+                @Override
+                public void doLayout() {
+                    super.doLayout();
+                    // Critical safety clamp: Ensure components are never placed at negative X
+                    for (Component c : getComponents()) {
+                        if (c.getX() < 0) {
+                            c.setLocation(0, c.getY());
+                        }
+                    }
+                }
+            };
             rightContainer.setOpaque(false);
 
             JPanel bubble = new JPanel();
@@ -56,7 +74,7 @@ public class MessageBubble extends JPanel {
             bubble.putClientProperty(FlatClientProperties.STYLE, "arc: 18; background: #F1F5F9;");
             bubble.setBorder(BorderFactory.createCompoundBorder(
                     new FlatLineBorder(new Insets(1, 1, 1, 1), Theme.BORDER, 1, 18),
-                    BorderFactory.createEmptyBorder(12, 16, 12, 16)
+                    BorderFactory.createEmptyBorder(10, 16, 10, 16)
             ));
 
             // Display file chips if files were attached
@@ -108,7 +126,7 @@ public class MessageBubble extends JPanel {
             body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
             body.setOpaque(false);
 
-            // Formatted markdown/HTML pane
+            // Formatted markdown/HTML pane with 100% width table containment
             String cleanedContent = removeUniTableBlock(message.getContent());
             JEditorPane htmlPane = createTextPane(convertMarkdownToHtml(cleanedContent));
             body.add(htmlPane);
@@ -176,8 +194,24 @@ public class MessageBubble extends JPanel {
     }
 
     private String formatUserText(String text) {
-        return "<html><body style='font-family:" + Theme.FONT_BODY.getFamily() + "; font-size:13px; color:#0F172A; line-height:1.4;'>" +
-                escapeHtml(text).replace("\n", "<br/>") + "</body></html>";
+        if (text == null) text = "";
+        String clean = escapeHtml(text).replace("\n", "<br/>");
+        
+        // Approximate pixel width in 13px font (~7.4 pixels per character)
+        int approxPixelWidth = (int) (text.length() * 7.4);
+        if (approxPixelWidth > 520 || text.contains("\n")) {
+            // For long prompts or multiline text, wrap inside a fixed-width table (540px) so words break cleanly
+            return "<html><body style='font-family:" + Theme.FONT_BODY.getFamily() + "; font-size:13px; color:#0F172A; line-height:1.45; margin:0; padding:0;'>" +
+                    "<table width='540' cellpadding='0' cellspacing='0'><tr>" +
+                    "<td style='font-family:" + Theme.FONT_BODY.getFamily() + "; font-size:13px; color:#0F172A; line-height:1.45; word-wrap:break-word;'>" +
+                    clean + "</td></tr></table></body></html>";
+        } else {
+            // For short prompts, shrink-wrap compactly around the text
+            return "<html><body style='font-family:" + Theme.FONT_BODY.getFamily() + "; font-size:13px; color:#0F172A; line-height:1.45; margin:0; padding:0;'>" +
+                    "<table cellpadding='0' cellspacing='0'><tr>" +
+                    "<td style='font-family:" + Theme.FONT_BODY.getFamily() + "; font-size:13px; color:#0F172A; line-height:1.45;'>" +
+                    clean + "</td></tr></table></body></html>";
+        }
     }
 
     private String convertMarkdownToHtml(String md) {
@@ -188,9 +222,9 @@ public class MessageBubble extends JPanel {
 
         // Convert basic markdown formatting to safe styled HTML
         String html = formatted
-                .replaceAll("(?m)^### (.*)$", "<h3 style='margin:8px 0 4px 0; color:#0F172A; font-size:15px;'>$1</h3>")
-                .replaceAll("(?m)^## (.*)$", "<h2 style='margin:12px 0 6px 0; color:#0F172A; font-size:16px;'>$1</h2>")
-                .replaceAll("(?m)^# (.*)$", "<h1 style='margin:14px 0 8px 0; color:#0F172A; font-size:18px;'>$1</h1>")
+                .replaceAll("(?m)^### (.*)$", "<h3 style='margin:10px 0 4px 0; color:#0F172A; font-size:15px;'>$1</h3>")
+                .replaceAll("(?m)^## (.*)$", "<h2 style='margin:14px 0 6px 0; color:#0F172A; font-size:16px;'>$1</h2>")
+                .replaceAll("(?m)^# (.*)$", "<h1 style='margin:16px 0 8px 0; color:#0F172A; font-size:18px;'>$1</h1>")
                 .replaceAll("\\*\\*(.*?)\\*\\*", "<b style='color:#0F172A;'>$1</b>")
                 .replaceAll("\\*(.*?)\\*", "<i>$1</i>")
                 .replaceAll("`([^`]+)`", "<code style='background:#F1F5F9; padding:2px 4px; color:#E37712; font-size:12px;'>$1</code>")
@@ -198,8 +232,10 @@ public class MessageBubble extends JPanel {
                 .replace("\n\n", "<br/><br/>")
                 .replace("\n", "<br/>");
 
-        return "<html><body style='font-family:" + Theme.FONT_BODY.getFamily() + "; font-size:13px; color:#1E293B; line-height:1.5;'>" +
-                html + "</body></html>";
+        // Enforce 100% table containment so assistant prose never overflows viewport horizontally
+        return "<html><body style='font-family:" + Theme.FONT_BODY.getFamily() + "; font-size:13px; color:#1E293B; line-height:1.5; margin:0; padding:0;'>" +
+                "<table width='100%' cellpadding='0' cellspacing='0'><tr><td>" +
+                html + "</td></tr></table></body></html>";
     }
 
     private String formatMarkdownTables(String text) {
@@ -248,23 +284,14 @@ public class MessageBubble extends JPanel {
 
     private String removeUniTableBlock(String content) {
         if (content == null) return "";
-        String cleaned = content.replaceAll("```(?:uni-table|json)?\\s*\\{[\\s\\S]*?\"universities\"[\\s\\S]*?\\}\\s*```", "").trim();
-        // Also remove bare JSON if present
-        int idx = cleaned.indexOf("\"universities\"");
-        if (idx != -1) {
-            int start = cleaned.lastIndexOf('{', idx);
-            if (start != -1) {
-                int end = cleaned.lastIndexOf('}');
-                if (end > start) {
-                    cleaned = cleaned.substring(0, start) + cleaned.substring(end + 1);
-                }
-            }
-        }
-        return cleaned.trim();
+        return content.replaceAll("```(?:uni-table|json)[\\s\\S]*?```", "").trim();
     }
 
     private String escapeHtml(String text) {
         if (text == null) return "";
-        return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+        return text.replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;");
     }
 }
